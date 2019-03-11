@@ -1,0 +1,115 @@
+\chapter{บทนำ}
+
+\section{ที่มาและเหตุผล }
+เนื่องจากระบบการทำงานเดิม มีข้อจำกัดดังนี้ XX และในปัจจุบัน เทคโนโลยี XX สามารถทำให้ดีขึ้น ดังนี้ XX
+
+ดังนั้น ผู้พัฒนาจึงเสนอระบบงาน XX โดยใช้เทคโนโลยี XX เพื่อแก้ปัญหา โดย มีความสามารถดังต่อไปนี้ XX 
+
+
+\section{วัตถุประสงค์}
+\begin{enumerate}
+	\item เพื่อพัฒนาระบบแอปพลิเคชัน 
+	\item  เพื่ออำนวยสร้างสิ่งอำนวยความสะดวกสำหรับ 
+\end{enumerate}
+\section{ขอบเขตของโครงงาน}
+\begin{enumerate}[label=1.3.\arabic*]
+	\item เจ้าหน้าที่
+	 \begin{itemize}
+		 	\item สามารถจัดการ X
+		 	\item สามารถเพิ่ม X
+		 	\item สามารถตรวจสอบอนุมัติ X
+	 \end{itemize}
+	\item นักศึกษา
+	\begin{itemize}
+		\item สามารถดู X ได้
+		\item สามารถกำหนด X ได้
+		\item สามารถดาวน์โหลด X ได้
+		\item สามารถจอง X ได้
+		\item สามารถส่ง X ได้
+		\item สามารถสนทนากับ X ผ่านระบบได้
+	\end{itemize}
+\end{enumerate}
+\section{ประโยชน์ที่คาดว่าจะได้รับ}
+\begin{enumerate}
+	\item ช่วยอำนวยความสะดวก XX
+	\item ช่วยกระจายงานของ XX 
+  \item ช่วยจัดระบบ XX
+\end{enumerate}
+\section{เครื่องมือที่ใช้ในการพัฒนา (Development tools)}
+\subsection{ฮาร์ดเเวร์}
+\begin{enumerate}
+	\item สมาร์ทโฟน (Smart phone)
+		\begin{itemize}
+			\item ทำงานบนระบบปฏิบัติการแอนดรอย์เวอร์ชัน 5.0 หรือ API Level 21
+			\item หน่วยประมาลผลกลาง Mediatek MT6753 Octa-core ความเร็ว 1.3 กิกะเฮิร์ตซ์ (Gigahertz, GHz)
+			\item หน่วยประมวลผลกราฟฟิกอย่างน้อย Mali-T720MP3
+			\item หน่วยความจำหลักอย่างน้อย 2 กิกะไบต์ (Gigabyte, GB)
+			\item หน่วยความจำสำรองอย่างน้อย 16 กิกะไบต์ (Gigabyte, GB)
+			\item หน้าจอแสดงผลความละเอียดอย่างน้อย 1080 x 1920 พิกเซล  (Pixel)
+			\item หน้าจอแสดงผลขนาดอย่างน้อย 5 นิ้ว
+			\item กล้องถ่ายรูปความละเอียดอย่างน้อย 13 เมกกะพิกเซล (Magapixel)
+		\end{itemize}
+	
+	\item เครื่องคอมพิวเตอร์ส่วนบุคคล (Personal computer)
+		\begin{itemize}
+			\item  ทำงานบนระบบปฏิบัติการ Elementary os พื้นฐานการทำงานบน Linux
+			\item  หน่วยประมวลผลกลาง Intel Core i3-3217U ความเร็ว 1.80 กิกะเฮิร์ตซ์ (Gigahertz, GHz)
+			\item  หน่วยประมวลผลกราฟฟิก NVIDIA GeForce GT 720M ความจำ 2 กิกะไบต์ (Gigabyte, GB) 
+			\item  หน่วยความจำหลัก 4 กิกะไบต์ (Gigabyte, GB)
+			\item  หน่วยความจำสำรอง 120 กิกะไบต์ (Gigabyte, GB)
+		\end{itemize}
+\end{enumerate}
+
+\subsection{ซอฟต์แวร์ (Software)}
+\begin{enumerate}
+	\item XX.js ซึ่งเป็น Frontend Framework สำหรับพัฒนาเว็บไชต์ 
+	\item Node.js คือ Cross Platform Runtime Environment หรือเรียกอีกอย่างว่า Backend Framework ใช้สำหรับเป็นเว็บเซิฟเวอร์ (Web Server) ซึ่งเขียนด้วยภาษา JavaScript 
+	\item Android Studio เป็น IDE (Integrated Development Environment) ใช้พัฒนาแอปพลิเคชันสำหรับระบบปฏิบัติการแอนดรอยด์
+	\item Android SDK ชุดของเครื่องมือที่ใช้ในการพัฒนาโปรแกรมสำหรับระบบปฏิบัติการแอนดรอยด์
+	\item Visual Studio Code เครื่องมือสำหรับพัฒนาเว็บแอปพลิเคชัน
+\end{enumerate}
+
+\newpage
+\subsection{แผนการดำเนินการ}
+	ในการสร้างระบบ XX ผู้พัฒนาได้แบ่งขั้นตอนการดำเนินงานไว้ด้วยกัน 7 ขั้นตอน ดังต่อไปนี้
+
+%\begin{landscape}
+%\sffamily
+\begin{table}[H]
+	\noindent
+	\caption{ขั้นตอนการดำเนินงาน}
+	\begin{ganttchart}[
+		canvas/.append style={fill=none, draw=black!5, line width=.75pt},
+		vgrid={*2{draw=black!7, line width=.75pt}},
+		title label font=\bfseries\footnotesize,
+		bar label node/.append style={
+			align=left,
+			text width=width("7. Functional Testing On")},
+		bar/.append style={draw=none, fill=black!63}
+		]{1}{22}
+		\gantttitle{2560}{10}
+		\gantttitle{2561}{12}\\
+		\gantttitle{ต.ค.}{2}
+		\gantttitle{พ.ย.}{2}
+		\gantttitle{ธ.ค.}{2} 
+		\gantttitle{ม.ค.}{2}
+		\gantttitle{ก.พ.}{2}
+		\gantttitle{มี.ค.}{2}
+		\gantttitle{เม.ย.}{2}
+		\gantttitle{พ.ค.}{2}
+		\gantttitle{มิ.ย.}{2} 
+		\gantttitle{ก.ค.}{2}
+		\gantttitle{ส.ค.}{2} \\
+		\ganttbar{1.ศึกษาความเป็นไปได้}{1}{6} \\
+		\ganttbar{2.เสนอหัวข้อโครงงาน}{7}{8} \\
+		\ganttbar{3.ศึกษาค้นคว้าข้อมูล}{7}{9} \\
+		\ganttbar{4.ศึกษาการใช้เครื่องมือ}{8}{10} \\
+		\ganttbar{5.วิเคราะห์และออกแบบ}{9}{12} \\
+		\ganttbar{6.เขียนโปรแกรม}{9}{14} \\
+		\ganttbar{7.ทดสอบและแก้ปัญหา}{13}{14} \\
+		\ganttbar{8.จัดทำเอกสาร}{13}{16} \\
+	\end{ganttchart}
+	\label{tab:ganttchart}
+\end{table}
+%\end{landscape}
+%TODO แก้เทมเพลตเอาชื่อตารางไว้ด้านบน
