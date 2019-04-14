@@ -5,14 +5,18 @@
 การวิเคราะห์และออกแบบแอปพลิเคชันสูงวัยมายเฟรนด์ ในบทนี้จะแบ่งออกเป็น 6 ขั้นตอนเพื่อให้เห็นการดำเนินงานอย่างมีระบบ ในหัวข้อแรกจะนำเสนอภาพรวมของระบบ ก่อนจะนำเสนอเอกสารแสดงความต้องการของระบบซึ่งจะทำให้เห็นที่มาของเพจต่าง ๆ ในขั้นตอนของการออกแบบในหัวข้อที่สาม ส่วนหัวข้อที่เหลือจะแสดงแผนภาพการการทำงานของระบบโดยใช้ UML diagram ซึ่งประกอบไปด้วย Use Case, Class และ Sequence Diagram เพื่อแสดงรายละเอียดของระบบก่อนนำไปเขียนคำสั่งด้วยภาษาโปรแกรมในบทต่อไป
 
 \begin{enumerate}[label=3.\arabic*]
-	\item โครงสร้างภาพรวมของระบบ (System Architecture) เป็นการออกแบบภาพรวมและเทคโนโลยีของระบบ
-	\item System Requirements คือ ความต้องการหรือสิ่งที่ระบบควรจะทำ หรือหน้าที่หลักของ
-	ระบบที่จะต้องทำ
-	\item User Interface Design เป็นการออกแบบส่วนต่อประสานกับผู้ใช้
-	\item Use Case Diagram เป็นแผนภาพที่ใช้แสดงให้ทราบว่าระบบทำงานหรือมีหน้าที่ใดบ้าง
-	\item Class Diagram เป็นแผนภาพที่ใช้แสดง Class และความสัมพันธ์ระหว่าง Class
-	\item Sequence Diagram เป็นแผนภาพที่ใช้แสดงให้เห็นถึงการตอบโต้ข้อมูลระหว่างคลาส เรียงตามลำดับของเวลาที่เกิดเหตุการณ์จากน้อยไปมาก
+	\item โครงสร้างภาพรวมของระบบ (System Architecture)
+	\item การวิเคราะห์ความต้องการของระบบ (System Requirements)
+	\item การออกแบบส่วนติดต่อผู้ใช้ (User Interface Design)
+	\item แผนภาพไดอะแกรม
+	\begin{enumerate}[label=3.3.\arabic*]
+		\item ยูสเคสไดอะแกรม (Use Case Diagram)
+		\item คลาสไดอะแกรม (Class Diagram)
+		\item ซีเควสไดอะแกรม (Sequence Diagram)
+	\end{enumerate}	
 \end{enumerate}	
+
+%  เริ่มต้น ภาพรวมของระบบ
 
 \section{โครงสร้างภาพรวมของระบบ}
     ความหมายของ System Architecture \cite{architecture} หมายถึง กรอบโครงสร้างของระบบที่อธิบายความสัมพันธ์ขององค์ประกอบต่าง ๆ ไปจนถึงขั้นการเชื่อมต่อกันของระบบย่อยต่าง ๆ โดยจัดกลุ่มองค์ประกอบไว้ในหลาย ๆ ลักษณะเพื่อให้ผู้เกี่ยวข้อง (Stakeholder) จากพื้นฐานสาขาอาชีพที่แตกต่าง กันสามารถทำความเข้าใจได้ง่าย เช่น การจัดแบ่งองค์ประกอบตามลักษณะการทำงานของระบบ (functional components) เป็นต้น
@@ -20,8 +24,8 @@
     การออกแบบ System architecture แสดงภาพรวมและเทคโนโลยีของแอปพลิเคชันสูงวัยมายเฟรนด์ มีรายละเอียดดังรูปที่ \ref{Fig:architecture}
    	\begin{figure}[H]
    		\centering
-   		\includegraphics[width=\textwidth]{Figures/3/architecture/architecture}
-   		\caption{System architecture ระบบ XX}
+   		\includegraphics[width=\textwidth]{Figures/3/architecture/structure_app}
+   		\caption{System architecture แอปพลิเคชันสูงวัยมายเฟรนด์}
    		\label{Fig:architecture}
    	\end{figure}
    
@@ -30,209 +34,291 @@
    	\item Database
    	 ระบบใช้บริการฐานข้อมูลแบบ NoSQL ของไฟร์เบสชื่อ Cloud Firestore
 	  \item Server
-	   กระบวนการทำงานในส่วนของเซิฟเวอร์ (server) แบ่งเป็น 2 ส่วนได้แก่
+	   กระบวนการทำงานในส่วนของเซิฟเวอร์ (server) แบ่งเป็น 3 ส่วนได้แก่
 	   \begin{itemize}
-	   	\item ไฟร์เบส Hosting เป็นบริการสำหรับสร้างโฮสต์ (Host) สำหรับเก็บซอร์สโค้ด (source code) และทำการเผยแพร่สำหรับการพัฒนาเว็บไซต์ ซึ่งในที่นี้ใช้ Node.js และ Express ในการพัฒนา
+	   	\item Dialogflow เป็น Platform ไว้สำหรับจัดการการโต้ตอบอัตโนมัติหรือแชทบอท
+	   	\item Google Maps Api เป็น Api ของ Google ไว้สำหรับเรียกใช้งาน Google Maps เพื่อใช้งานแผนที่
 	   	\item ชุดบริการไฟร์เบส Api ใช้สำหรับการทำงานกับบริการต่าง ๆ ของไฟร์เบสบนแฟลตฟอร์มที่แตกต่างกัน เช่น Authentication ใช้สำหรับการจัดการข้อมูลผู้ใช้หรือไฟร์เบส Storage ที่ใช้สำหรับจัดเก็บไฟล์เอกสารและรูปภาพต่าง ๆ เป็นต้น
 	   \end{itemize}
 	   \item Client
-	    แอปพลิเคชันของระบบกองทุนเงินให้กู้ยืมเพื่อการศึกษา คณะวิทยาศาสตร์ มหาวิทยาลัยอุบลราชธานี แบ่งเป็น 2 ส่วนตามการทำงานบนแฟลตฟอร์ม ดังนี้
-	    \begin{itemize}
-	    	\item เว็บแอปพลิเคชันวัตถุประสงค์ในใช้งานเพื่อรองรับการทำงานของผู้ใช้งานบนบราวเซอร์โดยพัฒนาด้วย Vue.js
-	    	\item โมบายแอปพลิเคชันทำงานบนอุปกรณ์พกพา มีการใช้บริการ Crashlytics ของไฟร์เบสในการติดตามข้อผิดพลาดต่าง ๆ ที่เกิดขึ้น
-	    \end{itemize}
+	    App Moblie แอปพลิเคชันทำงานบนอุปกรณ์พกพาสามารถใช้ได้ทั้งแอนดรอยด์และไอโอเอส
    \end{enumerate}
 
-\section{System Requirements}
-\subsection{Functional Requirements}
-	ระบบกองทุนเงินให้กู้ยืมเพื่อการศึกษา คณะวิทยาศาสตร์ มหาวิทยาลัยอุบลราชธานี แบ่งความสามารถของระบบตามประเภทของผู้ใช้งานดังนี้
+%  สิ้นสุด ภาพรวมของระบบ
+
+%  เริ่มต้น การวิเคราะห์ความต้องการของระบบ
+
+\section{การวิเคราะห์ความต้องการของระบบ}
+\subsection{ความต้องการหลักของระบบ (Functional Requirements)}
+	แอปพลิเคชันสูงวัยมายเฟรนด์ แบ่งความสามารถของระบบดังนี้
 	\begin{enumerate}
-		\item เจ้าหน้าที่
-			\begin{itemize}[label={--}]
-				\item สามารถทำการเข้าสู่ระบบได้
-				\item สามารถสร้างประกาศหรือประชาสัมพันธ์บนเว็บแอปพลิเคชันได้
-				\item สามารถกำหนดวันที่และช่วงเวลาในการส่งเอกสารการกู้ยืมของกองทุนเงินให้กู้ยืมเพื่อการศึกษาได้
-				\item สามารถตรวจสอบยืนยันความถูกต้องเอกสารกองทุนเงินให้กู้ยืมเพื่อการศึกษาจากนักศึกษาผ่านเว็บแอปพลิเคชันได้
-				\item สามารถทำการอัพโหลดฐานข้อมูลนักศึกษากองทุนเงินให้กู้ยืมเพื่อการศึกษาได้
-				\item สามารถส่งข้อความเพื่อติดต่อนักศึกษาในระบบได้
-				\item สามารถทำการอัพโหลดเอกสารกองทุนเงินให้กู้ยืมเพื่อการศึกษาที่เกี่ยวข้องเข้าสู่ฐานข้อมูลของระบบได้
-				\item สามารถสร้างปฏิทินขั้นตอนการดำเนินการกองทุนเงินให้กู้ยืมเพื่อการศึกษาได้
-				\item สามารถสร้างรายการคำถามที่พบบ่อยได้
-			\end{itemize}
-		\item นักศึกษา
+		\item ผู้ใช้งาน
 			\begin{itemize}[label={--}]
 				\item สามารถสมัครสมาชิกและเข้าสู่ระบบได้
-				\item สามารถรับข้อมูลข่าวสารประชาสัมพันธ์ได้
-				\item สามารถรับข้อมูลแจ้งเตือนเมื่อมีข่าวสารประชาสัมพันธ์ใหม่ ๆ ผ่านโมบายแอปพลิเคชันได้
-				\item สามารถดูปฏิทินกำหนดการการดำเนินงานกองทุนเงินให้กู้ยืมเพื่อการศึกษาได้
-				\item สามารถส่งภาพสำเนาเอกสารกองทุนเงินให้กู้ยืมเพื่อการศึกษาเพื่อให้พนักงานตรวจสอบได้
-				\item สามารถจองวันที่และเวลาในส่งเอกสารกองทุนเงินให้กู้ยืมเพื่อการศึกษาฉบับจริงได้
-				\item สามารถดาวน์โหลดเอกสารกองทุนเงินให้กู้ยืมเพื่อการศึกษาจากฐานข้อมูลของระบบได้
-				\item สามารถส่งข้อความเพื่อติดต่อสอบถามกับเจ้าหน้าที่กองทุนเงินให้กู้ยืมเพื่อการศึกษาได้
+				\item สามารถดู สร้าง แก้ไข ลบ โพสท์ได้
+				\item สามารคุยโต้ตอบกับแชทบอทได้
+				\item สามารถดูตำแหน่งของคนในครอบครัวได้
+				\item สามารถส่งแจ้งเตือนรูปแบบการโทร หรือข้อความ ไปหาคนในครอบครัวได้
+				\item สามารถเพิ่ม ลบ เพื่อนได้
+				\item สามารถรับการแจ้งเตือนการทานยาได้
 				\item สามารถดูและแก้ไขข้อมูลส่วนตัวได้
-				\item สามารถดูรายการคำถามที่พบบ่อยได้		
 			\end{itemize}
 	\end{enumerate}
 
 \subsection{Non-functional Requirements}
-		\begin{enumerate}
-		\item เว็บแอปพลิเคชัน
+\begin{enumerate}
+		\item แอปพลิเคชัน
 		\begin{itemize}[label={--}]
-			\item ใช้โปรโตคอล (Protocol) แบบ HTTPS (Hypertext Transfer Protocol Secure)  ในการสื่อสารที่ช่วยรักษาความสมบูรณ์ถูกต้องของข้อมูลผู้ใช้และเก็บข้อมูลไว้เป็นความลับระหว่างคอมพิวเตอร์ของผู้ใช้กับเว็บไซต์ 
-			\item รองรับการใช้งานของผู้ใช้พร้อมกันอย่างน้อย 100 คน
-		\end{itemize}
-		\item แอนดรอยด์แอปพลิเคชัน
-		\begin{itemize}[label={--}]
-			\item การสอบถามข้อมูลและการบันทึกข้อมูลปลอดภัยโดยการใช้งาน Cloud FireStore
-			\item รองรับการใช้งานของผู้ใช้พร้อมกันอย่างน้อย 100 คน
+			\item แชทบอทสามารถตอบโต้ได้ตรงประเด็น
+			\item มีความรวดเร็วในการกดไลท์
+			\item สามารถใช้งานได้รวดเร็ว
+			\item สามารถดูตำแหน่งของคนในครอบครัวแบบ Realtime
+			\item สามารถแจ้งเตือนการทานยาได้เมื่อปิดแอปพลิเคชันอย่างสมบูรณ์
 		\end{itemize}
 	\end{enumerate}
+%  สิ้นสุด การวิเคราะห์ความต้องการของระบบ
 	
-\section{User Interface Design}
-ในการออกแบบ User Interface Design ของระบบกองทุนเงินให้กู้ยืมเพื่อการศึกษา คณะวิทยาศาสตร์ มหาวิทยาลัยอุบลราชธานี ใช้การออกแบบใน 2 ลักษณะ ได้แก่
-	\begin{enumerate}
-		\item Low-fidelity Wireframes \\ 
-		ใช้งาน Low-fidelity Wireframes สำหรับงานที่เน้นความรวดเร็ว สามารถสื่อสารเพื่อเข้าใจถึงการทำงานของระบบนั้น ๆ ได้ ข้อดีคือ ได้ผลตอบรับอย่างรวดเร็ว สะดวกแก่การแก้ไขงาน แต่ข้อเสียคือ อาจจะได้รูปแบบการ Transition ระหว่างหน้านั้นไม่ค่อยสมจริงเท่าไร
-			\begin{figure}[H]
-				\centering
-				\includegraphics[width=0.3\textwidth]{Figures/3/Wireframe/login}
-				\caption{หน้าจอเข้าสู่ระบบ}
-				\label{Fig:หน้าจอเข้าสู่ระบบ}
-			\end{figure}
-			จากภาพที่ \ref{Fig:หน้าจอเข้าสู่ระบบ} แสดงหน้าจอสำหรับให้ผู้ใช้ทำการเข้าสู่ระบบ โดยจำเป็นต้องกรอกข้อมูลอีเมลและรหัสผ่านเพื่อใช้ในการเข้าสู่ระบบ
-			\begin{figure}[H]
-				\centering
-				\includegraphics[width=0.3\textwidth]{Figures/3/Wireframe/feed}
-				\caption{หน้าจอข่าวสารประชาสัมพันธ์}
-				\label{Fig:หน้าจอข่าวสาร}
-			\end{figure}
-			จากภาพที่ \ref{Fig:หน้าจอข่าวสาร} แสดงหน้าจอข่าวสารหรือประชาสัมพันธ์จากเจ้าหน้าที่หรือผู้ที่เกี่ยวข้องซึ่งแสดงข้อมูลแถวรายการข่าวสารหรือประชาสัมพันธ์
-			\begin{figure}[H]
-				\centering
-				\includegraphics[width=0.3\textwidth]{Figures/3/Wireframe/calendar}
-				\caption{หน้าจอปฎิทินกำหนดการ}
-				\label{Fig:หน้าจอปฎิธินกำหนดการ}
-			\end{figure}
-			จากภาพที่ \ref{Fig:หน้าจอปฎิธินกำหนดการ} แสดงหน้าจอปฏิทินกำหนดการการดำเนินการเพื่อให้ผู้ใช้สามารถตรวจสอบกำหนดการวันที่และเวลาในการดำเนินงานของกองทุนโดยหน้าจอมีการแสดงปฏิทินและแถวรายการกำหนดการ
+%  เริ่มต้น User Interface Design
 
-		\item High-fidelity wireframes \\ 
-		ใช้งาน High-fidelity wireframes สำหรับการนำเสนอไอเดีย (idea) หรือรูปแบบการ Action ให้แก่ Customer เสมือนงานจริงมากที่สุด ข้อดีคือ สามารถชี้นำการใช้งานจากหน้าหนึ่งไปยังอีกหนึ่งได้ดีด้วยการทำ Motion ระหว่างหน้ารวมทั้งสามารถทำ Interaction กับผู้ใช้งานซึ่งเป็นการสร้างการโต้ตอบการใช้งานกับผู้ใช้ได้ดี
+\section{การออกแบบส่วนติดต่อผู้ใช้}
+ในการออกแบบส่วนติดต่อผู้ใช้ของแอปพลิเคชันสูงวัยมายเฟรนด์ ประกอบด้วยส่วนต่าง ๆ ดังนี้
+	\subsection{หน้าเข้าสู่ระบบ}
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=0.6\textwidth]{Figures/3/UI/login}
+			\caption{หน้าจอเข้าสู่ระบบ}
+			\label{Fig:หน้าจอเข้าสู่ระบบ}
+		\end{figure}
+		จากภาพที่ \ref{Fig:หน้าจอเข้าสู่ระบบ} การออกแบบหน้าจอเข้าสู่ระบบประกอบไปด้วย 6 ส่วนดังนี้
 		\begin{itemize}
-			\item โมบายแอปพลิเคชัน
-			\begin{itemize}
-				\item การออกแบบหน้าจอ splash screen 
-				\begin{figure}[H]
-					\centering
-					\includegraphics[width=0.3\textwidth]{Figures/3/UIMobile/splash_screen}
-					\caption{หน้าจอ splash screen}
-					\label{Fig:splash_screen}
-				\end{figure}
-				จากภาพที่ \ref{Fig:splash_screen} แสดงหน้าจอ splash screen ใช้ในการแสดงทุกครั้งที่ผู้ใช้เปิดแอปพลิเคชันโดยวัตถุประสงค์การทำงานของหน้านี้คือเพื่อใช้แสดงขณะที่แอปพลิเคชันทำการประมวลผลข้อมูลบนพื้นหลัง (Background process) เช่น การตรวจสอบสถานะการเข้าสู่ระบบของผู้ใช้คนปัจจุบัน เป็นต้น
-				\item การออกแบบหน้าจอเข้าสู่ระบบ
-				\begin{figure}[H]
-					\centering
-					\includegraphics[width=0.3\textwidth]{Figures/3/UIMobile/sign_in}
-					\caption{หน้าจอเข้าสู่ระบบ}
-					\label{Fig:sign_in}
-				\end{figure}
-				จากภาพที่ \ref{Fig:sign_in} แสดงหน้าจอสำหรับให้ผู้ใช้ทำการเข้าสู่ระบบเมื่อผู้ใช้ยังไม่ได้ทำการเข้าสู่ระบบ โดยจำเป็นต้องกรอกข้อมูลอีเมลและรหัสผ่านเพื่อใช้ในการเข้าสู่ระบบ ซึ่งการเข้าสู่ระบบจะทำเพียงครั้งเดียวเท่านั้น เมื่อผู้ใช้เปิดการทำงานแอปพลิชันใหม่ในครั้งถัดไประบบจะระบุข้อมูลของผู้ใช้งานอัตโนมัติ
-				\item การออกแบบหน้าจอสมัครสมาชิก
-				\begin{figure}[H]
-					\centering
-					\includegraphics[width=0.3\textwidth]{Figures/3/UIMobile/sign_up}
-					\caption{หน้าจอสมัครสมาชิก}
-					\label{Fig:sign_up1}
-				\end{figure}
-				จากภาพที่ \ref{Fig:sign_up1} แสดงหน้าจอสมัครสมาชิก หากผู้ใช้ยังไม่มีบัญชีในระบบผู้ใช้งานสามารถทำการสมัครสมาชิกเพื่อเข้าใช้งานระบบได้จากหน้าสมัครสมาชิก โดยผู้ใช้จำเป็นต้องกรอกข้อมูลอีเมล รหัสผ่านและรหัสนักศึกษาในการสมัครสมาชิก
-				\item การออกแบบหน้าจอข่าวสารและประชาสัมพันธ์
-				\begin{figure}[H]
-					\centering
-					\includegraphics[width=0.3\textwidth]{Figures/3/UIMobile/home_feed}
-					\caption{หน้าจอข่าวสารและประชาสัมพันธ์}
-					\label{Fig:home_feed}
-				\end{figure}
-				จากภาพที่ \ref{Fig:home_feed} แสดงหน้าจอข่าวสารหรือประชาสัมพันธ์จากเจ้าหน้าที่หรือผู้ที่เกี่ยวข้อง
-				\item การออกแบบหน้าจอเมนูนำทางหลัก 
-				\begin{figure}[H]
-					\centering
-					\includegraphics[width=0.3\textwidth]{Figures/3/UIMobile/home_drawer_nav}
-					\caption{หน้าจอเมนูนำทางหลัก}
-					\label{Fig:home_drawer_nav}
-				\end{figure}
-				จากภาพที่ \ref{Fig:home_drawer_nav} แสดงเมนูนำทางหลักที่ใช้นำทางผู้ใช้งานไปยังหน้าจออื่นๆ ภายในแอปพลิเคชัน
-				\item การออกแบบหน้าจอปฏิทินกำหนดการการดำเนินการ
-				\begin{figure}[H]
-					\centering
-					\includegraphics[width=0.3\textwidth]{Figures/3/UIMobile/home_calendar}
-					\caption{หน้าจอปฏิทินกำหนดการการดำเนินการ}
-					\label{Fig:home_calendar}
-				\end{figure}
-				จากภาพที่ \ref{Fig:home_calendar} แสดงหน้าจอปฏิทินกำหนดการการดำเนินการเพื่อให้ผู้ใช้สามารถตรวจสอบกำหนดการวันที่และเวลาในการดำเนินงานของกองทุนเงินให้กู้ยืมเพื่อการศึกษา คณะวิทยาศาสตร์ มหาวิทยาลัยอุบลราชธานี
-				\item การออกแบบหน้าจอสนทนา
-				\begin{figure}[H]
-					\centering
-					\includegraphics[width=0.3\textwidth]{Figures/3/UIMobile/home_chat}
-					\caption{หน้าจอสนทนา}
-					\label{Fig:home_chat}
-				\end{figure}
-				จากภาพที่ \ref{Fig:home_chat} นักศึกษาสามารถส่งข้อความไปยังเจ้าหน้าที่เพื่อติดต่อสอบถามข้อมูลกับทางเจ้าหน้าที่ได้โดยตรง
-				\item การออกแบบหน้าจอเอกสารที่เกี่ยวข้อง
-				\begin{figure}[H]
-					\centering
-					\includegraphics[width=0.3\textwidth]{Figures/3/UIMobile/home_doc}
-					\caption{หน้าจอเอกสารที่เกี่ยวข้อง}
-					\label{Fig:home_doc}
-				\end{figure}
-				จากภาพที่ \ref{Fig:home_doc} นักศึกษาสามารถดาวน์โหลดเอกสารที่เกี่ยวข้องกับกองทุนเงินให้กู้ยืมเพื่อการศึกษา คณะวิทยาศาสตร์ มหาวิทยาลัยอุบลราชธานี เช่น ข้อกำหนดและคุณสมบัติของผู้กู้ยืม เป็นต้น ซึ่งเอกสารได้ถูกอัพโหลดไว้โดยเจ้าหน้าที่
-				\item การออกแบบหน้าจอจองวันที่และเวลาส่งเอกสาร
-				\begin{figure}[H]
-					\centering
-					\includegraphics[width=0.3\textwidth]{Figures/3/UIMobile/home_booking}
-					\caption{หน้าจอจองวันที่และเวลาส่งเอกสาร}
-					\label{Fig:home_booking}
-				\end{figure}
-				จากภาพที่ \ref{Fig:home_booking}  เมื่อเจ้าหน้าที่ทำการเพิ่มวันที่และช่วงเวลาในการส่งเอกสาร นักศึกษาสามาจองวันที่และเวลาในการส่งเอกสารฉบับจริงของตนได้จากหน้าจอดังกล่าวโดยมีเงื่อนไขคือนักศึกษาผู้ที่จะทำการส่งเอกสารฉบับจริงจำเป็นต้องส่งภาพสำเนาเอกสารผ่านทางระบบเพื่อให้เจ้าหน้าที่ยืนยันความถูกต้องเสียก่อน
-			\end{itemize}
-			\item เว็บแอปพลิเคชัน
-			\begin{itemize}
-				\item การออกแบบหน้าจอหลัก
-				\begin{figure}[H]
-					\centering
-					\includegraphics[width=0.8\textwidth]{Figures/3/UIWeb/Home}
-					\caption{หน้าจอหลัก}
-					\label{Fig:Home}
-				\end{figure}
-				จากภาพที่ \ref{Fig:Home}  แสดงหน้าจอหลักบนเว็บแอปพลิเคชัน  เพื่ออำนวยความสะดวกต่อเจ้าหน้าที่ ในหน้าหลักได้รวบรวมข้อมูลสรุปและเมนูเข้าถึงด่วนซึ่งแบ่งเป็น 3 ส่วนหลักได้แก่ เมนูนำทาง ข่าวสารประชาสัมพันธ์และปฏิทินกำหนดการ
-				\item การออกแบบหน้าจอสนทนา
-				\begin{figure}[H]
-					\centering
-					\includegraphics[width=0.8\textwidth]{Figures/3/UIWeb/Chat}
-					\caption{หน้าจอสนทนา}
-					\label{Fig:Chat}
-				\end{figure}
-				จากภาพที่ \ref{Fig:Chat}  แสดงหน้าจอสนทนามีการแสดงรายชื่อนักศึกษาและส่วนของห้องสนทนาด้วย
-				\item การออกแบบหน้าจออัพโหลดเอกสาร
-				\begin{figure}[H]
-					\centering
-					\includegraphics[width=0.8\textwidth]{Figures/3/UIWeb/Doc}
-					\caption{หน้าจออัพโหลดเอกสาร}
-					\label{Fig:Doc}
-				\end{figure}
-				จากภาพที่ \ref{Fig:Doc}  แสดงหน้าจออัพโหลดเอกสารที่เกี่ยวข้องกับกองทุนเงินให้กู้ยืมเพื่อการศึกษา คณะวิทยาศาสตร์ มหาวิทยาลัยอุบลราชธานี ทั้งนี้ผู้ที่มีสิทธิ์ในการอัพโหลดเอกสารมีเพียงเจ้าหน้าที่เท่านั้น
-				\item การออกแบบหน้าจอเข้าสู่ระบบ
-				\begin{figure}[H]
-					\centering
-					\includegraphics[width=0.8\textwidth]{Figures/3/UIWeb/Login}
-					\caption{หน้าจอเข้าสู่ระบบ}
-					\label{Fig:Login}
-				\end{figure}
-				จากภาพที่ \ref{Fig:Login} แสดงหน้าจอการเข้าสู่ระบบของผู้ใช้โดยผู้ใช้จำเป็นต้องกรอกข้อมูลอีเมลและรหัสผ่านเพื่อเข้าใช้งานระบบ
-			\end{itemize}
+			\item ส่วนที่ 1 โลโก้ของแอปพลิเคชัน
+			\item ส่วนที่ 2 ช่องสำหรับกรอกชื่อผู้ใช้
+			\item ส่วนที่ 3 ช่องสำหรับกรอกรหัสผ่าน
+			\item ส่วนที่ 4 ปุ่มสำหรับเข้าสู่ระบบ
+			\item ส่วนที่ 5 ปุ่มสำหรับสมัครสมาชิก
+			\item ส่วนที่ 6 ข้อความสำหรับกดเมื่อลืมรหัสผ่าน
 		\end{itemize}
-	\end{enumerate}
+
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=0.6\textwidth]{Figures/3/UI/main}
+			\caption{หน้าจอหลัก}
+			\label{Fig:หน้าจอหลัก}
+		\end{figure}
+		จากภาพที่ \ref{Fig:หน้าจอหลัก} การออกแบบหลักประกอบไปด้วย 13 ส่วนดังนี้
+		\begin{itemize}
+			\item ส่วนที่ 1 ข้อมูลของผู้ใช้ประกอบไปด้วยรูปประจำตัวและชื่อผู้ใช้
+			\item ส่วนที่ 2 ปุ่มสำหรับออกจากระบบ
+			\item ส่วนที่ 3 ปุ่มสำหรับไปยังหน้าปู่จอห์นที่เป็นแชทบอท
+			\item ส่วนที่ 4 ปุ่มสำหรับไปยังหน้ากระดานข่าว
+			\item ส่วนที่ 5 ปุ่มสำหรับไปยังหน้าครอบครัว
+			\item ส่วนที่ 6 ปุ่มสำหรับไปยังหน้าตำแหน่งของครอบครัว
+			\item ส่วนที่ 7 ปุ่มสำหรับไปยังหน้าฉุกเฉิน
+			\item ส่วนที่ 8 ปุ่มไปยังหน้าวิธีใช้งาน
+			\item ส่วนที่ 9 ปุ่มไปยังหน้าหลักเราจะอยู่หน้านี้ทุกครั้งเมื่อเราเข้าสู่แอปพลิเคชัน
+			\item ส่วนที่ 10 ปุ่มสำหรับไปยังหน้าเพื่อนและครอบครัว
+			\item ส่วนที่ 11 ปุ่มเพื่อโพสท์ข้อความหรือรูปภาพ
+			\item ส่วนที่ 12 ปุ่มสำหรับไปหน้าตั้งค่า
+			\item ส่วนที่ 13 ปุ่มสำหรับไปยังหน้าโปรไฟล์หรือข้อมูลส่วนตัว
+		\end{itemize}
+
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=0.6\textwidth]{Figures/3/UI/chatbot}
+			\caption{หน้าแชทบอทคุยกับปู่จอห์น}
+			\label{Fig:แชทบอท}
+		\end{figure}
+		จากภาพที่ \ref{Fig:แชทบอท} การออกแบบหลักประกอบไปด้วย 8 ส่วนดังนี้
+		\begin{itemize}
+			\item ส่วนที่ 1 ปุ่มลูกศรกลับไปยังหน้าจอหลัก
+			\item ส่วนที่ 2 รูปประจำตัวของปู่จอห์น
+			\item ส่วนที่ 3 ข้อความที่ปู่จอห์นตอบกลับผู้ใช้
+			\item ส่วนที่ 4 ข้อความของผู้ใช้
+			\item ส่วนที่ 5 รูปประจำตัวของผู้ใช้
+			\item ส่วนที่ 6 ปุ่มสำหรับพิมพ์ข้อความด้วยเสียง (Speech to text)
+			\item ส่วนที่ 7 ช่องสำหรับกรอกข้อความที่จะแสดงในส่วนที่ 4
+			\item ส่วนที่ 8 ปุ่มสำหรับยืนยันข้อความส่วนที่ 7
+		\end{itemize}
+
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=0.6\textwidth]{Figures/3/UI/board}
+			\caption{หน้าจอกระดานข่าว}
+			\label{Fig:กระดานข่าว}
+		\end{figure}
+		จากภาพที่ \ref{Fig:กระดานข่าว} การออกแบบหลักประกอบไปด้วย 11 ส่วนดังนี้
+		\begin{itemize}
+			\item ส่วนที่ 1 ปุ่มสำหรับเพิ่มรูปภาพสำหรับโพสท์มีสองส่วนคือ ถ่ายรูปและเลือกรูปจากแกลอรี่
+			\item ส่วนที่ 2 ช่องสำหรับกรอกข้อความที่จะโพสท์
+			\item ส่วนที่ 3 ปุ่มสำหรับยืนยันการโพสท์หลังจากคลิกจะมีการเลือกประเภทได้ 3 แบบคือ กีฬา, ศาสนา, ดนตรี
+			\item ส่วนที่ 4 ลิสท์สำหรับเลือกแสดงเฉพาะประเภทที่ต้องการมี 4 แบบได้แก่ ทั้งหมด, กีฬา, ศาสนา, ดนตรี
+			\item ส่วนที่ 5 ปุ่มสำหรับแก้ไขโพสท์
+			\item ส่วนที่ 6 ปุ่มสำหรับลบโพสท์
+			\item ส่วนที่ 7 ข้อความโพสท์ของผู้ใช้
+			\item ส่วนที่ 8 รูปภาพโพสท์ของผู้ใช้
+			\item ส่วนที่ 9 ปุ่มสำหรับกดถูกใจ
+			\item ส่วนที่ 10 ปุ่มสำหรับแสดงความคิดเห็น
+			\item ส่วนที่ 11 ข้อความแสดงระยะเวลาหลังจากโพสท์ถูกสร้าง
+		\end{itemize}
+
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=0.6\textwidth]{Figures/3/UI/family}
+			\caption{หน้าครอบครัว}
+			\label{Fig:ครอบครัว}
+		\end{figure}
+		จากภาพที่ \ref{Fig:ครอบครัว} การออกแบบหลักประกอบไปด้วย 5 ส่วนดังนี้
+		\begin{itemize}
+			\item ส่วนที่ 1 ปุ่มสำหรับเพิ่มสมาชิกในครอบครัว
+			\item ส่วนที่ 2 รูปภาพของสมาชิกในครอบครัว
+			\item ส่วนที่ 3 ชื่อของสมาชิกในครอบครัว
+			\item ส่วนที่ 4 สถานะของครอบครัว
+			\item ส่วนที่ 5 ปุ่มสำหรับจัดการสมาชิกครอบครัวได้แก่ แก้ไขสถานะ ลบสมาชิก
+		\end{itemize}
+
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=0.6\textwidth]{Figures/3/UI/maps}
+			\caption{หน้าแสดงตำแหน่งของครอบครัว}
+			\label{Fig:แผนที่}
+		\end{figure}
+		จากภาพที่ \ref{Fig:แผนที่} การออกแบบหลักประกอบไปด้วย 2 ส่วนดังนี้
+		\begin{itemize}
+			\item ส่วนที่ 1 แสดงตำแหน่งของผู้ใช้
+			\item ส่วนที่ 2 แสดงตำแหน่งของสมาชิกในครอบครัว
+		\end{itemize}
+
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=0.6\textwidth]{Figures/3/UI/help}
+			\caption{หน้าฉุกเฉิน}
+			\label{Fig:ฉุกเฉิน}
+		\end{figure}
+		จากภาพที่ \ref{Fig:ฉุกเฉิน} การออกแบบหลักประกอบไปด้วย 2 ส่วนดังนี้
+		\begin{itemize}
+			\item ส่วนที่ 1 ปุ่มสำหรับแสดงเสียงเพื่อขอความช่วยเหลือ
+			\item ส่วนที่ 2 ปุ่มสำหรับไปยังหน้าเลือกครอบครัวเพื่อขอความช่วยเหลือจากครอบครัว
+		\end{itemize}
+
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=0.6\textwidth]{Figures/3/UI/helpfamily}
+			\caption{หน้าเลือกครอบครัว}
+			\label{Fig:เลือกครอบครัว}
+		\end{figure}
+		จากภาพที่ \ref{Fig:เลือกครอบครัว} การออกแบบหลักประกอบไปด้วย 5 ส่วนดังนี้
+		\begin{itemize}
+			\item ส่วนที่ 1 รูปประจำตัวของสมาชิกในครอบครัว
+			\item ส่วนที่ 2 ชื่อของสมาชิกในครอบครัว
+			\item ส่วนที่ 3 สถานะของครอบครัว
+			\item ส่วนที่ 4 ปุ่มสำหรับโทรไปยังหมายเลขของสมาชิกในครอบครัว
+			\item ส่วนที่ 5 ปุ่มสำหรับส่งข้อความไปยังสมาชิกในครอบครัวมีข้อความดังนี้ "ช่วยด้วย !!! นี่ [ชื่อผู้ใช้] เอง ตอนนี้มีปัญหาช่วยติดต่อกลับมาที่ [เบอร์ผู้ใช้] ด้วยนะ ด่วนๆ"
+		\end{itemize}
+
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=0.6\textwidth]{Figures/3/UI/howto}
+			\caption{หน้าวิธีใช้งาน}
+			\label{Fig:วิธีใช้งาน}
+		\end{figure}
+		จากภาพที่ \ref{Fig:วิธีใช้งาน} การออกแบบหลักประกอบไปด้วย 4 ส่วนดังนี้
+		\begin{itemize}
+			\item ส่วนที่ 1 รูปภาพตัวอย่างแสดงหน้าจอนั้นๆ
+			\item ส่วนที่ 2 ชือของหน้าจอนั้นๆ
+			\item ส่วนที่ 3 รายละเอียดเพิ่มเติมของหน้าจอนั้นๆ
+			\item ส่วนที่ 4 จุดสำหรับแสดงตำแหน่งที่เราอยู่ ณ ปัจจุบัน
+		\end{itemize}
+
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=0.6\textwidth]{Figures/3/UI/group}
+			\caption{หน้าจอแสดงกลุ่ม}
+			\label{Fig:กลุ่ม}
+		\end{figure}
+		จากภาพที่ \ref{Fig:กลุ่ม} การออกแบบหลักประกอบไปด้วย 7 ส่วนดังนี้
+		\begin{itemize}
+			\item ส่วนที่ 1 ปุ่มสำหรับเพิ่มเพื่อน
+			\item ส่วนที่ 2 ปุ่มสำหรับไปยังหน้าแสดงกลุ่ม
+			\item ส่วนที่ 3 ปุ่มสำหรับไปยังหน้าจอแสดงเพื่อน
+			\item ส่วนที่ 4 รูปภาพของกลุ่มที่เราเป็นคนสร้าง
+			\item ส่วนที่ 5 ชื่อของกลุ่มที่เราเป็นคนสร้าง
+			\item ส่วนที่ 6 รูปภาพของกลุ่มที่เราเป็นสมาชิก
+			\item ส่วนที่ 7 ชื่อของกลุ่มที่เราเป็นสมาชิก
+		\end{itemize}
+
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=0.6\textwidth]{Figures/3/UI/friend}
+			\caption{หน้าจอแสดงเพื่อน}
+			\label{Fig:เพื่อน}
+		\end{figure}
+		จากภาพที่ \ref{Fig:เพื่อน} การออกแบบหลักประกอบไปด้วย 8 ส่วนดังนี้
+		\begin{itemize}
+			\item ส่วนที่ 1 ปุ่มสำหรับเพิ่มเพื่อน
+			\item ส่วนที่ 2 ปุ่มสำหรับไปยังหน้าแสดงกลุ่ม
+			\item ส่วนที่ 3 ปุ่มสำหรับไปยังหน้าจอแสดงเพื่อน
+			\item ส่วนที่ 4 รูปภาพของเพื่อนที่รอการยืนยัน
+			\item ส่วนที่ 5 ชื่อของเพื่อนที่รอการยืนยัน
+			\item ส่วนที่ 6 ปุ่มสำหรับยกเลิกคำขอร้องเป็นเพื่อน
+			\item ส่วนที่ 7 รูปภาพของเพื่อน
+			\item ส่วนที่ 8 ชื่อของเพื่อน
+			\item ส่วนที่ 9 ปุ่มสำหรับแชทกับเพื่อน
+			\item ส่วนที่ 10 ปุ่มสำหรับลบเพื่อน
+		\end{itemize}
+
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=0.6\textwidth]{Figures/3/UI/notification}
+			\caption{หน้าแสดงรายการแจ้งเตือนการทานยา}
+			\label{Fig:รายการทานยา}
+		\end{figure}
+		จากภาพที่ \ref{Fig:รายการทานยา} การออกแบบหลักประกอบไปด้วย 4 ส่วนดังนี้
+		\begin{itemize}
+			\item ส่วนที่ 1 ข้อความแสดงชื่อของยา
+			\item ส่วนที่ 2 ข้อความแสดงจำนวนการรับประทานต่อครั้ง
+			\item ส่วนที่ 3 ข้อความแสดงเวลาในการแจ้งเตือน
+			\item ส่วนที่ 4 ปุ่มสำหรับเพิ่มการแจ้งเตือนการทานยา
+		\end{itemize}
+
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=0.6\textwidth]{Figures/3/UI/addnotification}
+			\caption{หน้าแสดงการเพิ่มการแจ้งเตือนทานยา}
+			\label{Fig:เพิ่มทานยา}
+		\end{figure}
+		จากภาพที่ \ref{Fig:เพิ่มทานยา} การออกแบบหลักประกอบไปด้วย 5 ส่วนดังนี้
+		\begin{itemize}
+			\item ส่วนที่ 1 ลิสท์สำหรับเลือกประเภทการรับประทานมี 2 ประเภทได้แก่ สำหรับรับประทานและสำหรับฉีด
+			\item ส่วนที่ 2 ช่องสำหรับกรอกชื่อยา ลักษณะของยา หรือสีของยา
+			\item ส่วนที่ 3 ช่องสำหรับกรอกจำนวนครั้งในการทานยา
+			\item ส่วนที่ 4 ลิสท์สำหรับกำหนดเวลาการแจ้งเตือนการทานยา
+			\item ส่วนที่ 5 ปุ่มสำหรับยืนยันการเพิ่มการแจ้งเตือนทานยา
+		\end{itemize}
+
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=0.6\textwidth]{Figures/3/UI/profile}
+			\caption{หน้าจอแสดงข้อมูลส่วนตัวของผู้ใช้}
+			\label{Fig:โปรไฟล์}
+		\end{figure}
+		จากภาพที่ \ref{Fig:โปรไฟล์} การออกแบบหลักประกอบไปด้วย 4 ส่วนดังนี้
+		\begin{itemize}
+			\item ส่วนที่ 1 รูปประจำตัวของผู้ใช้
+			\item ส่วนที่ 2 ปุ่มสำหรับเปลี่ยนรูปประจำตัว
+			\item ส่วนที่ 3 แสดงจำนวนโพสท์ เพื่อน ครอบครัว และปุ่มแก้ไขข้อมูลส่วนตัว
+			\item ส่วนที่ 4 โพสท์ของผู้ใช้
+		\end{itemize}
 \newpage
 
-\section{Use Case Diagram}
+%  สิ้นสุด User Interface Design
+
+%  เริ่มต้น Diagram
+
+\section{แผนภาพไดอะแกรม}
+
+%  เริ่มต้น Use Case Diagram
+
+\subsection{แผนภาพยูสเคส (Use Case Diagram)}
 	Use Case Diagram เป็นแผนผังเพื่อแสดงฟังก์ชันแสดงการทำงานของระบบโดยรวม แสดงส่วนประกอบในระบบและกิจกรรมที่เกิดขึ้นในระบบซึ่งในระบบระบบกองทุนเงินให้กู้ยืมเพื่อการศึกษา คณะวิทยาศาสตร์ มหาวิทยาลัยอุบลราชธานี ผู้ใช้จำเป็นต้องเข้าสู่ระบบเพื่อใช้งานระบบ สัญลักษณ์ที่ใช้ในการเขียน Use Case Diagram แสดงในตารางที่ \ref{tab:use-case2}
 	\begin{table}[H]
 		\caption{สัญลักษณ์ของ Use case Diagram}
@@ -256,268 +342,234 @@
 	\end{table}
 
 	\begin{figure}[H]
-		\includegraphics[width=1.2\textwidth]{Figures/3/usecase}
-		\caption{Use Case Diagram ของระบบ XX}
+		\includegraphics[width=1.1\textwidth]{Figures/3/Usecase/Usecase}
+		\caption{Use Case Diagram ของแอปพลิเคชันสูงวัยมายเฟรนด์}
 		\label{Fig:usecase}
 	\end{figure}
 	
 	\begin{table}[H]
 		\centering
-		\caption{อธิบาย Use Case หน้าที่ของระบบ ในภาพที่ \ref{Fig:usecase}}
+		\caption{อธิบาย Use Case หน้าที่ของแอปพลิเคชันสูงวัยมายเฟรนด์ในภาพที่ \ref{Fig:usecase}}
 		\label{tab:usecase}
-		\resizebox{\totalheight}{!}{\textwidth}{%
+		\resizebox{\totalheight}{!}{\columnwidth}{%
 			\begin{tabular}{|c|p{10cm}|}
 				\hline
 				\multicolumn{1}{|c|}{\textbf{Use Case}} & \multicolumn{1}{c|}{\textbf{คำอธิบาย}} \\ \hline
-				ดูประชาสัมพันธ์ & นักศึกษาสามารถดูประชาสัมพันธ์ได้โดยไม่จำเป็นต้องทำการเข้าสู่ระบบก่อน \\ \hline
-				ดูปฏิทินกำหนดการ & นักศึกษาสามารถเปิดดูปฏิทินวันที่และเวลากำหนดการของกองทุนเงินให้กู้ยืมเพื่อการศึกษา คณะวิทยาศาสตร์วิทยาลัยอุบลราชธานี โดยไม่จำเป็นต้องทำการเข้าสู่ระบบก่อน \\ \hline
-				ดาวน์โหลดเอกสาร & นักศึกษาดาวน์โหลดเอกสารที่เกี่ยวข้องกับกองทุนกู้ยีมการศึกษาคณะวิทยาศาสตร์มหาวิทยาลัยอุบลราชธานีได้โดยไม่จำเป็นต้องทำการเข้าสู่ระบบก่อน \\ \hline
-				ดู FAQs & หน้าแสดงรายการคำถามที่พบบ่อย \\ \hline
-				จองคิวส่งเอกสาร & เมื่อนักศึกษาเข้าสู่ระบบเรียบร้อยแล้วนักศึกษา สามารถจองคิววันที่และเวลาในการส่งเอกสารฉบับจริงหลังจากที่ได้รับการตรวจสอบโดยเจ้าหน้าที่เรียบร้อยแล้ว \\ \hline
-				ส่งเอกสารตรวจสอบ & นักศึกษาสามารถส่งเอกสารหน้าที่ตรวจสอบโดยการถ่ายรูปแล้วทำการอัพโหลดเข้าสู่ระบบ เมื่อเจ้าหน้าที่ตรวจสอบเรียบร้อยแล้วจะยืนยันสถานะของเอกสารอีกที \\ \hline
-				สนทนา & นักศึกษาสามารถสอบถามข้อมูลของกองทุนเงินให้กู้ยืมเพื่อการศึกษา คณะวิทยาศาสตร์ มหาวิทยาลัยอุบลราชธานี ได้จากช่องสนทนา \\ \hline
-				จัดการกำหนดการส่งเอกสาร & ใช้สำหรับเจ้าหน้าที่เพื่อ เพิ่ม แก้ไขหรือลบกำหนดการส่งเอกสารของนักศึกษา \\ \hline
-			\end{tabular}%
-		}
-	\end{table}
-		\begin{table}[H]
-			\centering
-			\caption{อธิบาย Use Case หน้าที่ของระบบ(ต่อ) ในภาพที่ \ref{tab:usecase-15}}
-			\label{tab:usecase-15}
-			\resizebox{\totalheight}{!}{\textwidth}{%
-				\begin{tabular}{|c|p{10cm}|}
-					\hline
-					\multicolumn{1}{|c|}{\textbf{Use Case}} & \multicolumn{1}{c|}{\textbf{คำอธิบาย}} \\ \hline
-					จัดการประชาสัมพันธ์ & ใช้สำหรับเจ้าหน้าที่เพื่อ เพิ่ม แก้ไขหรือลบประชาสัมพันธ์ \\ \hline
-					จัดการปฏิทินกำหนดการ & ใช้สำหรับเจ้าหน้าที่เพื่อ เพิ่ม แก้ไขหรือลบกำหนดการการดำเนินการของกองทุน \\ \hline
-					จัดการเอกสาร & ใช้สำหรับเจ้าหน้าที่เพื่อ เพิ่ม แก้ไขหรือลบเอกสารที่เกี่ยวข้องของกองทุน \\ \hline
-					แจ้งเตือนนักศึกษา & ใช้เพื่อส่งแจ้งเตือนไปยังนักศึกษาเมื่อมีการเพิ่มประชาสัมพันธ์โดยเจ้าหน้าที่ \\ \hline
-				\end{tabular}%
-			}
-		\end{table}
-	% Please add the following required packages to your document preamble:
-	% \usepackage{graphicx}
-	\begin{table}[H]
-		\centering
-		\caption{Use Case ดูประชาสัมพันธ์}
-		\label{tab:usecase}
-		\resizebox{\totalheight}{!}{\textwidth}{%
-			\begin{tabular}{|p{10cm}|p{10cm}|}
-				\hline
-				\multicolumn{1}{|c|}{\textbf{Use Case Title : ดูประชาสัมพันธ์}} & \multicolumn{1}{c|}{\textbf{Use case Id : 1 }} \\ \hline
-				\multicolumn{2}{|p{\linewidth}|}{Primary Actor : นักศึกษา} \\ \hline
-			    \multicolumn{2}{|p{\linewidth}|}{Stakeholder Actor : เจ้าหน้าที่} \\ \hline
-			    \multicolumn{2}{|p{\linewidth}|}{Main Flow : นักศึกษาดูประชาสัมพันธ์โดยไม่จำเป็นต้องเข้าสู่ระบบ} \\ \hline
-			    \multicolumn{2}{|p{\linewidth}|}{Exceptional Flow ที่ 1 : หากผู้ใช้ไม่เชื่อมต่ออินเทอร์เน็ต จะไม่สามารถดูประชาสัมพันธ์ได้} \\ \hline
-			\end{tabular}%
-		}
-	\end{table}
-	\begin{table}[H]
-		\centering
-		\caption{Use Case ดูปฏิทินกำหนดการ}
-		\label{tab:usecase}
-		\resizebox{\totalheight}{!}{\columnwidth}{%
-			\begin{tabular}{|p{7cm}|p{7cm}|}
-				\hline
-				\multicolumn{1}{|c|}{\textbf{Use Case Title : ดูปฏิทินกำหนดการ}} & \textbf{Use case Id : 2 } \\ \hline
-				\multicolumn{2}{|l|}{Primary Actor : นักศึกษา} \\ \hline
-				\multicolumn{2}{|l|}{Stakeholder Actor : เจ้าหน้าที่} \\ \hline
-				\multicolumn{2}{|p{\linewidth}|}{Main Flow : นักศึกษาสามารถเปิดดูปฏิทินวันที่และเวลากำหนดการของกองทุนเงินให้กู้ยืมเพื่อการศึกษา  คณะวิทยาศาสตร์ มหาวิทยาลัยอุบลราชธานี ไม่จำเป็นต้องเข้าสู่ระบบ} \\ \hline
-				\multicolumn{2}{|p{\linewidth}|}{Exceptional Flow ที่ 1 : หากผู้ใช้ไม่เชื่อมต่ออินเทอร์เน็ต จะไม่สามารถดูปฏิทินกำหนดการได้} \\ \hline
+				เข้าสู่ระบบ & ใช้สำหรับให้ผู้ใช้เข้าใช้งานแอปพลิเคชัน \\ \hline
+				ออกจากระบบ & ผู้ใช้ที่เข้าสู่ระบบแล้วสามารถออกจากระบบ \\ \hline
+				จัดการข้อมูลส่วนตัว & ใช้งานเพื่อให้ผู้ใช้ แก้ไขข้อมูลที่ต้องการเปลี่ยนแปลง \\ \hline
+				ดู เพิ่ม แก้ไข หรือลบโพสท์ & ใช้งานเพื่อให้ผู้ใช้สามารถดู เพิ่ม แก้ไข หรือลบโพสท์ของตัวเอง \\ \hline
+				โทรหรือส่งข้อความหาสมาชิกในครอบครัว & ใช้สำหรับให้ผู้ใช้สามารถโทรหรือส่งข้อความหาคนในครอบครัว และสามารถเปิดเสียงฉุกเฉิน \\ \hline
+				ดูตำแหน่งสมาชิกในครอบครัว & ใช้งานเพื่อให้ผู้ใช้สามารถดูตำแหน่งปัจจุบันของสมาชิกในครอบครัวด้วยแผนที่ \\ \hline
+				จัดการครอบครัว & ใช้สำหรับเพิ่ม แก้ไข หรือลบข้อมูลสมาชิกครอบครัว \\ \hline
+				จัดการกลุ่ม & ใช้สำหรับเพิ่ม แชท แก้ไข หรือลบกลุ่มได้ และเพิ่ม แก้ไข หรือลบสมาชิกในกลุ่มได้ \\ \hline
+				จัดการเพื่อน & ใช้สำหรับยืนยันคำร้องขอเป็นเพื่อน รวมถึงพูดคุย เพิ่มและลบเพื่อน \\ \hline
+				เพิ่ม หรือลบการแจ้งเตือน & ใช้สำหรับเพิ่ม หรือลบการแจ้งเตือนการทานยา \\ \hline
+				ดูวิธีการใช้งาน & ใช้สำหรับให้ผู้ใช้ดูรายละเอียดของหน้าต่าง ๆ ในแอปพลิเคชัน \\ \hline
+				คุยกับแชทบอท & ใช้งานเพื่อให้ผู้ใช้สามารถถามเรื่องโรคหรือเรื่องที่สนใจ \\ \hline
 			\end{tabular}%
 		}
 	\end{table}
 
 	\begin{table}[H]
 		\centering
-		\caption{Use Case ดาวน์โหลดเอกสาร}
+		\caption{Use Case เข้าสู่ระบบ}
 		\label{tab:usecase}
 		\resizebox{\totalheight}{!}{\textwidth}{%
-			\begin{tabular}{|p{7cm}|p{7cm}|}
+			\begin{tabular}{|p{10cm}|p{10cm}|}
 				\hline
-				\multicolumn{1}{|c|}{\textbf{Use Case Title : ดาวน์โหลดเอกสาร}} & \textbf{Use case Id : 3 } \\ \hline
-				\multicolumn{2}{|l|}{Primary Actor : นักศึกษา} \\ \hline
-				\multicolumn{2}{|l|}{Stakeholder Actor : เจ้าหน้าที่} \\ \hline
-				\multicolumn{2}{|p{\linewidth}|}{Main Flow : นักศึกษาดาวน์โหลดเอกสารที่เกี่ยวข้องกับกองทุนกู้ยีมการศึกษา
-				คณะวิทยาศาสตร์มหาวิทยาลัยอุบลราชธานีได้ไม่จำเป็นต้องเข้าสู่ระบบ} \\ \hline
-				\multicolumn{2}{|p{\linewidth}|}{Exceptional Flow ที่ 1 : หากผู้ใช้ไม่เชื่อมต่ออินเทอร์เน็ต จะไม่สามารดาวน์โหลดเอกสารที่เกี่ยวข้องกับกองทุนได้} \\ \hline
-				\multicolumn{2}{|p{\linewidth}|}{Exceptional Flow ที่ 2 : หากผู้ใช้โมบายแอปพลิเคชันไม่เปิดสิทธิ์การอ่านและเขียนไฟล์บนความจำสำรอง จะไม่สามารถดาวน์โหลดเอกสารที่เกี่ยวข้องกับกองทุนได้} \\ \hline
+				\textbf{Use Case Title : เข้าสู่ระบบ} & \multicolumn{1}{|c|}{\textbf{Use case Id : 1 }} \\ \hline
+				\multicolumn{2}{|p{\linewidth}|}{Primary Actor : ผู้ใช้งาน} \\ \hline
+			    \multicolumn{2}{|p{\linewidth}|}{Stakeholder Actor : -} \\ \hline
+			    \multicolumn{2}{|p{\linewidth}|}{Main Flow : สามารถเข้าสู่ระบบเพื่อใช้งานแอปพลิเคชัน} \\ \hline
+				\multicolumn{2}{|p{\linewidth}|}{Exceptional Flow ที่ 1 : หากผู้ใช้ไม่เชื่อมต่ออินเทอร์เน็ต จะไม่สามารถเข้าสู่ระบบได้} \\ \hline
+			\end{tabular}%
+		}
+	\end{table}
+	\begin{table}[H]
+		\centering
+		\caption{Use Case ออกจากระบบ}
+		\label{tab:usecase}
+		\resizebox{\totalheight}{!}{\textwidth}{%
+			\begin{tabular}{|p{10cm}|p{10cm}|}
+				\hline
+				\textbf{Use Case Title : ออกจากระบบ} & \multicolumn{1}{|c|}{\textbf{Use case Id : 2 }} \\ \hline
+				\multicolumn{2}{|l|}{Primary Actor : ผู้ใช้งาน} \\ \hline
+				\multicolumn{2}{|l|}{Stakeholder Actor : -} \\ \hline
+				\multicolumn{2}{|p{\linewidth}|}{Main Flow : สามารถออกจากระบบได้} \\ \hline
+				\multicolumn{2}{|p{\linewidth}|}{Exceptional Flow ที่ 1 : หากยังไม่เข้าสู่ระบบจะไม่สามารถออกจากระบบได้} \\ \hline
+			\end{tabular}%
+		}
+	\end{table}
+
+	\begin{table}[H]
+		\centering
+		\caption{Use Case จัดการข้อมูลส่วนตัว}
+		\label{tab:usecase}
+		\resizebox{\totalheight}{!}{\textwidth}{%
+			\begin{tabular}{|p{10cm}|p{10cm}|}
+				\hline
+				\textbf{Use Case Title : จัดการข้อมูลส่วนตัว} & \multicolumn{1}{|c|}{\textbf{Use case Id : 3 }} \\ \hline
+				\multicolumn{2}{|l|}{Primary Actor : ผู้ใช้งาน} \\ \hline
+				\multicolumn{2}{|l|}{Stakeholder Actor : -} \\ \hline
+				\multicolumn{2}{|p{\linewidth}|}{Main Flow : สามารถดู เพิ่ม แก้ไขข้อมูลส่วนตัวได้} \\ \hline
+				\multicolumn{2}{|p{\linewidth}|}{Exceptional Flow ที่ 1 : หากผู้ใช้ไม่เข้าสู่ระบบจะไม่สามารถดู เพิ่ม แก้ไขข้อมูลส่วนตัวได้} \\ \hline
 			\end{tabular}%
 		}
 		\end{table}
 		
 		\begin{table}[H]
 			\centering
-			\caption{Use Case ดู FAQs}
+			\caption{Use Case ดู เพิ่ม แก้ไข หรือลบโพสท์}
 			\label{tab:usecase}
 			\resizebox{\totalheight}{!}{\textwidth}{%
 				\begin{tabular}{|p{10cm}|p{10cm}|}
 					\hline
-					\multicolumn{1}{|c|}{\textbf{Use Case Title : ดู FAQs}} & \multicolumn{1}{c|}{\textbf{Use case Id : 4 }} \\ \hline
-					\multicolumn{2}{|l|}{Primary Actor : นักศึกษา} \\ \hline
-					\multicolumn{2}{|l|}{Stakeholder Actor : เจ้าหน้าที่} \\ \hline
-					\multicolumn{2}{|p{\linewidth}|}{Main Flow : ใช้เพื่อแสดงรายการคำถามที่พบบ่อย } \\ \hline
-					\multicolumn{2}{|p{\linewidth}|}{Exceptional Flow ที่ 1 : หากผู้ใช้ไม่เชื่อมต่ออินเทอร์เน็ต จะไม่สามารถดูคำถามที่พบบ่อยได้} \\ \hline
+					\textbf{Use Case Title : ดู เพิ่ม แก้ไข หรือลบโพสท์} & \multicolumn{1}{c|}{\textbf{Use case Id : 4 }} \\ \hline
+					\multicolumn{2}{|l|}{Primary Actor : ผู้ใช้งาน} \\ \hline
+					\multicolumn{2}{|l|}{Stakeholder Actor : -} \\ \hline
+					\multicolumn{2}{|p{\linewidth}|}{Main Flow : สามารถดู เพิ่ม แก้ไข หรือลบโพสท์ได้} \\ \hline
+					\multicolumn{2}{|p{\linewidth}|}{Exceptional Flow ที่ 1 : หากผู้ใช้ไม่เข้าสู่ระบบจะไม่สามารถดู เพิ่ม แก้ไข หรือลบโพสท์} \\ \hline
 				\end{tabular}%
 			}
 		\end{table}
 		
 		\begin{table}[H]
 			\centering
-			\caption{Use Case จองคิวส่งเอกสาร}
+			\caption{Use Case โทรหรือส่งข้อความหาสมาชิกครอบครัว}
 			\label{tab:usecase}
 			\resizebox{\totalheight}{!}{\textwidth}{%
-				\begin{tabular}{|c|p{10cm}|}
+				\begin{tabular}{|p{10cm}|p{10cm}|}
 					\hline
-					\multicolumn{1}{|c|}{\textbf{Use Case Title : จองคิวส่งเอกสาร}} & \multicolumn{1}{c|}{\textbf{Use case Id : 5 }} \\ \hline
-					\multicolumn{2}{|l|}{Primary Actor : นักศึกษา} \\ \hline
-					\multicolumn{2}{|l|}{Stakeholder Actor : เจ้าหน้าที่} \\ \hline
-					\multicolumn{2}{|p{\linewidth}|}{Main Flow :เมื่อนักศึกษาเข้าสู่ระบบเรียบร้อยแล้วนักศึกษา สามารถจองคิววันที่และเวลาในการส่งเอกสารฉบับจริงหลังจากที่ได้รับการตรวจสอบโดยเจ้าหน้าที่เรียบร้อยแล้ว } \\ \hline
-					\multicolumn{2}{|p{\linewidth}|}{Exceptional Flow ที่ 1 : หากผู้ใช้ไม่เชื่อมต่ออินเทอร์เน็ต จะไม่สามารถจองคิวส่งเอกสารได้} \\ \hline
+					\textbf{Use Case Title : โทรหรือส่งข้อความหาสมาชิกครอบครัว} & \multicolumn{1}{c|}{\textbf{Use case Id : 5 }} \\ \hline
+					\multicolumn{2}{|l|}{Primary Actor : ผู้ใช้งาน} \\ \hline
+					\multicolumn{2}{|l|}{Stakeholder Actor : -} \\ \hline
+					\multicolumn{2}{|p{\linewidth}|}{Main Flow : สามารถโทรหรือส่งข้อความหาสมาชิกครอบครัว และสามารถเปิดเสียงฉุกเฉินได้} \\ \hline
+					\multicolumn{2}{|p{\linewidth}|}{Exceptional Flow ที่ 1 : หากผู้ใช้ไม่เข้าสู่ระบบจะไม่สามารถโทรหรือส่งข้อความหาสมาชิกครอบครัว และสามารถเปิดเสียงฉุกเฉินได้} \\ \hline
 				\end{tabular}%
 			}
 		\end{table}
 	
 		\begin{table}[H]
 			\centering
-			\caption{Use Case ส่งเอกสารตรวจสอบ}
+			\caption{Use Case ดูตำแหน่งสมาชิกครอบครัว}
 			\label{tab:usecase}
 			\resizebox{\totalheight}{!}{\textwidth}{%
-				\begin{tabular}{|c|p{10cm}|}
+				\begin{tabular}{|p{10cm}|p{10cm}|}
 					\hline
-					\multicolumn{1}{|c|}{\textbf{Use Case Title : ส่งเอกสารตรวจสอบ}} & \multicolumn{1}{c|}{\textbf{Use case Id : 6 }} \\ \hline
-					\multicolumn{2}{|l|}{Primary Actor : นักศึกษา} \\ \hline
-					\multicolumn{2}{|l|}{Stakeholder Actor : เจ้าหน้าที่} \\ \hline
-					\multicolumn{2}{|p{\linewidth}|}{Main Flow : นักศึกษาสามารถส่งเอกสารหน้าที่ตรวจสอบโดยการถ่ายรูปแล้วทำการอัพโหลดเข้าสู่ระบบ เมื่อเจ้าหน้าที่ตรวจสอบเรียบร้อยแล้วจะยืนยันสถานะของเอกสารอีกที } \\ \hline
-					\multicolumn{2}{|p{\linewidth}|}{Exceptional Flow ที่ 1 : หากผู้ใช้ไม่เชื่อมต่ออินเทอร์เน็ต จะไม่สามารถส่งเอกสารตรวจสอบได้} \\ \hline
-					\multicolumn{2}{|p{\linewidth}|}{Exceptional Flow ที่ 1 : หากผู้ใช้โมบายแอปพลิเคชันไม่เปิดสิทธิ์ใช้งานกล้อง จะไม่สามารถถ่ายภาพเพื่อส่งเอกสารตรวจสอบได้} \\ \hline
+					\textbf{Use Case Title : ดูตำแหน่งสมาชิกครอบครัว} & \multicolumn{1}{c|}{\textbf{Use case Id : 6 }} \\ \hline
+					\multicolumn{2}{|l|}{Primary Actor : ผู้ใช้งาน} \\ \hline
+					\multicolumn{2}{|l|}{Stakeholder Actor : -} \\ \hline
+					\multicolumn{2}{|p{\linewidth}|}{Main Flow : สามารถดูตำแหน่งสมาชิกในครอบครัวได้ด้วยแผนที่} \\ \hline
+					\multicolumn{2}{|p{\linewidth}|}{Exceptional Flow ที่ 1 : หากผู้ใช้ไม่เชื่อมต่ออินเทอร์เน็ต จะไม่สามารถดูตำแหน่งสมาชิกในครอบครัวได้} \\ \hline
 				\end{tabular}%
 			}
 		\end{table}	
 		
 		\begin{table}[H]
 			\centering
-			\caption{Use Case สนทนา}
+			\caption{Use Case จัดการครอบครัว}
 			\label{tab:usecase}
 			\resizebox{\totalheight}{!}{\textwidth}{%
-				\begin{tabular}{|c|p{10cm}|}
+				\begin{tabular}{|p{10cm}|p{10cm}|}
 					\hline
-					\multicolumn{1}{|c|}{\textbf{Use Case Title : สนทนา}} & \multicolumn{1}{c|}{\textbf{Use case Id : 7 }} \\ \hline
-					\multicolumn{2}{|l|}{Primary Actor : นักศึกษา} \\ \hline
-					\multicolumn{2}{|l|}{Stakeholder Actor : เจ้าหน้าที่} \\ \hline
-					\multicolumn{2}{|p{\linewidth}|}{Main Flow : เมื่อนักศึกษาเข้าสู่ระบบแล้วจะสามารถสอบถามข้อมูลของกองทุนเงินให้กู้ยืมเพื่อการศึกษา คณะวิทยาศาสตร์ มหาวิทยาลัยอุบลราชธานี ได้จากช่องสนทนา} \\ \hline
-					\multicolumn{2}{|p{\linewidth}|}{Exceptional Flow ที่ 1 : หากผู้ใช้ไม่เชื่อมต่ออินเทอร์เน็ต จะไม่สามารถสนทนาได้} \\ \hline
+					\textbf{Use Case Title : จัดการครอบครัว} & \multicolumn{1}{c|}{\textbf{Use case Id : 7 }} \\ \hline
+					\multicolumn{2}{|l|}{Primary Actor : ผู้ใช้งาน} \\ \hline
+					\multicolumn{2}{|l|}{Stakeholder Actor : -} \\ \hline
+					\multicolumn{2}{|p{\linewidth}|}{Main Flow : สามารถเพิ่ม แก้ไข ลบสมาชิกในครอบครัวได้} \\ \hline
+					\multicolumn{2}{|p{\linewidth}|}{Exceptional Flow ที่ 1 : หากผู้ใช้ไม่เข้าสู่ระบบจะไม่สามารถเพิ่ม แก้ไข ลบสมาชิกในครอบครัวได้} \\ \hline
+					\multicolumn{2}{|p{\linewidth}|}{Exceptional Flow ที่ 2 : หากผู้ใช้ไม่มีผู้ใช้งานเป็นเพื่อน จะไม่สามารถเพิ่มเข้ามาในครอบครัวได้} \\ \hline
 				\end{tabular}%
 			}
 		\end{table}	
-%		\begin{table}[H]
-%			\centering
-%			\caption{Use Case สมัครสมาชิก}
-%			\label{tab:usecase}
-%			\resizebox{\totalheight}{!}{\textwidth}{%
-%				\begin{tabular}{|c|p{10cm}|}
-%					\hline
-%					\multicolumn{1}{|c|}{\textbf{Use Case Title : สมัครสมาชิก}} & \multicolumn{1}{c|}{\textbf{Use case Id : 8 }} \\ \hline
-%					\multicolumn{2}{|l|}{Primary Actor : นักศึกษา} \\ \hline
-%					\multicolumn{2}{|l|}{Stakeholder Actor : -} \\ \hline
-%					\multicolumn{2}{|p{\linewidth}|}{Main Flow : เมื่อนักศึกษาต้องการใช้งานระบบทั้งหมดของกองทุนจำเป็นต้องเข้าสู่ระบบก่อน หากยังไม่มีบัญชีสามารถสมัครได้โดยต้องกรอกข้อมูลอีเมลและรหัสผ่าน} \\ \hline
-%					\multicolumn{2}{|p{\linewidth}|}{Exceptional Flow ที่ 1 : หากผู้ใช้ไม่เชื่อมต่ออินเทอร์เน็ต จะไม่สามารถสมัครสมาชิกได้} \\ \hline
-%				\end{tabular}%
-%			}
-%		\end{table}	
-%		 \begin{table}[H]
-%		 	\centering
-%		 	\caption{Use Case เข้าสู่ระบบ}
-%		 	\label{tab:usecase}
-%		 	\resizebox{\totalheight}{!}{\textwidth}{%
-%		 		\begin{tabular}{|c|p{10cm}|}
-%		 			\hline
-%		 			\multicolumn{1}{|c|}{\textbf{Use Case Title : เข้าสู่ระบบ}} & \multicolumn{1}{c|}{\textbf{Use case Id : 9 }} \\ \hline
-%		 			\multicolumn{2}{|l|}{Primary Actor : นักศึกษา} \\ \hline
-%		 			\multicolumn{2}{|l|}{Stakeholder Actor : -} \\ \hline
-%		 			\multicolumn{2}{|p{\linewidth}|}{Main Flow : เมื่อนักศึกษาต้องการใช้งานระบบทั้งหมดของกองทุนจำเป็นต้องเข้าสู่ระบบก่อนโดยต้องกรอกข้อมูลอีเมลและรหัสผ่าน} \\ \hline
-%		 			\multicolumn{2}{|p{\linewidth}|}{Exceptional Flow ที่ 1 : หากผู้ใช้ไม่เชื่อมต่ออินเทอร์เน็ต จะไม่สามารถเข้าสู่ระบบได้} \\ \hline
-%		 		\end{tabular}%
-%		 	}
-%		 \end{table}	
+
+		\begin{table}[H]
+			\centering
+			\caption{Use Case จัดการกลุ่ม}
+			\label{tab:usecase}
+			\resizebox{\totalheight}{!}{\textwidth}{%
+				\begin{tabular}{|p{10cm}|p{10cm}|}
+					\hline
+					\textbf{Use Case Title : จัดการกลุ่ม} & \multicolumn{1}{c|}{\textbf{Use case Id : 8 }} \\ \hline
+					\multicolumn{2}{|l|}{Primary Actor : ผู้ใช้งาน} \\ \hline
+					\multicolumn{2}{|l|}{Stakeholder Actor : -} \\ \hline
+					\multicolumn{2}{|p{\linewidth}|}{Main Flow : สามารถเพิ่ม พูดคุย แก้ไข หรือลบกลุ่ม เพิ่ม แก้ไข หรือลบสมาชิกในกลุ่มได้} \\ \hline
+					\multicolumn{2}{|p{\linewidth}|}{Exceptional Flow ที่ 1 : หากผู้ใช้ไม่เข้าสู่ระบบจะไม่สามารถเพิ่ม พูดคุย แก้ไข หรือลบกลุ่ม เพิ่ม แก้ไข หรือลบสมาชิกในกลุ่มได้} \\ \hline
+					\multicolumn{2}{|p{\linewidth}|}{Exceptional Flow ที่ 2 : หากผู้ใช้ไม่เชื่อมต่ออินเทอร์เน็ตจะไม่สามารถเพิ่ม พูดคุย แก้ไข หรือลบกลุ่ม เพิ่ม แก้ไข หรือลบสมาชิกในกลุ่มได้} \\ \hline
+				\end{tabular}%
+			}
+		\end{table}	
+
+		 \begin{table}[H]
+		 	\centering
+		 	\caption{Use Case จัดการเพื่อน}
+		 	\label{tab:usecase}
+		 	\resizebox{\totalheight}{!}{\textwidth}{%
+		 		\begin{tabular}{|p{10cm}|p{10cm}|}
+		 			\hline
+		 			\textbf{Use Case Title : จัดการเพื่อน} & \multicolumn{1}{c|}{\textbf{Use case Id : 9 }} \\ \hline
+		 			\multicolumn{2}{|l|}{Primary Actor : ผู้ใช้งาน} \\ \hline
+		 			\multicolumn{2}{|l|}{Stakeholder Actor : -} \\ \hline
+					 \multicolumn{2}{|p{\linewidth}|}{Main Flow : สามารถเพิ่ม พูดคุย แก้ไข หรือลบเพื่อนได้} \\ \hline
+					 \multicolumn{2}{|p{\linewidth}|}{Exceptional Flow ที่ 1 : หากผู้ใช้ไม่เข้าสู่ระบบจะไม่สามารถเพิ่ม พูดคุย แก้ไข หรือลบเพื่อนได้} \\ \hline
+		 			\multicolumn{2}{|p{\linewidth}|}{Exceptional Flow ที่ 2 : หากผู้ใช้ไม่เชื่อมต่ออินเทอร์เน็ตจะไม่สามารถเพิ่ม พูดคุย แก้ไข หรือลบเพื่อนได้} \\ \hline
+		 		\end{tabular}%
+		 	}
+		 \end{table}	
+
 		  \begin{table}[H]
 		  	\centering
-		  	\caption{Use Case จัดการกำหนดการส่งเอกสาร}
+		  	\caption{Use Case เพิ่ม หรือลบการแจ้งเตือน}
 		  	\label{tab:usecase}
 		  	\resizebox{\totalheight}{!}{\textwidth}{%
-		  		\begin{tabular}{|c|p{10cm}|}
+		  		\begin{tabular}{|p{10cm}|p{10cm}|}
 		  			\hline
-		  			\multicolumn{1}{|c|}{\textbf{Use Case Title : จัดการกำหนดการส่งเอกสาร}} & \multicolumn{1}{c|}{\textbf{Use case Id : 10 }} \\ \hline
-		  			\multicolumn{2}{|l|}{Primary Actor : เจ้าหน้าที่} \\ \hline
+		  			\textbf{Use Case Title : เพิ่ม หรือลบการแจ้งเตือน} & \multicolumn{1}{c|}{\textbf{Use case Id : 10 }} \\ \hline
+		  			\multicolumn{2}{|l|}{Primary Actor : ผู้ใช้งาน} \\ \hline
 		  			\multicolumn{2}{|l|}{Stakeholder Actor : -} \\ \hline
-		  			\multicolumn{2}{|p{\linewidth}|}{Main Flow : เจ้าหน้าที่ เพิ่ม แก้ไขหรือลบกำหนดการส่งเอกสารของนักศึกษา} \\ \hline
-		  			\multicolumn{2}{|p{\linewidth}|}{Exceptional Flow ที่ 1 : หากเจ้าหน้าที่ไม่เชื่อมต่ออินเทอร์เน็ต จะไม่สามารถ เพิ่ม แก้ไขหรือลบกำหนดการส่งเอกสารของนักศึกษาได้} \\ \hline
+		  			\multicolumn{2}{|p{\linewidth}|}{Main Flow : สามารถเพิ่ม หรือลบการแจ้งเตือนการทานยาได้} \\ \hline
+		  			\multicolumn{2}{|p{\linewidth}|}{Exceptional Flow ที่ 1 : หากผู้ใช้ไม่เข้าสู่ระบบจะไม่สมารถเพิ่ม หรือลบการแจ้งเตือนได้} \\ \hline
 		  		\end{tabular}%
 		  	}
 		  \end{table}	
 		  \begin{table}[H]
 			    	\centering
-			    	\caption{Use Case จัดการประชาสัมพันธ์}
+			    	\caption{Use Case ดูวิธีการใช้งาน}
 			    	\label{tab:usecase}
 			    	\resizebox{\totalheight}{!}{\textwidth}{%
-			    		\begin{tabular}{|c|p{10cm}|}
+			    		\begin{tabular}{|p{10cm}|p{10cm}|}
 			    			\hline
-			    			\multicolumn{1}{|c|}{\textbf{Use Case Title : จัดการประชาสัมพันธ์}} & \multicolumn{1}{c|}{\textbf{Use case Id : 11 }} \\ \hline
-			    			\multicolumn{2}{|l|}{Primary Actor : เจ้าหน้าที่} \\ \hline
+			    			\textbf{Use Case Title : ดูวิธีการใช้งาน} & \multicolumn{1}{c|}{\textbf{Use case Id : 11 }} \\ \hline
+			    			\multicolumn{2}{|l|}{Primary Actor : ผู้ใช้งาน} \\ \hline
 			    			\multicolumn{2}{|l|}{Stakeholder Actor : -} \\ \hline
-			    			\multicolumn{2}{|p{\linewidth}|}{Main Flow : เจ้าหน้าที่ เพิ่ม แก้ไขหรือลบปฏิทินกำหนดการในระบบได้} \\ \hline
-			    			\multicolumn{2}{|p{\linewidth}|}{Exceptional Flow ที่ 1 : หากเจ้าหน้าที่ไม่เชื่อมต่ออินเทอร์เน็ต จะไม่สามารถ เพิ่ม แก้ไขหรือลบปฏิทินกำหนดการได้} \\ \hline
+			    			\multicolumn{2}{|p{\linewidth}|}{Main Flow : สามารถดูรายละเอียดของหน้าจอต่าง ๆ ได้} \\ \hline
+			    			\multicolumn{2}{|p{\linewidth}|}{Exceptional Flow ที่ 1 : หากผู้ใช้ไม่เข้าสู่ระบบจะไม่สามารถดูรายละเอียดของหน้าจอต่าง ๆ ได้} \\ \hline
 			    		\end{tabular}%
 			    	}
 		  \end{table}	
 		    \begin{table}[H]
 		    	\centering
-		    	\caption{Use Case จัดการปฏิทินกำหนดการ}
+		    	\caption{Use Case คุยกับแชทบอท}
 		    	\label{tab:usecase}
 		    	\resizebox{\totalheight}{!}{\textwidth}{%
-		    		\begin{tabular}{|c|p{10cm}|}
+		    		\begin{tabular}{|p{10cm}|p{10cm}|}
 		    			\hline
-		    			\multicolumn{1}{|c|}{\textbf{Use Case Title : จัดการปฏิทินกำหนดการ}} & \multicolumn{1}{c|}{\textbf{Use case Id : 12 }} \\ \hline
-		    			\multicolumn{2}{|l|}{Primary Actor : เจ้าหน้าที่} \\ \hline
+		    			\textbf{Use Case Title : คุยกับแชทบอท} & \multicolumn{1}{c|}{\textbf{Use case Id : 12 }} \\ \hline
+		    			\multicolumn{2}{|l|}{Primary Actor : ผู้ใช้งาน} \\ \hline
 		    			\multicolumn{2}{|l|}{Stakeholder Actor : -} \\ \hline
-		    			\multicolumn{2}{|p{\linewidth}|}{Main Flow : เจ้าหน้าที่ เพิ่ม แก้ไขหรือลบปฏิทินกำหนดการได้} \\ \hline
-		    			\multicolumn{2}{|p{\linewidth}|}{Exceptional Flow ที่ 1 : หากเจ้าหน้าที่ไม่เชื่อมต่ออินเทอร์เน็ต จะไม่สามารถ เพิ่ม แก้ไขหรือลบปฏิทินกำหนดการได้} \\ \hline
+		    			\multicolumn{2}{|p{\linewidth}|}{Main Flow : สามารถคุยโต้ตอบกับแชทบอทได้} \\ \hline
+						\multicolumn{2}{|p{\linewidth}|}{Exceptional Flow ที่ 1 : หากผู้ใช้งานไม่เชื่อมต่ออินเทอร์เน็ตจะไม่คุยกับแชทบอทได้} \\ \hline
+						\multicolumn{2}{|p{\linewidth}|}{Exceptional Flow ที่ 2 : หากผู้ใช้งานไม่เข้าสู่ระบบจะไม่คุยกับแชทบอทได้} \\ \hline
 		    		\end{tabular}%
 		    	}
 		    \end{table}	
-		   \begin{table}[H]
-		   	\centering
-		   	\caption{Use Case จัดการเอกสาร}
-		   	\label{tab:usecase}
-		   	\resizebox{\totalheight}{!}{\textwidth}{%
-		   		\begin{tabular}{|c|p{10cm}|}
-		   			\hline
-		   			\multicolumn{1}{|c|}{\textbf{Use Case Title : จัดการเอกสาร}} & \multicolumn{1}{c|}{\textbf{Use case Id : 13 }} \\ \hline
-		   			\multicolumn{2}{|l|}{Primary Actor : เจ้าหน้าที่} \\ \hline
-		   			\multicolumn{2}{|l|}{Stakeholder Actor : -} \\ \hline
-		   			\multicolumn{2}{|p{\linewidth}|}{Main Flow : เจ้าหน้าที่ เพิ่ม แก้ไขหรือลบเอกสารที่เกี่ยวข้องกับกองทุนได้} \\ \hline
-		   			\multicolumn{2}{|p{\linewidth}|}{Exceptional Flow ที่ 1 : หากเจ้าหน้าที่ไม่เชื่อมต่ออินเทอร์เน็ต จะไม่สามารถ เพิ่ม แก้ไขหรือลบเอกสารที่เกี่ยวข้องกับกองทุนได้} \\ \hline
-		   		\end{tabular}%
-		   	}
-		   \end{table}	
-			  \begin{table}[H]
-			  	\centering
-			  	\caption{Use Case แจ้งเตือนนักศึกษา}
-			  	\label{tab:usecase}
-			  	\resizebox{\totalheight}{!}{\textwidth}{%
-			  		\begin{tabular}{|c|p{10cm}|}
-			  			\hline
-			  			\multicolumn{1}{|c|}{\textbf{Use Case Title : แจ้งเตือนนักศึกษา}} & \multicolumn{1}{c|}{\textbf{Use case Id : 14 }} \\ \hline
-			  			\multicolumn{2}{|l|}{Primary Actor : เจ้าหน้าที่} \\ \hline
-			  			\multicolumn{2}{|l|}{Stakeholder Actor : -} \\ \hline
-			  			\multicolumn{2}{|p{\linewidth}|}{Main Flow : แจ้งเตือนไปยังนักศึกษาเมื่อมีการเพิ่มประชาสัมพันธ์โดยเจ้าหน้าที่} \\ \hline
-			  			\multicolumn{2}{|p{\linewidth}|}{Exceptional Flow ที่ 1 : หากนักศึกษาที่ไม่เชื่อมต่ออินเทอร์เน็ต จะไม่สามารถรับแจ้งเตือนเมื่อมีการเพิ่มประชาสัมพันธ์โดยเจ้าหน้าที่} \\ \hline
-			  		\end{tabular}%
-			  	}
-			  \end{table}	
 \newpage
 
-\section{Class Diagram}
+%  สิ้นสุด Use Case Diagrame
+
+%  เริ่มต้น Class Dialgram
+
+\subsection{แผนภาพคลาส (Class Diagram)}
 	Class Diagram คือแผนภาพที่ใช้แสดงคลาสและความสัมพันธ์ในแบบต่างๆ ระหว่างคลาส สัญลักษณ์ที่ใช้ในการเขียน Class Diagram แสดงในตารางที่ \ref{tab:class2} 
 	\begin{center}
 	\begin{table}[H]
@@ -553,133 +605,97 @@
 
 \newpage
   %IMAGE of class
-	Class Diagram แสดงความสัมพันธ์ในรูปแบบต่างๆ ระหว่างคลาสของแอปพลิเคชันระบบกองทุนเงินให้กู้ยืมเพื่อการศึกษา คณะวิทยาศาสตร์ มหาวิทยาลัยอุบลราชธานี อธิบายได้ตามภาพที่ \ref{Fig:MainActivity20C} ดังต่อไปนี้
-	\begin{figure}[H]
-		\includegraphics[width=1.0\columnwidth]{Figures/3/Class/MainActivity}
-		\caption{Class Diagram ของแอปพลิเคชันระบบ XX}
-		\label{Fig:MainActivity20C}
-	\end{figure}
-	\begin{figure}[H]
-		\includegraphics[width=1.0\columnwidth]{Figures/3/Class/Feed}
-		\caption{Class Diagram ของแอปพลิเคชันระบบ XX}
-		\label{Fig:FeedC}
-	\end{figure}
+	Class Diagram แสดงความสัมพันธ์ในรูปแบบต่างๆ ระหว่างคลาสของแอปพลิเคชันสูงวัยมายเฟรนด์ อธิบายได้ตามภาพที่ \ref{Fig:MainActivity20C} ดังต่อไปนี้
+
 \begin{sidewaysfigure}
 	\begin{figure}[H]
-		\includegraphics[width=1.0\columnwidth]{Figures/3/Class/Doc}
-		\caption{Class Diagram ของแอปพลิเคชันระบบ XX}
-		\label{Fig:DocC}
+		\includegraphics[width=1.0\columnwidth]{Figures/3/Class/classdiagrams}
+		\caption{Class Diagram ของแอปพลิเคชันสูงวัยมายเฟรนด์}
+		\label{Fig:classdiagram}
 	\end{figure}
 \end{sidewaysfigure}
-	\begin{figure}[H]
-		\includegraphics[width=\columnwidth]{Figures/3/Class/Submit}
-		\caption{Class Diagram ของแอปพลิเคชันระบบ XX}
-		\label{Fig:SubmitC}
-	\end{figure}
-	\begin{figure}[H]
-		\includegraphics[width=1.0\columnwidth]{Figures/3/Class/UserChat}
-		\caption{Class Diagram ของแอปพลิเคชันระบบ XX}
-		\label{Fig:UserChatC}
-	\end{figure}
+
 
 	% TABLE of class
 \newpage	
-	จากรูปภาพที่ \ref{Fig:MainActivity20C} สามารถอธิบายแผนภาพ Class Diagram ได้ดังนี้
+	จากรูปภาพที่ \ref{Fig:classdiagram} สามารถอธิบายแผนภาพ Class Diagram ได้ดังนี้
 	\begin{table}[H]
 		\centering
-		\caption{อธิบาย Class Diagram ของคลาสพื้นฐานของระบบ}
+		\caption{อธิบาย Class Diagram ของแอปพลิเคชันสูงวัยมายเฟรนด์}
 		\label{tab:class}
 		\begin{tabular}{|c|p{10cm}|}
 			\hline
 			\textbf{Class Diagram} & \multicolumn{1}{c|}{\textbf{คำอธิบาย}} \\ \hline
-			\raisebox{-\totalheight}{MainApplication}
-			& \setstretch{1.5} {คลาส MainApplication จะถูกเรียกใช้งานทุกครั้งเมื่อผู้ใช้เปิดแอปพลิเคชัน โดยวัตถุประสงค์การทำงานของคลาสนี้คือ เพื่อใช้จัดการทรัพยากรที่จำเป็นสำหรับการใช้งานในคลาสอื่น ๆ } \\ \hline
-			\raisebox{-\totalheight}{SplashScreenActivity}
-			& \setstretch{1.5} {คลาส SplashScreenActivity จะถูกเรียกใช้งานทุกครั้งเมื่อผู้ใช้เปิดแอปพลิเคชัน โดยวัตถุประสงค์การทำงานของคลาสคือ เพื่อใช้ตรวจสอบสถานะการเข้าสู่ระบบของผู้ใช้} \\ \hline
-			\raisebox{-\totalheight}{MainActivity}
-			& \setstretch{1.5} {คลาส MainActivity เป็นคลาสหลักที่ใช้ในการทำงานของแอปพลิเคชันโดยการทำงานของคลาสนี้เน้นไปที่การสร้าง Fragment เพื่อใช้แสดงข้อมูลต่าง ๆ โดยองค์ประกอบการทำงานของคลาสนี้ประกอบบไปด้วยสองส่วนหลักๆ ได้แก่ เมนูนำทาง Drawer และ Fragment Container} \\ \hline
-			\raisebox{-\totalheight}{SignInActivity}
-			& \setstretch{1.5} {คลาส SignInActivity เป็นคลาสที่ใช้เพื่อให้สมาชิกที่ได้ลงทะเบียนกับระบบเข้าสู่ระบบเพื่อใช้งานบริการต่าง ๆ จากระบบ} \\ \hline
+			\raisebox{-\totalheight}{LoginPage}
+			& \setstretch{1.5} {คลาส LoginPage เป็นคลาสที่ใช้เพื่อให้ผู้ใช้ที่ได้ลงทะเบียนกับระบบไว้แล้วเข้าระบบเพื่อใช้งานแอปพลิเคชัน } \\ \hline
+			\raisebox{-\totalheight}{TabsPage}
+			& \setstretch{1.5} {คลาส TabsPage เป็นคลาสที่ถูกเรียกเพื่อจัดการ Tabs} \\ \hline
+			\raisebox{-\totalheight}{TabsfriendsPage}
+			& \setstretch{1.5} {คลาส TabsfriendsPage เป็นคลาสที่ใช้แสดงสมาชิกกลุ่ม คำร้องขอเพิ่มเพื่อนและเพื่อน} \\ \hline
+			\raisebox{-\totalheight}{FriendsPage}
+			& \setstretch{1.5} {คลาส FriendsPage เป็นคลาสที่ใช้แสดงคำร้องขอเพื่อนและเพื่อน} \\ \hline
+			\raisebox{-\totalheight}{connreq}
+			& \setstretch{1.5} {คลาส connreq เป็นคลาสที่ใช้เก็บข้อมูลคำร้องขอเพื่อน} \\ \hline
+			\raisebox{-\totalheight}{BuddiesPage}
+			& \setstretch{1.5} {คลาส BuddiesPage เป็นคลาสที่ใช้สำหรับการเพิ่มเพื่อน} \\ \hline
+			\raisebox{-\totalheight}{BuddychatPage}
+			& \setstretch{1.5} {คลาส BuddychatPage เป็นคลาสที่ใช้สำหรับแชทกับเพื่อน} \\ \hline
+			\raisebox{-\totalheight}{BuddychatPage}
+			& \setstretch{1.5} {คลาส BuddychatPage เป็นคลาสที่ใช้สำหรับแชทกับเพื่อน} \\ \hline
+			\raisebox{-\totalheight}{GroupsPage}
+			& \setstretch{1.5} {คลาส GroupsPage เป็นคลาสที่แสดงกลุ่มของฉันและกลุ่มที่เป็นสมาชิก} \\ \hline
+			\raisebox{-\totalheight}{NewgroupPage}
+			& \setstretch{1.5} {คลาส NewgroupPage เป็นคลาสที่ใช้สร้างกลุ่ม} \\ \hline
+			\raisebox{-\totalheight}{GroupchatPage}
+			& \setstretch{1.5} {คลาส GroupchatPage เป็นคลาสสำหรับการแชทกลุ่ม} \\ \hline
+			\raisebox{-\totalheight}{SettingallalarmPage}
+			& \setstretch{1.5} {คลาส SettingallalarmPage เป็นคลาสที่แสดงการแจ้งเตือนการทานยาทั้งหมด} \\ \hline
+			\raisebox{-\totalheight}{SettingsalarmPage}
+			& \setstretch{1.5} {คลาส SettingsalarmPage เป็นคลาสที่ใช้บันทึกการแจ้งเตือนการทานยา} \\ \hline
+			\raisebox{-\totalheight}{TabsCameraPage}
+			& \setstretch{1.5} {คลาส TabsCameraPage เป็นคลาสที่ใช้สำหรับสร้างโพสท์} \\ \hline
+			\raisebox{-\totalheight}{HomePage}
+			& \setstretch{1.5} {คลาส HomePage เป็นคลาสสำหรับการแสดงหน้าเมนูหลักของแอปพลิเคชัน} \\ \hline
+			\raisebox{-\totalheight}{ChatbotPage}
+			& \setstretch{1.5} {คลาส ChatbotPage เป็นคลาสที่ใช้สำหรับพูดคุยกับแชทบอท} \\ \hline
+			\raisebox{-\totalheight}{FeedPage}
+			& \setstretch{1.5} {คลาส FeedPage เป็นคลาสที่แสดงโพสท์ทั้งหมด} \\ \hline
+			\raisebox{-\totalheight}{FamilyPage}
+			& \setstretch{1.5} {คลาส FamilyPage เป็นคลาสที่แสดงสมาชิกในครอบครัว} \\ \hline
+			\raisebox{-\totalheight}{GooglemapPage}
+			& \setstretch{1.5} {คลาส GooglemapPage เป็นคลาสที่แสดงตำแหน่งของสมาชิกในครอบครัวด้วย Google Map} \\ \hline
+			\raisebox{-\totalheight}{HelpPage}
+			& \setstretch{1.5} {คลาส HelpPage เป็นคลาสที่แสดงรูปภาพขอความช่วยเหลือ 2 แบบ คือ แบบติดต่อครอบครัว และแบบส่งเสียงฉุกเฉิน} \\ \hline
+			\raisebox{-\totalheight}{HelpfamilyPage}
+			& \setstretch{1.5} {คลาส HelpfamilyPage เป็นคลาสแสดงสมาชิกในครอบครัวเพื่อขอความช่วยเหลือมี 2 แบบได้แก่ โทร และส่งข้อความ} \\ \hline
 	\end{tabular}
 \end{table}
 
-\newpage
-จากรูปภาพที่ \ref{Fig:FeedC} สามารถอธิบายแผนภาพ Class Diagram ได้ดังนี้
 \begin{table}[H]
 	\centering
-	\caption{อธิบาย Class Diagram ของส่วนของการแสดงข่าวสาร}
+	\caption{อธิบาย Class Diagram ของแอปพลิเคชันสูงวัยมายเฟรนด์}
 	\label{tab:class}
 	\begin{tabular}{|c|p{10cm}|}
 		\hline
 		\textbf{Class Diagram} & \multicolumn{1}{c|}{\textbf{คำอธิบาย}} \\ \hline
-		\raisebox{-\totalheight}{FeedFragment}
-		& \setstretch{1.5} {คลาส FeedFragment เป็นคลาสหลักที่ใช้ในการแสดงข้อมูลข่าวสาร มีการทำงานหลักคือสืบค้นฐานข้อมูลจากไฟร์เบสเพื่อนำมาแสดง} \\ \hline
-		\raisebox{-\totalheight}{FeedItemAdapter}
-		& \setstretch{1.5} {คลาส FeedItemAdapter เป็นคลาสที่มีหน้าที่ในการแปลงชุดข้อมูลที่ได้จากคลาส FeedFragment แล้วคืนค่ากลับเป็นลิสต์รายการของชุดข้อมูลนั้น ๆ} \\ \hline
-		\raisebox{-\totalheight}{Post}
-		& \setstretch{1.5} {คลาส Post เป็นคลาสโมเดลที่กำหนดค่าต่างๆที่จำเป็นสำหรับใช้ในการสร้างลิสต์รายการของคลาส FeedItemAdapter} \\ \hline
-		\raisebox{-\totalheight}{PostDetailActivity}
-		& \setstretch{1.5} {คลาส PostDetailActivity เป็นคลาสที่มีหน้าที่ในการแสดงข้อมูลรายละเอียดของข่าวสารแต่ละแถวที่ได้รับจากหน้า FeedFragment ที่จะส่งข้อมูลเมื่อผู้ใช้กดที่แถวรายการข่าวสาร} \\ \hline
-		\raisebox{-\totalheight}{RecyclerViewClickListener}
-		& \setstretch{1.5} {คลาส RecyclerViewClickListener เป็นคลาสอินเทอร์เฟส(Interface)ที่ใช้ในการสร้างแม่แบบเมื่อคลาสใด ๆ ต้องการใช้งานสำหรับการรับค่าเมื่อผู้ใช้กดแถวในลิสต์รายการ คลาสลูกที่ทำการสืบทอดคุณสมบัติจะสามารถรับข้อมูลตำแหน่งแถวที่ผู้ใช้กดบนลิสต์รายการได้} \\ \hline
-	\end{tabular}
+		\raisebox{-\totalheight}{FamilyPage}
+		& \setstretch{1.5} {คลาส FamilyPage เป็นคลาสที่แสดงสมาชิกในครอบครัว} \\ \hline
+		\raisebox{-\totalheight}{GooglemapPage}
+		& \setstretch{1.5} {คลาส GooglemapPage เป็นคลาสที่แสดงตำแหน่งของสมาชิกในครอบครัวด้วย Google Map} \\ \hline
+		\raisebox{-\totalheight}{HelpPage}
+		& \setstretch{1.5} {คลาส HelpPage เป็นคลาสที่แสดงรูปภาพขอความช่วยเหลือ 2 แบบ คือ แบบติดต่อครอบครัว และแบบส่งเสียงฉุกเฉิน} \\ \hline
+		\raisebox{-\totalheight}{HelpfamilyPage}
+		& \setstretch{1.5} {คลาส HelpfamilyPage เป็นคลาสแสดงสมาชิกในครอบครัวเพื่อขอความช่วยเหลือมี 2 แบบได้แก่ โทร และส่งข้อความ} \\ \hline
+\end{tabular}
 \end{table}
 
 \newpage
-จากรูปภาพที่ \ref{Fig:DocC} สามารถอธิบายแผนภาพ Class Diagram ได้ดังนี้
-\begin{table}[H]
-	\centering
-	\caption{อธิบาย Class Diagram ของส่วนของการแสดงรายการเอกสารในระบบ}
-	\label{tab:class}
-	\begin{tabular}{|c|p{10cm}|}
-		\hline
-		\textbf{Class Diagram} & \multicolumn{1}{c|}{\textbf{คำอธิบาย}} \\ \hline
-		\raisebox{-\totalheight}{DocumentsFragment}
-		& \setstretch{1.5} {คลาส DocumentsFragment เป็นคลาสที่ใช้ในการแสดงข้อมูลเอกสารที่ถูกอัพโหลดเข้าสู่ระบบโดยเจ้าหน้าที่ซึ่งจะถูกแสดงเป็นลิสต์รายการ} \\ \hline
-		\raisebox{-\totalheight}{DocItemAdapter}
-		& \setstretch{1.5} {คลาส DocItemAdapter เป็นคลาสที่มีหน้าที่ในการแปลงชุดข้อมูลที่ได้รับจากคลาส DocumentsFragment เป็นลิสต์รายการแล้วคืนกลับไปยังคลาส DocumentsFragment} \\ \hline
-		\raisebox{-\totalheight}{Doc}
-		& \setstretch{1.5} {คลาส Doc เป็นคลาสโมเดลที่กำหนดค่าต่าง ๆ ที่จำเป็นสำหรับใช้ในการสร้างลิสต์รายการของคลาส DocItemAdapter} \\ \hline
-		\raisebox{-\totalheight}{RecyclerViewClickListener}
-		& \setstretch{1.5} {คลาส RecyclerViewClickListener เป็นคลาสอินเทอร์เฟสที่ใช้ในการสร้างแม่แบบเมื่อคลาสใด ๆ ต้องการใช้งานสำหรับการรับค่าเมื่อผู้ใช้กดแถวในลิสต์รายการ คลาสลูกที่ทำการสืบทอดคุณสมบัติจะสามารถรับข้อมูลตำแหน่งแถวที่ผู้ใช้กดบนลิสต์รายการได้} \\ \hline
-	\end{tabular}
-\end{table}
 
-\newpage
-จากรูปภาพที่ \ref{Fig:SubmitC} สามารถอธิบายแผนภาพ Class Diagram ได้ดังนี้
-\begin{table}[H]
-	\centering
-	\caption{อธิบาย Class Diagram ของส่วนของการส่งสำเนาเอกสาร}
-	\label{tab:class}
-	\begin{tabular}{|c|p{10cm}|}
-		\hline
-		\textbf{Class Diagram} & \multicolumn{1}{c|}{\textbf{คำอธิบาย}} \\ \hline
-		\raisebox{-\totalheight}{SubmitFragment}
-		& \setstretch{1.5} {คลาส SubmitFragment เป็นคลาสที่ใช้ในการแสดงหน้าจอส่งสำเนาเอกสาร โดยมีการดำเนินการภายในคลาสหลัก ๆ ได้แก่ การถ่ายภาพ แปลงภาพและบันทึกภาพเข้าสู่ระบบ} \\ \hline
-	\end{tabular}
-\end{table}
+%  สิ้นสุด Class Diagram
 
-จากรูปภาพที่ \ref{Fig:UserChatC} สามารถอธิบายแผนภาพ Class Diagram ได้ดังนี้
-\begin{table}[H]
-	\centering
-	\caption{อธิบาย Class Diagram ของส่วนของการสนทนา}
-	\label{tab:class}
-	\begin{tabular}{|c|p{10cm}|}
-		\hline
-		\textbf{Class Diagram} & \multicolumn{1}{c|}{\textbf{คำอธิบาย}} \\ \hline
-		\raisebox{-\totalheight}{UserChatFragment}
-		& \setstretch{1.5} {คลาส UserChatFragment เป็นคลาสที่ใช้ในการแสดงหน้าจอสนทนาสำหรับนักศึกษา เพื่อติดต่อสอบถามข้อมูลกับเจ้าหน้าที่ มีการสืบค้นข้อมูลประวัติการสนทนาเพื่อส่งไปแปลงเป็นข้อมูลลิสต์รายการที่คลาส MessagesListAdapter} \\ \hline
-		\raisebox{-\totalheight}{MessagesListAdapter}
-		& \setstretch{1.5} {คลาส MessagesListAdapter เป็นคลาสที่ใช้ในการแปลงชุดข้อมูลที่ได้รับจากคลาส UserChatFragment เป็นลิสต์รายการแล้วทำการคืนค่าลิสต์รายการที่ได้กลับไปยังคลาส UserChatFragment} \\ \hline 
-		\raisebox{-\totalheight}{MessagesList}
-		& \setstretch{1.5} {คลาส MessagesList เป็นคลาสที่ใช้ในการจัดเก็บข้อมูลภายในคลาส UserChatFragment หลังจากที่ได้ทำการสืบค้นข้อมูลการสนทนาจากไฟร์เบสเพื่อส่งไปยังคลาส MessagesListAdapter} \\ \hline
-		\raisebox{-\totalheight}{RecyclerViewClickListener}
-		& \setstretch{1.5} {คลาส RecyclerViewClickListener เป็นคลาสอินเทอร์เฟสที่ใช้ในการสร้างแม่แบบเมื่อคลาสใด ๆ ต้องการใช้งานสำหรับการรับค่าเมื่อผู้ใช้กดแถวในลิสต์รายการ คลาสลูกที่ทำการสืบทอดคุณสมบัติจะสามารถรับข้อมูลตำแหน่งแถวที่ผู้ใช้กดบนลิสต์รายการได้} \\ \hline
-	\end{tabular}
-\end{table}
+%  เริ่มต้น Squence Diagram
 
-\newpage
-\section{Sequence Diagram}
+\section{ซีเควนไดอะแกรม (Sequence Diagram)}
 	Sequence Diagram เป็น Diagram ที่แสดงขั้นตอนการทำงานของแต่ละ Use Case ระหว่าง Object ต่างๆ ที่ส่งข้อความถึงกันและกัน โดย Sequence Diagram จะช่วยให้มองเห็นการทำงานของภาพรวมของระบบ ส่วนประกอบสัญลักษณ์ที่ใช้ในการเขียน Sequence Diagram 
 	แสดงดังตารางที่ \ref{tab:Sequences}
 	
