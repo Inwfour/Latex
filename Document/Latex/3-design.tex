@@ -660,14 +660,6 @@
 			& \setstretch{1.5} {คลาส ChatbotPage เป็นคลาสที่ใช้สำหรับพูดคุยกับแชทบอท} \\ \hline
 			\raisebox{-\totalheight}{FeedPage}
 			& \setstretch{1.5} {คลาส FeedPage เป็นคลาสที่แสดงโพสท์ทั้งหมด} \\ \hline
-			\raisebox{-\totalheight}{FamilyPage}
-			& \setstretch{1.5} {คลาส FamilyPage เป็นคลาสที่แสดงสมาชิกในครอบครัว} \\ \hline
-			\raisebox{-\totalheight}{GooglemapPage}
-			& \setstretch{1.5} {คลาส GooglemapPage เป็นคลาสที่แสดงตำแหน่งของสมาชิกในครอบครัวด้วย Google Map} \\ \hline
-			\raisebox{-\totalheight}{HelpPage}
-			& \setstretch{1.5} {คลาส HelpPage เป็นคลาสที่แสดงรูปภาพขอความช่วยเหลือ 2 แบบ คือ แบบติดต่อครอบครัว และแบบส่งเสียงฉุกเฉิน} \\ \hline
-			\raisebox{-\totalheight}{HelpfamilyPage}
-			& \setstretch{1.5} {คลาส HelpfamilyPage เป็นคลาสแสดงสมาชิกในครอบครัวเพื่อขอความช่วยเหลือมี 2 แบบได้แก่ โทร และส่งข้อความ} \\ \hline
 	\end{tabular}
 \end{table}
 
@@ -703,7 +695,7 @@
 		\centering
 		\caption{สัญลักษณ์ของ Sequence Diagram}
 		\label{tab:Sequences}
-		\begin{tabular}{| c	| p{10cm} |}
+		\begin{tabular}{|c|p{10cm}|}
 		\hline
 		\textbf{สัญลักษณ์} & \multicolumn{1}{c|}{\textbf{การใช้งาน}} \\ \hline
 		\raisebox{-\totalheight}{\includegraphics[width=0.17\textwidth]{Figures/table/Sequence/Sequence1}}
@@ -723,75 +715,134 @@
 		\end{tabular}
 	\end{table}
 %
-%	Sequence Diagram ที่ใช้อธิบายการทำงานของระบบกองทุนเงินให้กู้ยืมเพื่อการศึกษา คณะวิทยสศาสตร์ มหาวิทยาลัยอุบลราชธานี มีรายละเอียดดังต่อไปนี้
-
-\newpage
-	\begin{landscape}
+Sequence Diagram ที่ใช้อธิบายการทำงานของแอปพลิเคชันสูงวัยมายเฟรนด์ มีรายละเอียดดังต่อไปนี้
+\begin{sidewaysfigure}
 	\begin{figure}[H]
 		\centering
-		\includegraphics[width=0.95\columnwidth]
+		\includegraphics[width=0.8\columnwidth]
+		{Figures/3/Sequence/login}
+		\caption{Sequence Diagram การเข้าสู่ระบบ}
+		\label{Fig:Sequence-login}
+	\end{figure}
+\end{sidewaysfigure}
+	จากภาพที่ \ref{Fig:Sequence-login} สามารถอธิบายแผนภาพ Sequence Diagram การเข้าสู่ระบบ ได้ดังนี้
+	เมื่อผู้ใช้กรอก e-mail และ password แล้วกดปุ่มเข้าสู่ระบบ จากนั้นระบบจะเรียกฟังก์ชัน login() เพื่อส่งข้อมูลไปตรวจที่ AuthFibase ที่เป็นบริการ
+	ของ Firebase ในการเข้าสู่ระบบด้วยอีเมลล์ จากนั้นจะส่งข้อมูลกลับมายัง ToastController เพื่อเช็คข้อมูลว่ามีหรือไม่ ถ้ามีข้อมูลจะแสดงข้อความว่า 
+	เข้าสู่ระบบสำเร็จและไปยังหน้าหลัก ถ้าไม่สำเร็จระบบจะแสดงข้อความว่า กรุณากรอกชื่อผู้ใช้หรือรหัสผ่านให้ถูกต้อง
+	\newpage	
+
+	\begin{sidewaysfigure}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.8\columnwidth]
+		{Figures/3/Sequence/chatbot}
+		\caption{Sequence Diagram คุยกับแชทบอท}
+		\label{Fig:Sequence-chatbot}
+	\end{figure}
+\end{sidewaysfigure}
+	\newpage
+	จากภาพที่ \ref{Fig:Sequence-chatbot} สามารถอธิบายแผนภาพ Sequence Diagram คุยกับแชทบอท ได้ดังนี้ 
+	เมื่อผู้ใช้เปิดใช้งานหน้าปู่สนทนากับแชทบอท ระบบจะทำการบันทึกข้อมูลการค้นหาข้อมูลเป็น 0 ในไฟล์เบส เพื่อใช้สำหรับเช็คการค้นหาที่ถูกค้นหามากที่สุด
+	แล้วไฟล์เบสก็จะส่งข้อมูลกลับคืนมาหาผู้ใช้ ถ้าผู้ใช้ส่งในรูปแบบข้อความหรือเสียงถ้าหากเป็นเสียงจะแปลงเป็นข้อความก่อน หลังจากนั้นข้อความจะถูกส่งไป Dialogflow 
+	เพื่อประมวลผลใน Intent เพื่อหาคำตอบถ้าหาก Intent นั้นไม่ได้ใช้งาน webhook Dialogflow จะส่งข้อความกลับคืนหาผู้ใช้ตามคำตอบที่ได้ตั้งค่าไว้ ถ้าหาก Intent นั้น
+	ได้เปิด webhook จะส่งข้อความไปตรวจสอใน Fullfillment เพื่อตรวจสอบคำสำคัญในข้อความ หลังจากนั้นจะถูกส่งไปเช็คใน Firebase แล้วส่ง
+	คำตอบกลับมายังผู้ใช้
+	\newpage	
+
+
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=1.0\columnwidth]
 		{Figures/3/Sequence/feed}
-		\caption{Sequence Diagram การแสดงข่าวสาร}
+		\caption{Sequence Diagram การแสดงหน้ากระดานข่าว}
 		\label{Fig:Sequence-feed}
 	\end{figure}
-  \end{landscape}
+	\newpage
+	จากภาพที่ \ref{Fig:Sequence-doc} สามารถอธิบายแผนภาพ Sequence Diagram การแสดงหน้ากระดานข่าว ได้ดังนี้ 
+	\begin{itemize}
+	\item เมื่อผู้ใช้งานเข้ามายังหน้ากระดานข่าว ระบบจะดึงข้อมูลมาจากไฟล์เบสเพื่อแสดงโพสท์ทั้งหมด เมื่อผู้ใช้กดปุ่มโพสท์ระบบจะเรียกฟังก์ชัน post() 
+	ระบบจะตรวจสอบว่าข้อมูลที่เราต้องการโพสท์มีการเพิ่มรูปหรือไม่ ถ้ามีรูประบบส่งที่อยู่รูปไปทำงานฟังก์ชัน uploadImgPost(uid,img) 
+	เพื่อเก็บข้อมูลลงใน Firebas Storage หลังจากนั้นจะบันทึกโพสท์ที่เราสร้างไว้ใน Firebase ถ้าโพสท์ไม่มีรูปภาพจะบันทึกข้อมูลไว้ใน Firebase ทันที 
+	\item เมื่อผู้ใช้กดปุ่มถูกใจ ระบบจะส่งข้อมูลไอดีของผู้ที่กดส่งไปเก็บไว้ยังฐานข้อมูล Firebase แล้วจึงส่ง Response กลับมาหาผู้ใช้
+	\item เมื่อผู้ใช้กดเลือกเมนูแก้ไขโพสท์แล้วกดปุ่มบันทึกข้อมูล ระบบจะทำการเรียกใช้ฟังก์ชัน edit() เพื่อส่ง id ไปเช็คข้อมูลใน Firebase แล้วจึงแก้ไขข้อมูล หากมี Response กลับคืนมาจะแสดงข้อความบันทึกข้อมูลสำเร็จ แต่ถ้าไม่มี Response กลับคืนมาจะแสดงข้อความว่าบันทึกข้อมูลไม่สำเร็จ
+	\item เมื่อผู้ใช้กดเลือกเมนูลบโพสท์แล้วกดปุ่มยืนยัน ระบบจะทำการเรียกใช้ฟังก์ชัน delete() เพื่อส่ง id ไปเช็คข้อมูลใน Firebase แล้วจึงลบข้อมูล หากมี Response กลับคืนมาจะแสดงลบข้อมูลสำเร็จ แต่ถ้าไม่มี Response กลับคืนมาจะแสดงข้อความว่าลบข้อมูลไม่สำเร็จ
+	\end{itemize}
+	\newpage	
 
-	จากภาพที่ \ref{Fig:Sequence-feed} สามารถอธิบายแผนภาพ Sequence Diagram แสดงข่าวสาร ได้ดังนี้ เมื่อ
-	ผู้ใช้เปิดโปรแกรมระบบจะเรียกใช้เมธอด onCreate() ที่คลาส MainActivity ระบบจะทำการสร้าง
-	Fragment ขึ้นมาโดยใช้เมธอด onCreate() ที่คลาส FeedFragment เมื่อ FeedFragment ถูกติดตั้งบน MainActivity เมธอด callData() จะสืบค้นข้อมูลจากฐานข้อมูลบน Firebase FireStore และส่งข้อมูลที่ได้ไปแปลงที่คลาส FeedItemAdapter โดยมีการคืนค่าเป็นข้อมูลข่าวสารแต่ละแถวและในขั้นตอนสุดท้ายคลาส FeedFragment จะทำการแสดงรายการข้อมูลข่าวสารทั้งหมดออกทางหน้าจอ หากผู้ใช้มีการกดเลือกข่าวสารบางแถวคลาส FeedFragment จะทำการเรียกใช้ PostDetailActivity เพื่อแสดงรายละเอียดข้อมูลข่าวสารของแถวที่ถูกเลือก
-	\begin{sidewaysfigure}
+\begin{sidewaysfigure}
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=0.8\columnwidth]
-		{Figures/3/Sequence/calendar}
-		\caption{Sequence Diagram การแสดงปฏิทินกำหนดการ}
-		\label{Fig:Sequence-calendar}
+		{Figures/3/Sequence/addgroup}
+		\caption{Sequence Diagram ของการเพิ่มกลุ่ม}
+		\label{Fig:Sequence-addgroup}
 	\end{figure}
-	\end{sidewaysfigure}
-	\newpage
-	จากภาพที่ \ref{Fig:Sequence-calendar} สามารถอธิบายแผนภาพ Sequence Diagram แสดงปฏิทินกำหนดการ ได้ดังนี้ เมื่อ
-	ผู้ใช้เปิดโปรแกรมระบบจะเรียกใช้เมธอด onCreate() ที่คลาส MainActivity ระบบจะทำการสร้าง
-	Fragment ขึ้นมาโดยใช้เมธอด onCreate() ที่คลาส ScheduleFragment เมื่อ ScheduleFragment ถูกติดตั้งบน MainActivity เมธอด callData() จะสืบค้นข้อมูลกำหนดการของวันปัจจุบันจากฐานข้อมูลบน Firebase FireStore และส่งข้อมูลที่ได้ไปแปลงที่คลาส Schedule-ItemAdapter โดยมีการคืนค่าเป็นข้อมูลกำหนดการแต่ละแถวและในขั้นตอนสุดท้ายคลาส Schedule-Fragment จะทำการแสดงรายการกำหนดการวันปัจจุบันออกทางหน้าจอ หากผู้ใช้มีการกดเลือกวันที่ที่ต้องการทราบกำหนดการจากปฏิทินคลาส ScheduleFragment จะทำการเรียกใช้ callData() อีกครั้งโดยสืบค้นข้อมูลกำหนดการของวันที่ถูกเลือกจากฐานข้อมูลบน Firebase FireStore และส่งข้อมูลที่ได้ไปแปลงที่คลาส ScheduleItemAdapter โดยมีการคืนค่าเป็นข้อมูลแต่กำหนดการละแถวและในขั้นตอนสุดท้ายคลาส ScheduleFragment จะทำการแสดงรายการกำหนดการวันที่ผู้ใช้เลือกออกทางหน้าจอ
+\end{sidewaysfigure}
+	จากภาพที่ \ref{Fig:Sequence-addgroup} สามารถอธิบายแผนภาพ Sequence Diagram ของการเพิ่มกลุ่ม ได้ดังนี้ เมื่อผู้ใช้
+	กดปุ่มเพิ่มกลุ่มระบบจะเรียกฟังก์ชัน ionViewWillEnter() เพื่อแสดงหน้าเพิ่มกลุ่ม ต่อมาผู้ใช้กรอกข้อมูลเสร็จแล้วกดสร้างกลุ่ม 
+	จากนั้นระบบจะเรียกฟังก์ชัน creategroup() ในคลาส NewGroupsPage เพื่อบันทึกข้อมูลลงใน Firebase เมื่อเพิ่มฐานข้อมูลเสร็จเรียบร้อยแล้ว 
+	ระบบจะแสดงหน้ากลุ่ม
+	\newpage	
 
-	\begin{sidewaysfigure}
+
 	\begin{figure}[H]
 		\centering
-		\includegraphics[width=0.8\columnwidth]
-		{Figures/3/Sequence/doc}
-		\caption{Sequence Diagram การแสดงดาวน์โหลดเอกสาร}
-		\label{Fig:Sequence-doc}
+		\includegraphics[width=1.0\columnwidth]
+		{Figures/3/Sequence/edituser}
+		\caption{Sequence Diagram ของการจัดการข้อมูลส่วนตัว}
+		\label{Fig:Sequence-edituser}
 	\end{figure}
-	\end{sidewaysfigure}
 	\newpage
-	จากภาพที่ \ref{Fig:Sequence-doc} สามารถอธิบายแผนภาพ Sequence Diagram แสดงดาวน์โหลดเอกสาร ได้ดังนี้ เมื่อผู้ใช้เปิดโปรแกรมระบบจะเรียกใช้เมธอด onCreate() ที่คลาส MainActivity ระบบจะทำการสร้าง
-	Fragment ขึ้นมาโดยใช้เมธอด onCreate() ที่คลาส DocumentsFragment เมื่อ DocumentsFragment ถูกติดตั้งบน MainActivity เมธอด initInstances() จะสืบค้นข้อมูลเอกสารทั้งหมดจากฐานข้อมูลบน Firebase FireStore และส่งข้อมูลที่ได้ไปแปลงที่คลาส DocItem-Adapter โดยมีการคืนค่าเป็นข้อมูลเอกสารแต่ละแถวและในขั้นตอนสุดท้ายคลาส Documents-Fragment จะทำการแสดงรายการกำหนดการวันปัจจุบันออกทางหน้าจอ
+	จากภาพที่ \ref{Fig:Sequence-edituser} สามารถอธิบายแผนภาพ Sequence Diagram ของการจัดการข้อมูลส่วนตัว ได้ดังนี้ 
+	\begin{itemize}
+		\item เมื่อผู้ใช้กดเลือกหน้าข้อมูลส่วนตัว ระบบจะเรียกฟังก์ชัน ionViewWillEnter() เพื่อเรียกข้อมูลผู้ใช้และโพสท์จากฐานข้อมูลมาแสดงหน้าข้อมูลส่วนตัว
+		\item เมื่อผู้ใช้กดเลือกปุ่มเปลี่ยนรูปประจำตัว ระบบจะเรียกฟังก์ชัน changeProfilePicture() เพื่อให้ผู้ใช้เลือกรูปแบบการแก้ไขรูปภาพจาก camera plugin เพื่อใช้งานกล้องและแกลลอรี่ 
+		หลังจากนั้นจะส่งข้อมูล url ไปยัง Firebase storage เพื่อทำการเพิ่มหรือแก้ไขข้อมูล แล้วส่งสถานะกลับมายังผู้ใช้งาน ถ้าหากสามารถเปลี่ยนได้จะส่งข้อความว่า แก้ไขรูปสำเร็จ 
+		แต่ถ้าไม่สามารถแก้ไขรูปได้จะส่งข้อความว่า แก้ไขไม่สำเร็จ 
+		\item เมื่อผู้ใช้เลือกปุ่มแก้ไขข้อมูลส่วนตัว ระบบจะเรียกฟังก์ชัน getUserEdit() ในคลาส EditUserPage จากนั้นจะแสดงหน้าแก้ไขข้อมูลส่วนตัว เมื่อผู้ใช้กรอกข้อมูลส่วนตัวเรียบร้อยแล้ว จะเรียกฟังก์ชัน edituser() 
+		จากนั้นจะส่งข้อมูลที่ถูกแก้ไขไปฐานข้อมูล ฐานข้อมูลตรวจสอบและอัพเดทข้อมูลที่ถูกแก้ไข จากนั้นฐานข้อมูลจะส่งข้อความกลับมาว่า แก้ไขข้อมูลสำเร็จแล้ว
+		\end{itemize}
+\newpage	
 
-	\begin{sidewaysfigure}
 	\begin{figure}[H]
 		\centering
-		\includegraphics[width=0.8\columnwidth]
-		{Figures/3/Sequence/chat}
-		\caption{Sequence Diagram การแสดงบทสนทนา}
-		\label{Fig:Sequence-chat}
+		\includegraphics[width=1.0\columnwidth]
+		{Figures/3/Sequence/friend}
+		\caption{Sequence Diagram ของการจัดการเพื่อน}
+		\label{Fig:Sequence-friend}
 	\end{figure}
-	\end{sidewaysfigure}
 	\newpage
-	จากภาพที่ \ref{Fig:Sequence-chat} สามารถอธิบายแผนภาพ Sequence Diagram แสดงการสนทานา ได้ดังนี้ เมื่อผู้ใช้เปิดโปรแกรมระบบจะเรียกใช้เมธอด onCreate() ที่คลาส MainActivity ระบบจะทำการสร้าง
-	Fragment ขึ้นมาโดยใช้เมธอด onCreate() ที่คลาส UserChatFragment เมื่อ UserChatFrag-ment ถูกติดตั้งบน MainActivity เมธอด getMessage() จะสืบค้นข้อมูลประวัติการสนทนาของผู้ใช้คนปัจจุบันทั้งหมดจากฐานข้อมูลบน Firebase FireStore และส่งข้อมูลที่ได้ไปแปลงที่คลาส MessagesListAdapter โดยมีการคืนค่าเป็นข้อมูลรายการประวัติการสนทนาทั้งหมดและในขั้นตอนสุดท้ายคลาส User-ChatFragment จะทำการแสดงรายการประวัติการสนทนาทั้งหมดออกทางหน้าจอ เมื่อผู้ใช้พิมพ์ข้อความและกดปุ่มส่งระบบจะเรียกให้เมธอด send() เพื่อทำการบันทึกข้อมูลไว้บน Firebase FireStore และทำการแสดงข้อมูลรายการประวัติการสนทนาทั้งหมดที่ถูกอัพเดท
-
-	\begin{sidewaysfigure}
-	\begin{figure}[H]
-		\centering
-		\includegraphics[width=0.8\columnwidth]
-		{Figures/3/Sequence/submit}
-		\caption{Sequence Diagram แสดงส่งเอกสารตรวจสอบ}
-		\label{Fig:Sequence-submit}
-	\end{figure}
-	\end{sidewaysfigure}
-	\newpage
-	จากภาพที่ \ref{Fig:Sequence-submit} สามารถอธิบายแผนภาพ Sequence Diagram แสดงส่งเอกสารตรวจสอบ ได้ดังนี้ เมื่อผู้ใช้เปิดโปรแกรมระบบจะเรียกใช้เมธอด onCreate() ที่คลาส MainActivity ระบบจะทำการสร้าง
-	Fragment ขึ้นมาโดยใช้เมธอด onCreate() ที่คลาส SubmitFragment เมื่อ Submit-Fragment ถูกติดตั้งบน MainActivity เมธอด initInstances() จะถูกเรียกเพื่อสร้างหน้าจอแสงดผลเมื่อผู้ใช้กดปุ่มถ่ายรูประบบจะเรียกใช้ไลบรารี่ ScanConstants เพื่อถ่ายภาพเอกสารและรอให้ผู้ใช้ถ่ายครบทั้งสองแผ่นจึงจะแสดงปุ่มกดส่งเอกสารเพื่อตรวจสอบ
+	จากภาพที่ \ref{Fig:Sequence-friend} สามารถอธิบายแผนภาพ Sequence Diagram ของการจัดการเพื่อน ได้ดังนี้ 
+	\begin{itemize}
+		\item เมื่อผู้ใช้เลือกเมนูเพื่อน ระบบจะเรียกฟังก์ชัน ngOnit() ในคลาส FriendsPage จะไป get ข้อมูลจาก Firebase เพื่อมาแสดง
+		\item เมื่อผู้ใช้คลิกเลือกเมนูเพิ่มเพื่อน จะเรียกใช้คลาส BuddyPage จากนั้นระบบจะไป get ข้อมูลคำร้องขอเพื่อนและเพื่อนจาก Firebase มาแสดงในคลาส 
+		\item เมื่อผู้ใช้เลือกปุ่มเพิ่มเพื่อนในคลาส BuddyPage จะส่งข้อมูล id ของผู้และ id ของเพื่อนไปเก็บไว้ในฐานข้อมูล หลังจากนั้นฐานข้อมูลจะส่งผลการบันทึกข้อมูลสำเร็จมาที่คลาส แล้วระบบจะส่งข้อความว่าเพิ่มเพื่อนเรียบร้อยแล้วมายังผู้ใช้
+		\item ผู้ใช้เลือกปุ่มแชทในคลาส FriendsPage ระบบจะเรียกใช้ฟังก์ชัน ionViewDidEnter() ในคลาส BuddychatPage เพื่อไปเรียกข้อมูลการแชททั้งหมดจากฐานข้อมูล จากนั้นฐานข้อมูลจะส่งค่า Json กลับคืนมายังคลาส BuddychatPage แล้วจึงแสดงข้อความแชทให้ผู้ใช้
+		\item เมื่อผู้ใช้ยืนยันคำร้องขอเพื่อน ระบบจะเรียกฟังก์ชัน accept(item) จะรับข้อมูล Json ของเพื่อนเพื่อดึง id ไปเก็บไว้ในฐานข้อมูล จากนั้นฐานข้อมูลจะส่งผลการบันทึกข้อความคืนมายังคลาส
+		\item เมื่อผู้ใช้เลือกปุ่มลบเพื่อน ระบบจะทำการเรียกใช้ฟังก์ชัน ignore(item) จากนั้นจะส่งค่า id ของเพื่อนไปเช็คในฐานข้อมูล แล้วลบข้อมูลผู้ใช้นั้น แล้วจึงส่งผลการลบข้อมูลกลับมายังคลาส
+		\end{itemize}
 \newpage	 
+
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1.0\columnwidth]
+	{Figures/3/Sequence/danger}
+	\caption{Sequence Diagram ของฉุกเฉิน}
+	\label{Fig:Sequence-danger}
+\end{figure}
+
+\newpage
+จากภาพที่ \ref{Fig:Sequence-danger} สามารถอธิบายแผนภาพ Sequence Diagram ของฉุกเฉิน ได้ดังนี้ 
+ผู้ใช้กดเลือกเมนฉุกเฉิน ระบบจะเรียกฟังก์ชัน ionViewWillEnter() ในคลาสแสดงหน้าฉุกเฉิน เมื่อผู้ใช้กดปุ่มแจ้งเตือนรอบบริเวณ ระบบจะเรียกฟังก์ชัน sound() เพื่อใช้งาน NativeAudio Plugin ที่ใช้สำหรับแสดงเสียงแล้วแสดงเสียงแก่ผู้ใช้งาน 
+เมื่อผู้ใช้คลิกที่ปุ่มหยุด ระบบจะหยุดเสียงที่ผู้ใช้ได้กดปุ่มแจ้งเตือนรอบบริเวณก่อนหน้านี้ เมื่อผู้ใช้เลือกปุ่มช่วยเหลือ จะเรียกใช้คลาส HelpFamilyPage จากนั้น Contructor จะเรียกข้อมูลสมาชิกครอบครัวในฐานข้อมูลมาแสดง 
+ถ้าผู้ใช้กดปุ่มโทร ระบบจะเรียกฟังก์ชัน call(key) จากนั้นจะ get เบอร์มือถือของเพื่อนเพื่อใช้ CallNumber Plugin สำหรับโทร เมื่อผู้ใช้กดปุ่มส่งข้อความ ระบบจะเรียกฟังก์ชัน sendSMS(key) ที่อยู่ภายในคลาส HelpFamilyPage และเรียกใช้ SocialSharing Plugin ในการส่ง SMS ที่
+มีข้อความว่า "ช่วยด้วย !!! นี่ (ชื่อผู้ใช้) เอง ตอนนี้มีปัญหาช่วยติดต่อกลับที่ (เบอร์มือถือผู้ใช้) ด้วยนะ ด่วน ๆ"
+\newpage
+
+
+
+
 	
 \section{โครงสร้างฐานข้อมูลไฟร์เบส(Firebase Database Stucture)}
 Firebase Database นั้นเป็น Database แบบ NoSQL และเป็น JSON database ที่มีโครงสร้างที่เป็น Key และ Value จัดเก็บข้อมูลในลักษณะโหนด หากต้องการเรียกงานจะเรียกใช้โดย
