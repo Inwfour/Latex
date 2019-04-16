@@ -840,256 +840,253 @@ Sequence Diagram ที่ใช้อธิบายการทำงานข
 มีข้อความว่า "ช่วยด้วย !!! นี่ (ชื่อผู้ใช้) เอง ตอนนี้มีปัญหาช่วยติดต่อกลับที่ (เบอร์มือถือผู้ใช้) ด้วยนะ ด่วน ๆ"
 \newpage
 
-
-
-
 	
-\section{โครงสร้างฐานข้อมูลไฟร์เบส(Firebase Database Stucture)}
-Firebase Database นั้นเป็น Database แบบ NoSQL และเป็น JSON database ที่มีโครงสร้างที่เป็น Key และ Value จัดเก็บข้อมูลในลักษณะโหนด หากต้องการเรียกงานจะเรียกใช้โดย
-การท่องไปยังโหนดที่ต้องการ ส่วนประกอบสัญลักษณ์ที่ใช้ในการเขียนโครงสร้างฐานข้อมูลแบบ Firebase
-แสดงดังตารางที่ \ref{tab:DB}
+% \section{โครงสร้างฐานข้อมูลไฟร์เบส(Firebase Database Stucture)}
+% Firebase Database นั้นเป็น Database แบบ NoSQL และเป็น JSON database ที่มีโครงสร้างที่เป็น Key และ Value จัดเก็บข้อมูลในลักษณะโหนด หากต้องการเรียกงานจะเรียกใช้โดย
+% การท่องไปยังโหนดที่ต้องการ ส่วนประกอบสัญลักษณ์ที่ใช้ในการเขียนโครงสร้างฐานข้อมูลแบบ Firebase
+% แสดงดังตารางที่ \ref{tab:DB}
 
-\begin{table}[H]
-	\centering
-	\caption{สัญลักษณ์ของโครงสร้างฐานข้อมูลแบบ Firebase}
-	\label{tab:DB}
-	\begin{tabular}{| c	| p{10cm} |}
-		\hline
-		\textbf{สัญลักษณ์} & \multicolumn{1}{c|}{\textbf{คำอธิบาย}} \\ \hline
-		\raisebox{-\totalheight}{\includegraphics[width=0.1\textwidth]{Figures/3/DB/dbroot}}
-		& \setstretch{1.5} {Database เป็นการเรียกชื่อแทนโหนด(Node)บนสุดที่ใช้ในการเก็บข้อมูล} \\ \hline
-		\raisebox{-\totalheight}{\includegraphics[width=0.1\textwidth]{Figures/3/DB/dbcollection}}
-		& \setstretch{1.5} {Collection เป็นการเรียกชื่อแทนของการเก็บหลาย ๆ เอกสารไว้ด้วยกัน} \\ \hline
-		\raisebox{-\totalheight}{\includegraphics[width=0.1\textwidth]{Figures/3/DB/dbdoc}}
-		& \setstretch{1.5} {Document เป็นการเรียกชื่อแทนหน่วยการเก็บของข้อมูลใน Cloud Firestore ภายในจะประกอบไปด้วย ชื่อของ Document  ชื่อของคีย์ (key) และ ค่าข้อมูล (value) โดยชื่อของ Document ห้ามซ้ำกัน ซึ่งใน Cloud Firestore สามารถระบุประเภทของข้อมูลได้ 9 ประเภทได้แก่ boolean, number, string, geo point, timestamp, array, object, reference และ null} \\ \hline
-	\end{tabular}
-\end{table}
-	\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.7\columnwidth]
-	{Figures/3/DB/DB1}
-	\caption{โครงสร้างฐานข้อมูลแบบ Firebase}
-	\label{Fig:DB1}
-	\end{figure}
+% \begin{table}[H]
+% 	\centering
+% 	\caption{สัญลักษณ์ของโครงสร้างฐานข้อมูลแบบ Firebase}
+% 	\label{tab:DB}
+% 	\begin{tabular}{| c	| p{10cm} |}
+% 		\hline
+% 		\textbf{สัญลักษณ์} & \multicolumn{1}{c|}{\textbf{คำอธิบาย}} \\ \hline
+% 		\raisebox{-\totalheight}{\includegraphics[width=0.1\textwidth]{Figures/3/DB/dbroot}}
+% 		& \setstretch{1.5} {Database เป็นการเรียกชื่อแทนโหนด(Node)บนสุดที่ใช้ในการเก็บข้อมูล} \\ \hline
+% 		\raisebox{-\totalheight}{\includegraphics[width=0.1\textwidth]{Figures/3/DB/dbcollection}}
+% 		& \setstretch{1.5} {Collection เป็นการเรียกชื่อแทนของการเก็บหลาย ๆ เอกสารไว้ด้วยกัน} \\ \hline
+% 		\raisebox{-\totalheight}{\includegraphics[width=0.1\textwidth]{Figures/3/DB/dbdoc}}
+% 		& \setstretch{1.5} {Document เป็นการเรียกชื่อแทนหน่วยการเก็บของข้อมูลใน Cloud Firestore ภายในจะประกอบไปด้วย ชื่อของ Document  ชื่อของคีย์ (key) และ ค่าข้อมูล (value) โดยชื่อของ Document ห้ามซ้ำกัน ซึ่งใน Cloud Firestore สามารถระบุประเภทของข้อมูลได้ 9 ประเภทได้แก่ boolean, number, string, geo point, timestamp, array, object, reference และ null} \\ \hline
+% 	\end{tabular}
+% \end{table}
+% 	\begin{figure}[H]
+% 	\centering
+% 	\includegraphics[width=0.7\columnwidth]
+% 	{Figures/3/DB/DB1}
+% 	\caption{โครงสร้างฐานข้อมูลแบบ Firebase}
+% 	\label{Fig:DB1}
+% 	\end{figure}
 
-	\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.9\columnwidth]
-	{Figures/3/DB/DB2}
-	\caption{โครงสร้างฐานข้อมูลแบบ Firebase(ต่อ)}
-	\label{Fig:DB2}
-\end{figure}
-	\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.55\columnwidth]
-	{Figures/3/DB/DB3}
-	\caption{โครงสร้างฐานข้อมูลแบบ Firebase(ต่อ)}
-	\label{Fig:DB3}
-\end{figure}
-	\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.7\columnwidth]
-	{Figures/3/DB/DB4}
-	\caption{โครงสร้างฐานข้อมูลแบบ Firebase(ต่อ)}
-	\label{Fig:DB4}
-\end{figure}
+% 	\begin{figure}[H]
+% 	\centering
+% 	\includegraphics[width=0.9\columnwidth]
+% 	{Figures/3/DB/DB2}
+% 	\caption{โครงสร้างฐานข้อมูลแบบ Firebase(ต่อ)}
+% 	\label{Fig:DB2}
+% \end{figure}
+% 	\begin{figure}[H]
+% 	\centering
+% 	\includegraphics[width=0.55\columnwidth]
+% 	{Figures/3/DB/DB3}
+% 	\caption{โครงสร้างฐานข้อมูลแบบ Firebase(ต่อ)}
+% 	\label{Fig:DB3}
+% \end{figure}
+% 	\begin{figure}[H]
+% 	\centering
+% 	\includegraphics[width=0.7\columnwidth]
+% 	{Figures/3/DB/DB4}
+% 	\caption{โครงสร้างฐานข้อมูลแบบ Firebase(ต่อ)}
+% 	\label{Fig:DB4}
+% \end{figure}
 
-\newpage
-จากรูที่ \ref{Fig:DB1}-\ref{Fig:DB4} สามารถอธิบายโครงสร้างของข้อมูลได้ดังนี้
-\begin{figure}[H]
-\centering
-\includegraphics[width=0.5\columnwidth]
-{Figures/3/DB/nodePost}
-\caption{โหนดเก็บข้อมูลประกาศ}
-\label{Fig:DB4}
-\end{figure}
-\begin{table}[H]
-	\centering
-	\caption{อธิบายโหนดที่ใช้เก็บข้อมูลประกาศ}
-	\label{my-label1}
-	\begin{tabular}{|c|p{10cm}|}
-		\hline
-		\multicolumn{1}{|c|}{\textbf{Key}} & \multicolumn{1}{c|}{\textbf{คำอธิบาย}} \\ \hline
-		Posts & โหนดสำหรับเก็บข้อมูลประกาศทั้งหมด \\ \hline
-		Post &  สำหรับเก็บข้อมูลแต่ละประกาศ \\ \hline
-		title & สำหรับเก็บชื่อหัวข้อประกาศ \\ \hline
-		description & สำหรับเก็บรายละเอียดประกาศ  \\ \hline
-		collection & สำหรับเก็บประเภทของประกาศได้แก่ สาธารณะและเฉพาะบุคคล \\ \hline
-		fileURL & สำหรับเก็บ url ของเอกสารแนบประกาศ \\ \hline
-		id & สำหรับเก็บรหัสของประกาศ \\ \hline
-		time & สำหรับเก็บเวลาที่ประกาศ \\ \hline
-	\end{tabular}
-\end{table}
+% \newpage
+% จากรูที่ \ref{Fig:DB1}-\ref{Fig:DB4} สามารถอธิบายโครงสร้างของข้อมูลได้ดังนี้
+% \begin{figure}[H]
+% \centering
+% \includegraphics[width=0.5\columnwidth]
+% {Figures/3/DB/nodePost}
+% \caption{โหนดเก็บข้อมูลประกาศ}
+% \label{Fig:DB4}
+% \end{figure}
+% \begin{table}[H]
+% 	\centering
+% 	\caption{อธิบายโหนดที่ใช้เก็บข้อมูลประกาศ}
+% 	\label{my-label1}
+% 	\begin{tabular}{|c|p{10cm}|}
+% 		\hline
+% 		\multicolumn{1}{|c|}{\textbf{Key}} & \multicolumn{1}{c|}{\textbf{คำอธิบาย}} \\ \hline
+% 		Posts & โหนดสำหรับเก็บข้อมูลประกาศทั้งหมด \\ \hline
+% 		Post &  สำหรับเก็บข้อมูลแต่ละประกาศ \\ \hline
+% 		title & สำหรับเก็บชื่อหัวข้อประกาศ \\ \hline
+% 		description & สำหรับเก็บรายละเอียดประกาศ  \\ \hline
+% 		collection & สำหรับเก็บประเภทของประกาศได้แก่ สาธารณะและเฉพาะบุคคล \\ \hline
+% 		fileURL & สำหรับเก็บ url ของเอกสารแนบประกาศ \\ \hline
+% 		id & สำหรับเก็บรหัสของประกาศ \\ \hline
+% 		time & สำหรับเก็บเวลาที่ประกาศ \\ \hline
+% 	\end{tabular}
+% \end{table}
 
-\newpage
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.5\columnwidth]
-	{Figures/3/DB/nodeDoc}
-	\caption{โหนดเก็บข้อมูลเอกสารที่เกี่ยวข้อง}
-	\label{Fig:DB4}
-\end{figure}
-\begin{table}[H]
-	\centering
-	\caption{อธิบายโหนดที่ใช้เก็บข้อมูลเอกสารที่เกี่ยวข้อง}
-	\label{my-label1}
-	\begin{tabular}{|c|p{10cm}|}
-		\hline
-		\multicolumn{1}{|c|}{\textbf{Key}} & \multicolumn{1}{c|}{\textbf{คำอธิบาย}} \\ \hline
-		Docs & โหนดสำหรับเก็บข้อมูลของเอกสารที่เกี่ยวข้องทั้งหมด \\ \hline
-		Doc &  สำหรับเก็บข้อมูลเอกสารแต่ละฉบับ \\ \hline
-		title & สำหรับเก็บชื่อหัวเรื่องของเอกสาร \\ \hline
-		description & สำหรับเก็บรายละเอียดของเอกสาร \\ \hline
-		fileType & สำหรับนามสกุลไฟล์เอกสาร เช่น .pdf .png เป็นต้น \\ \hline
-		fileURL & สำหรับเก็บ url ของเอกสาร\\ \hline
-		time & สำหรับเก็บเวลาที่ถูกอัพโหลดเข้าสู่ระบบโดยเจ้าหน้าที่\\ \hline
-	\end{tabular}
-\end{table}
+% \newpage
+% \begin{figure}[H]
+% 	\centering
+% 	\includegraphics[width=0.5\columnwidth]
+% 	{Figures/3/DB/nodeDoc}
+% 	\caption{โหนดเก็บข้อมูลเอกสารที่เกี่ยวข้อง}
+% 	\label{Fig:DB4}
+% \end{figure}
+% \begin{table}[H]
+% 	\centering
+% 	\caption{อธิบายโหนดที่ใช้เก็บข้อมูลเอกสารที่เกี่ยวข้อง}
+% 	\label{my-label1}
+% 	\begin{tabular}{|c|p{10cm}|}
+% 		\hline
+% 		\multicolumn{1}{|c|}{\textbf{Key}} & \multicolumn{1}{c|}{\textbf{คำอธิบาย}} \\ \hline
+% 		Docs & โหนดสำหรับเก็บข้อมูลของเอกสารที่เกี่ยวข้องทั้งหมด \\ \hline
+% 		Doc &  สำหรับเก็บข้อมูลเอกสารแต่ละฉบับ \\ \hline
+% 		title & สำหรับเก็บชื่อหัวเรื่องของเอกสาร \\ \hline
+% 		description & สำหรับเก็บรายละเอียดของเอกสาร \\ \hline
+% 		fileType & สำหรับนามสกุลไฟล์เอกสาร เช่น .pdf .png เป็นต้น \\ \hline
+% 		fileURL & สำหรับเก็บ url ของเอกสาร\\ \hline
+% 		time & สำหรับเก็บเวลาที่ถูกอัพโหลดเข้าสู่ระบบโดยเจ้าหน้าที่\\ \hline
+% 	\end{tabular}
+% \end{table}
 
-\newpage
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.4\columnwidth]
-	{Figures/3/DB/nodeChat}
-	\caption{โหนดเก็บข้อมูลประวัติการสนทนา}
-	\label{Fig:DB4}
-\end{figure}
-\begin{table}[H]
-	\centering
-	\caption{อธิบายโหนดที่ใช้เก็บข้อมูลประวัติการสนทนา}
-	\label{my-label1}
-	\begin{tabular}{|c|p{10cm}|}
-		\hline
-		\multicolumn{1}{|c|}{\textbf{Key}} & \multicolumn{1}{c|}{\textbf{คำอธิบาย}} \\ \hline
-		Chats & โหนดสำหรับเก็บข้อมูลประวัติการสนทนาทั้งหมด \\ \hline
-		User\_id &  สำหรับเก็บประวัติการสนทนาของผู้ใช้แต่ละคน \\ \hline
-		Messages & สำหรับเก็บประวัติการสนทนาทั้งหมดของผู้ใช้ \\ \hline
-		Message & สำหรับเก็บข้อมูลของแต่ละข้อความ \\ \hline
-		message & สำหรับเก็บข้อความ \\ \hline
-		name & สำหรับเก็บชื่อของผู้ส่งข้อความ\\ \hline
-		photo & สำหรับเก็บ url รูปภาพของผู้ส่งข้อความ\\ \hline
-		senderId & สำหรับเก็บรหัสของผู้ส่งข้อความ\\ \hline
-		time & สำหรับเก็บเวลาที่ข้อความถูกส่ง\\ \hline
-	\end{tabular}
-\end{table}
+% \newpage
+% \begin{figure}[H]
+% 	\centering
+% 	\includegraphics[width=0.4\columnwidth]
+% 	{Figures/3/DB/nodeChat}
+% 	\caption{โหนดเก็บข้อมูลประวัติการสนทนา}
+% 	\label{Fig:DB4}
+% \end{figure}
+% \begin{table}[H]
+% 	\centering
+% 	\caption{อธิบายโหนดที่ใช้เก็บข้อมูลประวัติการสนทนา}
+% 	\label{my-label1}
+% 	\begin{tabular}{|c|p{10cm}|}
+% 		\hline
+% 		\multicolumn{1}{|c|}{\textbf{Key}} & \multicolumn{1}{c|}{\textbf{คำอธิบาย}} \\ \hline
+% 		Chats & โหนดสำหรับเก็บข้อมูลประวัติการสนทนาทั้งหมด \\ \hline
+% 		User\_id &  สำหรับเก็บประวัติการสนทนาของผู้ใช้แต่ละคน \\ \hline
+% 		Messages & สำหรับเก็บประวัติการสนทนาทั้งหมดของผู้ใช้ \\ \hline
+% 		Message & สำหรับเก็บข้อมูลของแต่ละข้อความ \\ \hline
+% 		message & สำหรับเก็บข้อความ \\ \hline
+% 		name & สำหรับเก็บชื่อของผู้ส่งข้อความ\\ \hline
+% 		photo & สำหรับเก็บ url รูปภาพของผู้ส่งข้อความ\\ \hline
+% 		senderId & สำหรับเก็บรหัสของผู้ส่งข้อความ\\ \hline
+% 		time & สำหรับเก็บเวลาที่ข้อความถูกส่ง\\ \hline
+% 	\end{tabular}
+% \end{table}
 
-\newpage
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.5\columnwidth]
-	{Figures/3/DB/nodeEvent}
-	\caption{โหนดเก็บข้อมูลกำหนดการ}
-	\label{Fig:DB4}
-\end{figure}
-\begin{table}[H]
-	\centering
-	\caption{อธิบายโหนดที่ใช้เก็บข้อมูลกำหนดการ}
-	\label{my-label1}
-	\begin{tabular}{|c|p{10cm}|}
-		\hline
-		\multicolumn{1}{|c|}{\textbf{Key}} & \multicolumn{1}{c|}{\textbf{คำอธิบาย}} \\ \hline
-		Events & โหนดสำหรับเก็บข้อมูลของกำหนดการทั้งหมด \\ \hline
-		Event & สำหรับเก็บข้อมูลของแต่ละกำหนดการ \\ \hline
-		title & สำหรับเก็บชื่อหัวข้อของกำหนดการ \\ \hline
-		description & สำหรับเก็บรายละเอียดของกำหนดการ\\ \hline
-		time & สำหรับเก็บเวลาของกำหนดการ\\ \hline
-	\end{tabular}
-\end{table}
+% \newpage
+% \begin{figure}[H]
+% 	\centering
+% 	\includegraphics[width=0.5\columnwidth]
+% 	{Figures/3/DB/nodeEvent}
+% 	\caption{โหนดเก็บข้อมูลกำหนดการ}
+% 	\label{Fig:DB4}
+% \end{figure}
+% \begin{table}[H]
+% 	\centering
+% 	\caption{อธิบายโหนดที่ใช้เก็บข้อมูลกำหนดการ}
+% 	\label{my-label1}
+% 	\begin{tabular}{|c|p{10cm}|}
+% 		\hline
+% 		\multicolumn{1}{|c|}{\textbf{Key}} & \multicolumn{1}{c|}{\textbf{คำอธิบาย}} \\ \hline
+% 		Events & โหนดสำหรับเก็บข้อมูลของกำหนดการทั้งหมด \\ \hline
+% 		Event & สำหรับเก็บข้อมูลของแต่ละกำหนดการ \\ \hline
+% 		title & สำหรับเก็บชื่อหัวข้อของกำหนดการ \\ \hline
+% 		description & สำหรับเก็บรายละเอียดของกำหนดการ\\ \hline
+% 		time & สำหรับเก็บเวลาของกำหนดการ\\ \hline
+% 	\end{tabular}
+% \end{table}
 
-\newpage
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.4\columnwidth]
-	{Figures/3/DB/nodeReq}
-	\caption{โหนดเก็บข้อมูลการยื่นสำเนาเอกสารเพื่อตรวจสอบของนักศึกษา}
-	\label{Fig:DB4}
-\end{figure}
-\begin{table}[H]
-	\centering
-	\caption{อธิบายโหนดที่ใช้เก็บข้อมูลการยื่นสำเนาเอกสารเพื่อตรวจสอบของนักศึกษา}
-	\label{my-label1}
-	\begin{tabular}{|c|p{10cm}|}
-		\hline
-		\multicolumn{1}{|c|}{\textbf{Key}} & \multicolumn{1}{c|}{\textbf{คำอธิบาย}} \\ \hline
-		RusetSubmitDocs & โหนดสำหรับเก็บข้อมูลการยื่นสำเนาเอกสารเพื่อตรวจสอบของนักศึกษาทั้งหมด \\ \hline
-		User\_id & สำหรับเก็บข้อมูลของแต่ละสำเนาเอกสารของนักศึกษาแต่ละคน \\ \hline
-		doc2 & สำหรับเก็บ url ของภาพถ่ายสำเนาเอกสารฉบับที่ 1\\ \hline
-		doc2 & สำหรับเก็บ url ของภาพถ่ายสำเนาเอกสารฉบับที่ 2\\ \hline
-		status & สำหรับเก็บผลการตรวจสอบของเจ้าหน้าที่ \\ \hline
-		time & สำหรับเก็บเวลาที่สำเนาเอกสารถูกเพิ่มเข้าสู่ระบบ \\ \hline
-	\end{tabular}
-\end{table}
+% \newpage
+% \begin{figure}[H]
+% 	\centering
+% 	\includegraphics[width=0.4\columnwidth]
+% 	{Figures/3/DB/nodeReq}
+% 	\caption{โหนดเก็บข้อมูลการยื่นสำเนาเอกสารเพื่อตรวจสอบของนักศึกษา}
+% 	\label{Fig:DB4}
+% \end{figure}
+% \begin{table}[H]
+% 	\centering
+% 	\caption{อธิบายโหนดที่ใช้เก็บข้อมูลการยื่นสำเนาเอกสารเพื่อตรวจสอบของนักศึกษา}
+% 	\label{my-label1}
+% 	\begin{tabular}{|c|p{10cm}|}
+% 		\hline
+% 		\multicolumn{1}{|c|}{\textbf{Key}} & \multicolumn{1}{c|}{\textbf{คำอธิบาย}} \\ \hline
+% 		RusetSubmitDocs & โหนดสำหรับเก็บข้อมูลการยื่นสำเนาเอกสารเพื่อตรวจสอบของนักศึกษาทั้งหมด \\ \hline
+% 		User\_id & สำหรับเก็บข้อมูลของแต่ละสำเนาเอกสารของนักศึกษาแต่ละคน \\ \hline
+% 		doc2 & สำหรับเก็บ url ของภาพถ่ายสำเนาเอกสารฉบับที่ 1\\ \hline
+% 		doc2 & สำหรับเก็บ url ของภาพถ่ายสำเนาเอกสารฉบับที่ 2\\ \hline
+% 		status & สำหรับเก็บผลการตรวจสอบของเจ้าหน้าที่ \\ \hline
+% 		time & สำหรับเก็บเวลาที่สำเนาเอกสารถูกเพิ่มเข้าสู่ระบบ \\ \hline
+% 	\end{tabular}
+% \end{table}
 
-\newpage
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.35\columnwidth]
-	{Figures/3/DB/nodeUser}
-	\caption{โหนดเก็บข้อมูลของนักศึกษา}
-	\label{Fig:DB4}
-\end{figure}
-\begin{table}[H]
-	\centering
-	\caption{อธิบายโหนดที่ใช้เก็บข้อมูลของนักศึกษา}
-	\label{my-label1}
-	\begin{tabular}{|c|p{10cm}|}
-		\hline
-		\multicolumn{1}{|c|}{\textbf{Key}} & \multicolumn{1}{c|}{\textbf{คำอธิบาย}} \\ \hline
-		Users & โหนดสำหรับเก็บข้อมูลของนักศึกษา \\ \hline
-		User\_id & สำหรับเก็บข้อมูลของนักศึกษาแต่ละคน \\ \hline
-		depart & สำหรับเก็บภาควิชาของนักศึกษา\\ \hline
-		major & สำหรับเก็บสาขาของนักศึกษา\\ \hline
-		sid & สำหรับเก็บรหัสประจำตัวนักศึกษา \\ \hline
-		name & สำหรับเก็บชื่อของนักศึกษา \\ \hline
-		year & สำหรับเก็บชั้นปีของนักศึกษา \\ \hline
-		lastChat & สำหรับเก็บเวลาที่สนทนากับเจ้าหน้าที่ล่าสุด \\ \hline
-		photoUrl & สำหรับเก็บ url รูปภาพโปรไฟล์ (Profile) \\ \hline
-	\end{tabular}
-\end{table}
+% \newpage
+% \begin{figure}[H]
+% 	\centering
+% 	\includegraphics[width=0.35\columnwidth]
+% 	{Figures/3/DB/nodeUser}
+% 	\caption{โหนดเก็บข้อมูลของนักศึกษา}
+% 	\label{Fig:DB4}
+% \end{figure}
+% \begin{table}[H]
+% 	\centering
+% 	\caption{อธิบายโหนดที่ใช้เก็บข้อมูลของนักศึกษา}
+% 	\label{my-label1}
+% 	\begin{tabular}{|c|p{10cm}|}
+% 		\hline
+% 		\multicolumn{1}{|c|}{\textbf{Key}} & \multicolumn{1}{c|}{\textbf{คำอธิบาย}} \\ \hline
+% 		Users & โหนดสำหรับเก็บข้อมูลของนักศึกษา \\ \hline
+% 		User\_id & สำหรับเก็บข้อมูลของนักศึกษาแต่ละคน \\ \hline
+% 		depart & สำหรับเก็บภาควิชาของนักศึกษา\\ \hline
+% 		major & สำหรับเก็บสาขาของนักศึกษา\\ \hline
+% 		sid & สำหรับเก็บรหัสประจำตัวนักศึกษา \\ \hline
+% 		name & สำหรับเก็บชื่อของนักศึกษา \\ \hline
+% 		year & สำหรับเก็บชั้นปีของนักศึกษา \\ \hline
+% 		lastChat & สำหรับเก็บเวลาที่สนทนากับเจ้าหน้าที่ล่าสุด \\ \hline
+% 		photoUrl & สำหรับเก็บ url รูปภาพโปรไฟล์ (Profile) \\ \hline
+% 	\end{tabular}
+% \end{table}
 
-\newpage
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.5\columnwidth]
-	{Figures/3/DB/nodeQueue}
-	\caption{โหนดเก็บข้อมูลการจองคิวของนักศึกษา}
-	\label{Fig:DB4}
-\end{figure}
-\begin{table}[H]
-	\centering
-	\caption{อธิบายโหนดที่ใช้เก็บข้อมูลการจองคิวของนักศึกษา}
-	\label{my-label1}
-	\begin{tabular}{|c|p{10cm}|}
-		\hline
-		\multicolumn{1}{|c|}{\textbf{Key}} & \multicolumn{1}{c|}{\textbf{คำอธิบาย}} \\ \hline
-		Queue & โหนดสำหรับเก็บข้อมูลการจองคิวของนักศึกษาทั้งหมด \\ \hline
-		q\_id &  สำหรับเก็บข้อมูลของการจองคิวแต่ละครั้งที่เปิดจองคิว \\ \hline
-		Date &  สำหรับเก็บวันที่สำหรับส่งเอกสาร\\ \hline
-		Time &  สำหรับเก็บรายชื่อของนักศึกษาที่ทำการจองคิวในส่งเอกสารเวลานั้น ๆ\\ \hline
-		User\_id & สำหรับเก็บรหัสของนักศึกษา \\ \hline
-		title & สำหรับเก็บชื่อหัวเรื่องกำหนดการการจองคิว \\ \hline
-		studentPerHr & สำหรับเก็บจำนวนนักศึกษาต่อชั่วโมง \\ \hline
-	\end{tabular}
-\end{table}
+% \newpage
+% \begin{figure}[H]
+% 	\centering
+% 	\includegraphics[width=0.5\columnwidth]
+% 	{Figures/3/DB/nodeQueue}
+% 	\caption{โหนดเก็บข้อมูลการจองคิวของนักศึกษา}
+% 	\label{Fig:DB4}
+% \end{figure}
+% \begin{table}[H]
+% 	\centering
+% 	\caption{อธิบายโหนดที่ใช้เก็บข้อมูลการจองคิวของนักศึกษา}
+% 	\label{my-label1}
+% 	\begin{tabular}{|c|p{10cm}|}
+% 		\hline
+% 		\multicolumn{1}{|c|}{\textbf{Key}} & \multicolumn{1}{c|}{\textbf{คำอธิบาย}} \\ \hline
+% 		Queue & โหนดสำหรับเก็บข้อมูลการจองคิวของนักศึกษาทั้งหมด \\ \hline
+% 		q\_id &  สำหรับเก็บข้อมูลของการจองคิวแต่ละครั้งที่เปิดจองคิว \\ \hline
+% 		Date &  สำหรับเก็บวันที่สำหรับส่งเอกสาร\\ \hline
+% 		Time &  สำหรับเก็บรายชื่อของนักศึกษาที่ทำการจองคิวในส่งเอกสารเวลานั้น ๆ\\ \hline
+% 		User\_id & สำหรับเก็บรหัสของนักศึกษา \\ \hline
+% 		title & สำหรับเก็บชื่อหัวเรื่องกำหนดการการจองคิว \\ \hline
+% 		studentPerHr & สำหรับเก็บจำนวนนักศึกษาต่อชั่วโมง \\ \hline
+% 	\end{tabular}
+% \end{table}
 
-\newpagedr
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.4\columnwidth]
-	{Figures/3/DB/nodeFaq}
-	\caption{โหนดเก็บข้อมูลคำถามที่พบบ่อย}
-	\label{Fig:DB4}
-\end{figure}
-\begin{table}[H]
-	\centering
-	\caption{อธิบายโหนดที่ใช้เก็บข้อมูลคำถามที่พบบ่อย}
-	\label{my-label1}
-	\begin{tabular}{|c|p{10cm}|}
-		\hline
-		\multicolumn{1}{|c|}{\textbf{Key}} & \multicolumn{1}{c|}{\textbf{คำอธิบาย}} \\ \hline
-		Queue & โหนดสำหรับเก็บข้อมูลคำถามที่พบบ่อยทั้งหมด \\ \hline
-		Faq\_id & สำหรับเก็บข้อมูลคำถามที่พบบ่อยแต่ละรายการ \\ \hline
-		title & สำหรับเก็บคำถาม \\ \hline
-		description & สำหรับเก็บคำตอบ \\ \hline
-	\end{tabular}
-\end{table}
+% \newpagedr
+% \begin{figure}[H]
+% 	\centering
+% 	\includegraphics[width=0.4\columnwidth]
+% 	{Figures/3/DB/nodeFaq}
+% 	\caption{โหนดเก็บข้อมูลคำถามที่พบบ่อย}
+% 	\label{Fig:DB4}
+% \end{figure}
+% \begin{table}[H]
+% 	\centering
+% 	\caption{อธิบายโหนดที่ใช้เก็บข้อมูลคำถามที่พบบ่อย}
+% 	\label{my-label1}
+% 	\begin{tabular}{|c|p{10cm}|}
+% 		\hline
+% 		\multicolumn{1}{|c|}{\textbf{Key}} & \multicolumn{1}{c|}{\textbf{คำอธิบาย}} \\ \hline
+% 		Queue & โหนดสำหรับเก็บข้อมูลคำถามที่พบบ่อยทั้งหมด \\ \hline
+% 		Faq\_id & สำหรับเก็บข้อมูลคำถามที่พบบ่อยแต่ละรายการ \\ \hline
+% 		title & สำหรับเก็บคำถาม \\ \hline
+% 		description & สำหรับเก็บคำตอบ \\ \hline
+% 	\end{tabular}
+% \end{table}
