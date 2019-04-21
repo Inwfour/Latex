@@ -1,45 +1,40 @@
 \chapter{การทดสอบระบบ}
-การทดสอบการทำงานของระบบมีวัตถุประสงค์เพื่อตรวจสอบความถูกต้องของการทำงานเพื่อให้ระบบทำงานได้อย่างถูกต้อง ซึ่งในการทดสอบแอปพลิเคชันสูงวัยมายเฟรนด์ ได้ทำการทดสอบระบบแบบ Functional testing (Black Box Testing) โดยการทดสอบแบบ Black Box Testing นั้นจำจำลองทั้งระบบเป็นเหมือนกล่องดำ (Black Box)  โดยที่จะไม่สนใจกระบวนการทำงานว่ามีการทำงานของฟังก์ชันในระบบอย่างไร แต่จะตรวจสอบว่าเมื่อระบบทำงานสำเร็จผลลัพธ์ที่ได้ถูกต้องหรือไม่โดยในการทดสอบระบบประกอบไปด้วย
 
-\section{ผลการทดสอบการเข้าใช้งานแอปพลิเคชัน}
-\begin{table}[H]
-	\caption{ผลการทดสอบการเข้าใช้งานแอปพลิเคชัน}
-    \centering	
-	\label{tab:test1}
-    \begin{tabular}{ | p{4cm} | p{4cm} | p{4cm} | p{2cm} | }
-    \hline
-	\multicolumn{1}{|c|}{การทดสอบ} & \multicolumn{1}{c|}{เงื่อนไขการทดสอบ} & \multicolumn{1}{c|}{ผลการทดสอบ} & \multicolumn{1}{c|}{ผู้ใช้งาน}                             \\ \hline
-	\setstretch{1.0}{ทดสอบการเข้าใช้งานแอปพลิเคชัน}
-	& \setstretch{1.0}{ผู้ใช้งานเข้าใช้งานแอปพลิเคชัน และยังไม่ออกจากระบบ}
-	& \setstretch{1.0}{ระบบจะเข้าไปหน้าหลัก} 
-	&\setstretch{1.0}{\begin{flushleft}ผู้ใช้งาน\end{flushleft}} \\ \cline{2-3} 
-	& \setstretch{1.0}{ผู้ใช้งานเข้าใช้งานแอปพลิเคชัน และออกจากระบบ} 
-	& \setstretch{1.0}{ระบบจะเข้าไปหน้าเข้าสู่ระบบ} 
-	&\setstretch{1.0}{}\\ \cline{2-3} \hline
-    \end{tabular}
-\end{table}
+การทดสอบการทำงานของระบบมีวัตถุประสงค์เพื่อตรวจสอบความถูกต้องของการทำงานเพื่อให้ระบบทำงานได้อย่างถูกต้อง ซึ่งในการทดสอบแอปพลิเคชันสูงวัยมายเฟรนด์ ได้ทำการทดสอบระบบแบบ Functional testing (Black Box Testing) โดยการทดสอบแบบ Black Box Testing นั้นจำจำลองทั้งระบบเป็นเหมือนกล่องดำ (Black Box)  โดยที่จะไม่สนใจกระบวนการทำงานว่ามีการทำงานของฟังก์ชันในระบบอย่างไร แต่จะตรวจสอบว่าเมื่อระบบทำงานสำเร็จผลลัพธ์ที่ได้ถูกต้องหรือไม่โดยในการทดสอบระบบประกอบไปด้วย 14 ส่วนดังนี้
+\begin{enumerate}[label=5.\arabic*)]
+	\item ผลการทดสอบการสมัครสมาชิก
+	\item ผลการทดสอบการเข้าสู่ระบบ
+	\item ผลการทดสอบการจัดการข้อมูลผู้ใช้
+	\item ผลการทดสอบการคุยกับแชทบอท
+	\item ผลการทดสอบการจัดการโพสท์
+	\item ผลการทดสอบการเลือกประเภทโพสท์
+	\item ผลการทดสอบการจัดการคอมเมนท์
+	\item ผลการทดสอบค้นหาเพื่อน
+	\item ผลการทดสอบจัดการครอบครัว
+	\item ผลการทดสอบส่งเสียงรอบบริเวณ
+	\item ผลการทดสอบขอความช่วยเหลือไปยังครอบครัว
+	\item ผลการทดสอบการแชทกับเพื่อน
+	\item ผลการทดสอบจัดการกลุ่ม
+	\item ผลการทดสอบเพิ่มการแจ้งเตือนการทานยา
+\end{enumerate}
 
 \section{ผลการทดสอบการสมัครสมาชิก}
 \begin{table}[H]
 	\caption{ผลการทดสอบการสมัครสมาชิก}
     \centering	
-	\label{tab:test2}
-    \begin{tabular}{ | p{4cm} | p{4cm} | p{4cm} | p{2cm} | }
+	\label{tab:test1}
+    \begin{tabular}{ | p{4cm} | p{4cm} | p{4cm} |}
     \hline
-	\multicolumn{1}{|c|}{การทดสอบ} & \multicolumn{1}{c|}{เงื่อนไขการทดสอบ} & \multicolumn{1}{c|}{ผลการทดสอบ} & \multicolumn{1}{c|}{ผู้ใช้งาน}                             \\ \hline
+	\multicolumn{1}{|c|}{การทดสอบ} & \multicolumn{1}{c|}{เงื่อนไขการทดสอบ} & \multicolumn{1}{c|}{ผลการทดสอบ} \\ \hline
 	\setstretch{1.0}{ทดสอบการสมัครสมาชิก}
 	& \setstretch{1.0}{ผู้ใช้งานเข้ามาในหน้าสมัครสมาชิก}
-	& \setstretch{1.0}{ระบบแสดงหน้าสมัครสมาชิก} 
-	&\setstretch{1.0}{\begin{flushleft}ผู้ใช้งาน\end{flushleft}} \\ \cline{2-3} 
+	& \setstretch{1.0}{ระบบแสดงหน้าสมัครสมาชิก} \\ \cline{2-3} 
 	& \setstretch{1.0}{ผู้ใช้ไม่หรอกข้อมูลชื่อและรหัสผ่าน} 
-	& \setstretch{1.0}{ระบบจะแสดงข้อความว่า  ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง } 
-	&\setstretch{1.0}{}\\ \cline{2-3} 
+	& \setstretch{1.0}{ระบบจะแสดงข้อความว่า  ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง } \\ \cline{2-3} 
 	& \setstretch{1.0}{ผู้ใช้กดปุ่มสมัครสมาชิกโดยกรอกชื่อซ้ำกับชื่อที่มีอยู่ในระบบ}  
-	& \setstretch{1.0}{ระบบจะแสดงข้อความว่า  ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง } 
-	&\setstretch{1.0}{}\\ \cline{2-3} 
+	& \setstretch{1.0}{ระบบจะแสดงข้อความว่า  ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง } \\ \cline{2-3} 
 	& \setstretch{1.0}{ผู้ใช้กดปุ่มสมัครสมาชิกโดยกรอกชื่อไม่ซ้ำกับชื่อที่มีอยู่ในระบบ} 
-	& \setstretch{1.0}{มีข้อความแสดงบอกผู้ใช้ว่า  สมัครสมาชิกสำเร็จ } 
-	&\setstretch{1.0}{}\\ \cline{2-3} \hline
+	& \setstretch{1.0}{มีข้อความแสดงบอกผู้ใช้ว่า  สมัครสมาชิกสำเร็จ } \\ \hline
     \end{tabular}
 \end{table}
 
@@ -47,197 +42,107 @@
 \begin{table}[H]
 	\caption{ผลการทดสอบการเข้าสู่ระบบ}
     \centering	
-	\label{tab:test3}
-    \begin{tabular}{ | p{4cm} | p{4cm} | p{4cm} | p{2cm} | }
+	\label{tab:test2}
+    \begin{tabular}{ | p{4cm} | p{4cm} | p{4cm} |  }
 		\hline
-	\multicolumn{1}{|c|}{การทดสอบ} & \multicolumn{1}{c|}{เงื่อนไขการทดสอบ} & \multicolumn{1}{c|}{ผลการทดสอบ} & \multicolumn{1}{c|}{ผู้ใช้งาน}                             \\ \hline
+	\multicolumn{1}{|c|}{การทดสอบ} & \multicolumn{1}{c|}{เงื่อนไขการทดสอบ} & \multicolumn{1}{c|}{ผลการทดสอบ} \\ \hline
 	\setstretch{1.0}{ทดสอบการเข้าสู่ระบบ}
 	& \setstretch{1.0}{ผู้ใช้เข้ามาในหน้าเข้าสู่ระบบ}
-	& \setstretch{1.0}{ระบบแสดงหน้าเข้าสู่ระบบ} 
-	&\setstretch{1.0}{\begin{flushleft}ผู้ใช้งาน\end{flushleft}} \\ \cline{2-3} 
+	& \setstretch{1.0}{ระบบแสดงหน้าเข้าสู่ระบบ} \\ \cline{2-3} 
 	& \setstretch{1.0}{ผู้ใช้กดปุ่มเข้าสู่ระบบ โดยไม่กรอก username และ password } 
-	& \setstretch{1.0}{ระบบแสดงข้อความบอกผู้ใช้ว่า  กรุณากรอกชื่อผู้ใช้หรือรหัสผ่านให้ถูกต้อง } 
-	&\setstretch{1.0}{}\\ \cline{2-3} 
+	& \setstretch{1.0}{ระบบแสดงข้อความบอกผู้ใช้ว่า  กรุณากรอกชื่อผู้ใช้หรือรหัสผ่านให้ถูกต้อง } \\ \cline{2-3} 
 	& \setstretch{1.0}{ผู้ใช้กดเข้าสู่ระบบโดยกรอก username ไม่ถูกต้อง}  
-	& \setstretch{1.0}{ระบบแสดงข้อความบอกผู้ใช้ว่า  กรุณากรอกชื่อผู้ใช้หรือรหัสผ่านให้ถูกต้อง } 
-	&\setstretch{1.0}{}\\ \cline{2-3} 
+	& \setstretch{1.0}{ระบบแสดงข้อความบอกผู้ใช้ว่า  กรุณากรอกชื่อผู้ใช้หรือรหัสผ่านให้ถูกต้อง } \\ \cline{2-3} 
 	& \setstretch{1.0}{ผู้ใช้กดเข้าสู่ระบบโดยกรอก username ถูกต้องแต่กรอก password ไม่ถูกต้อง} 
-	& \setstretch{1.0}{ระบบแสดงข้อความบอกผู้ใช้ว่า  กรุณากรอกชื่อผู้ใช้หรือรหัสผ่านให้ถูกต้อง } 
-	&\setstretch{1.0}{}\\ \cline{2-3}
+	& \setstretch{1.0}{ระบบแสดงข้อความบอกผู้ใช้ว่า  กรุณากรอกชื่อผู้ใช้หรือรหัสผ่านให้ถูกต้อง } \\ \cline{2-3}
 	& \setstretch{1.0}{ผู้ใช้กดเข้าสู่ระบบโดยกรอก username และ password ถูกต้องและมีชื่อเล่น รูปประจำตัว อายุ เบอร์โทรศัพท์} 
-	& \setstretch{1.0}{ระบบแสดงข้อความบอกผู้ใช้ว่า  เข้าสู่ระบบสำเร็จ  และจะแสดงชื่อผู้ใช้และรูปโปรไฟล์ที่แถบบนด้านขวา} 
-	&\setstretch{1.0}{}\\ \cline{2-3}
+	& \setstretch{1.0}{ระบบแสดงข้อความบอกผู้ใช้ว่า  เข้าสู่ระบบสำเร็จ  และจะแสดงชื่อผู้ใช้และรูปโปรไฟล์ที่แถบบนด้านขวา} \\ \cline{2-3}
 	& \setstretch{1.0}{ผู้ใช้กดเข้าสู่ระบบโดยกรอก username และ password ถูกต้องและไม่มีมีชื่อเล่น รูปประจำตัว อายุ เบอร์โทรศัพท์} 
-	& \setstretch{1.0}{ระบบแสดงข้อความบอกผู้ใช้ว่า  เข้าสู่ระบบสำเร็จ  และแสดงหน้าให้เพิ่มรูปประจำตัว} 
-	&\setstretch{1.0}{}\\ \cline{2-3}\hline
+	& \setstretch{1.0}{ระบบแสดงข้อความบอกผู้ใช้ว่า  เข้าสู่ระบบสำเร็จ  และแสดงหน้าให้เพิ่มรูปประจำตัว} \\ \hline
     \end{tabular}
 \end{table}
 
-
-\section{ผลการทดสอบหน้าเพิ่มรูปประจำตัว}
+\section{ผลการทดสอบการจัดการข้อมูลผู้ใช้}
 \begin{table}[H]
-	\caption{ผลการทดสอบหน้าเพิ่มรูปประจำตัว}
+	\caption{ผลการทดสอบการจัดการข้อมูลผู้ใช้}
     \centering	
-	\label{tab:test4}
-    \begin{tabular}{ | p{4cm} | p{4cm} | p{4cm} | p{2cm} | }
+	\label{tab:test3}
+    \begin{tabular}{ | p{4cm} | p{4cm} | p{4cm}  | }
 		\hline
-	\multicolumn{1}{|c|}{การทดสอบ} & \multicolumn{1}{c|}{เงื่อนไขการทดสอบ} & \multicolumn{1}{c|}{ผลการทดสอบ} & \multicolumn{1}{c|}{ผู้ใช้งาน}                             \\ \hline
-	\setstretch{1.0}{ทดสอบหน้าเพิ่มรูปประจำตัว}
-	& \setstretch{1.0}{ผู้ใช้เข้ามาในหน้าเพิ่มรูปประจำตัว}
-	& \setstretch{1.0}{ระบบแสดงหน้าเพิ่มรูปประจำตัว} 
-	&\setstretch{1.0}{\begin{flushleft}ผู้ใช้งาน\end{flushleft}} \\ \cline{2-3} 
-	& \setstretch{1.0}{ผู้ใช้กดเปลี่ยนรูปประจำตัว} 
-	& \setstretch{1.0}{ระบบแสดงเมนูเปลี่ยนรูปประจำตัว 2 แบบได้แก่ ถ่ายรูป เลือกจากแกลลอรี่} 
-	&\setstretch{1.0}{}\\ \cline{2-3} 
-	& \setstretch{1.0}{ผู้ใช้เปลี่ยนรูปประจำตัวด้วยการถ่ายรูป}  
-	& \setstretch{1.0}{ระบบจะบันทึกรูปที่ได้จากการถ่ายรูปและไปหน้าเพิ่มชื่อเล่น} 
-	&\setstretch{1.0}{}\\ \cline{2-3}
-	& \setstretch{1.0}{ผู้ใช้เปลี่ยนรูปประจำตัวด้วยการเลือกจากแกลลอรี่}  
-	& \setstretch{1.0}{ระบบจะบันทึกรูปที่ได้จากการเลือกจากแกลลอรี่และไปหน้าเพิ่มชื่อเล่น} 
-	&\setstretch{1.0}{}\\ \cline{2-3} 
-	&\setstretch{1.0}{}\\ \cline{2-3}
-	& \setstretch{1.0}{ผู้ใช้ไม่เลือกเปลี่ยนรูปประจำตัว}  
-	& \setstretch{1.0}{ระบบบันทึกรูปพื้นฐานของระบบและไปหน้าเพิ่มชื่อเล่น} 
-	&\setstretch{1.0}{}\\ \cline{2-3} \hline
+	\multicolumn{1}{|c|}{การทดสอบ} & \multicolumn{1}{c|}{เงื่อนไขการทดสอบ} & \multicolumn{1}{c|}{ผลการทดสอบ}  \\ \hline
+	\setstretch{1.0}{ทดสอบเพิ่มข้อมูลผู้ใช้}
+	& \setstretch{1.0}{ผู้ใช้กรอกข้อมูลครบทุกช่อง และกดบันทึกข้อมูล}
+	& \setstretch{1.0}{ระบบจะบันทึกข้อมูลลงฐานข้อมูล} \\ \cline{2-3} 
+	& \setstretch{1.0}{ผู้ใช้กรอกขข้อมูลไม่ครบ และกดบันทึกข้อมูล} 
+	& \setstretch{1.0}{ระบบจะแสดงข้อความว่า กรุณากรอกข้อมูลให้ถูกต้อง} \\  \hline
+	\setstretch{1.0}{ทดสอบการแก้ไขข้อมูล}
+	& \setstretch{1.0}{ผู้ใช้กรอกข้อมูลครบทุกช่อง และกดบันทึกข้อมูล}
+	& \setstretch{1.0}{ระบบจะบันทึกข้อมูลลงฐานข้อมูล} \\ \cline{2-3} 
+	& \setstretch{1.0}{ผู้ใช้กรอกขข้อมูลไม่ครบ และกดบันทึกข้อมูล} 
+	& \setstretch{1.0}{ระบบจะแสดงข้อความว่า กรุณากรอกข้อมูลให้ถูกต้อง} \\  \hline
+	\setstretch{1.0}{ทดสอบการเปลี่ยนรูปประจำตัว}
+	& \setstretch{1.0}{เลือกรูปประจำตัวด้วยกล้องหรือเลือกจากแกลอรี่ และกดเปลี่ยนรูป}
+	& \setstretch{1.0}{ระบบจะบันทึกรูปภาพและแสดงในหน้าจอ} \\ \cline{2-3} 
+	& \setstretch{1.0}{ผู้ใช้ไม่เลือกรูปภาพ และกดเปลี่ยนรูป} 
+	& \setstretch{1.0}{ระบบจะแสดงรูปพื้นฐานของระบบ} \\ \hline
     \end{tabular}
 \end{table}
-
-\section{ผลการทดสอบหน้าเพิ่มชื่อเล่น}
-\begin{table}[H]
-	\caption{ผลการทดสอบหน้าเพิ่มชื่อเล่น}
-    \centering	
-	\label{tab:test5}
-    \begin{tabular}{ | p{4cm} | p{4cm} | p{4cm} | p{2cm} | }
-		\hline
-	\multicolumn{1}{|c|}{การทดสอบ} & \multicolumn{1}{c|}{เงื่อนไขการทดสอบ} & \multicolumn{1}{c|}{ผลการทดสอบ} & \multicolumn{1}{c|}{ผู้ใช้งาน}                             \\ \hline
-	\setstretch{1.0}{ทดสอบหน้าเพิ่มรูปประจำตัว}
-	& \setstretch{1.0}{ผู้ใช้เข้ามาในหน้าเพิ่มชื่อเล่น}
-	& \setstretch{1.0}{ระบบจะแสดงหน้าหน้าเพิ่มชื่อเล่น} 
-	&\setstretch{1.0}{\begin{flushleft}ผู้ใช้งาน\end{flushleft}} \\ \cline{2-3} 
-	& \setstretch{1.0}{ผู้ใช้กดบันทึกโดยไม่กรอกชื่อเล่น} 
-	& \setstretch{1.0}{ระบบจะแสดงข้อความ  กรุณาระบุชื่อเล่น } 
-	&\setstretch{1.0}{}\\ \cline{2-3} 
-	& \setstretch{1.0}{ผู้ใช้กดบันทึกโดยกรอกชื่อเล่น} 
-	& \setstretch{1.0}{ระบบจะแสดงข้อความ  บันทึกชื่อเล่นเรียบร้อย  และไปหน้าเพิ่มอายุ} 
-	&\setstretch{1.0}{}\\ \cline{2-3} \hline
-    \end{tabular}
-\end{table}
-
-\section{ผลการทดสอบหน้าเพิ่มอายุ}
-\begin{table}[H]
-	\caption{ผลการทดสอบหน้าเพิ่มอายุ}
-    \centering	
-	\label{tab:test6}
-    \begin{tabular}{ | p{4cm} | p{4cm} | p{4cm} | p{2cm} | }
-		\hline
-	\multicolumn{1}{|c|}{การทดสอบ} & \multicolumn{1}{c|}{เงื่อนไขการทดสอบ} & \multicolumn{1}{c|}{ผลการทดสอบ} & \multicolumn{1}{c|}{ผู้ใช้งาน}                             \\ \hline
-	\setstretch{1.0}{ทดสอบหน้าเพิ่มรูปประจำตัว}
-	& \setstretch{1.0}{ผู้ใช้เข้ามาในหน้าเพิ่มอายุ}
-	& \setstretch{1.0}{ระบบจะแสดงหน้าหน้าเพิ่มอายุ} 
-	&\setstretch{1.0}{\begin{flushleft}ผู้ใช้งาน\end{flushleft}} \\ \cline{2-3} 
-	& \setstretch{1.0}{ผู้ใช้กดบันทึกโดยไม่กรอกอายุ} 
-	& \setstretch{1.0}{ระบบจะแสดงข้อความ  กรุณาระบุอายุ } 
-	&\setstretch{1.0}{}\\ \cline{2-3} 
-	& \setstretch{1.0}{ผู้ใช้กดบันทึกโดยกรอกอายุ} 
-	& \setstretch{1.0}{ระบบจะแสดงข้อความ  บันทึกอายุเรียบร้อย  และไปหน้าเพิ่มเบอร์โทรศัพท์} 
-	&\setstretch{1.0}{}\\ \cline{2-3} \hline
-    \end{tabular}
-\end{table}
-
-\section{ผลการทดสอบหน้าเพิ่มเบอร์โทรศัพท์}
-\begin{table}[H]
-	\caption{ผลการทดสอบหน้าเพิ่มเบอร์โทรศัพท์}
-    \centering	
-	\label{tab:test7}
-    \begin{tabular}{ | p{4cm} | p{4cm} | p{4cm} | p{2cm} | }
-		\hline
-	\multicolumn{1}{|c|}{การทดสอบ} & \multicolumn{1}{c|}{เงื่อนไขการทดสอบ} & \multicolumn{1}{c|}{ผลการทดสอบ} & \multicolumn{1}{c|}{ผู้ใช้งาน}                             \\ \hline
-	\setstretch{1.0}{ทดสอบหน้าเพิ่มรูปประจำตัว}
-	& \setstretch{1.0}{ผู้ใช้เข้ามาในหน้าเพิ่มเบอร์โทรศัพท์}
-	& \setstretch{1.0}{ระบบจะแสดงหน้าหน้าเพิ่มเบอร์โทรศัพท์} 
-	&\setstretch{1.0}{\begin{flushleft}ผู้ใช้งาน\end{flushleft}} \\ \cline{2-3} 
-	& \setstretch{1.0}{ผู้ใช้กดบันทึกโดยไม่กรอกเบอร์โทรศัพท์} 
-	& \setstretch{1.0}{ระบบจะแสดงข้อความ  กรุณาระบุเบอร์โทรศัพท์ } 
-	&\setstretch{1.0}{}\\ \cline{2-3} 
-	& \setstretch{1.0}{ผู้ใช้กดบันทึกโดยกรอกเบอร์โทรศัพท์} 
-	& \setstretch{1.0}{ระบบจะแสดงข้อความ  บันทึกเบอร์โทรศัพท์เรียบร้อย  และไปหน้าเพิ่มโรคประจำตัว} 
-	&\setstretch{1.0}{}\\ \cline{2-3} \hline
-    \end{tabular}
-\end{table}
-
-\section{ผลการทดสอบหน้าเพิ่มโรคประจำตัว}
-\begin{table}[H]
-	\caption{ผลการทดสอบหน้าเพิ่มโรคประจำตัว}
-    \centering	
-	\label{tab:test8}
-    \begin{tabular}{ | p{4cm} | p{4cm} | p{4cm} | p{2cm} | }
-		\hline
-	\multicolumn{1}{|c|}{การทดสอบ} & \multicolumn{1}{c|}{เงื่อนไขการทดสอบ} & \multicolumn{1}{c|}{ผลการทดสอบ} & \multicolumn{1}{c|}{ผู้ใช้งาน}                             \\ \hline
-	\setstretch{1.0}{ทดสอบหน้าเพิ่มรูปประจำตัว}
-	& \setstretch{1.0}{ผู้ใช้เข้ามาในหน้าเพิ่มโรคประจำตัว}
-	& \setstretch{1.0}{ระบบจะแสดงหน้าหน้าเพิ่มโรคประจำตัว} 
-	&\setstretch{1.0}{\begin{flushleft}ผู้ใช้งาน\end{flushleft}} \\ \cline{2-3} 
-	& \setstretch{1.0}{ผู้ใช้กดบันทึกโดยไม่กรอกโรคประจำตัว} 
-	& \setstretch{1.0}{ระบบจะแสดงข้อความ  กรุณาระบุโรคประจำตัว } 
-	&\setstretch{1.0}{}\\ \cline{2-3} 
-	& \setstretch{1.0}{ผู้ใช้กดบันทึกโดยกรอกโรคประจำตัว} 
-	& \setstretch{1.0}{ระบบจะแสดงข้อความ  บันทึกโรคประจำตัวเรียบร้อย  และไปหน้าเพิ่มเมนูหลัก} 
-	&\setstretch{1.0}{}\\ \cline{2-3} \hline
-    \end{tabular}
-\end{table}
-
 
 \section{ผลการทดสอบการคุยกับแชทบอท}
 \begin{table}[H]
 	\caption{ผลการทดสอบการคุยกับแชทบอท}
     \centering	
-	\label{tab:test9}
-    \begin{tabular}{ | p{4cm} | p{4cm} | p{4cm} | p{2cm} | }
+	\label{tab:test4}
+    \begin{tabular}{ | p{4cm} | p{4cm} | p{4cm}  | }
 		\hline
-	\multicolumn{1}{|c|}{การทดสอบ} & \multicolumn{1}{c|}{เงื่อนไขการทดสอบ} & \multicolumn{1}{c|}{ผลการทดสอบ} & \multicolumn{1}{c|}{ผู้ใช้งาน}                             \\ \hline
+	\multicolumn{1}{|c|}{การทดสอบ} & \multicolumn{1}{c|}{เงื่อนไขการทดสอบ} & \multicolumn{1}{c|}{ผลการทดสอบ} \\ \hline
 	\setstretch{1.0}{ทดสอบคุยกับแชทบอท}
 	& \setstretch{1.0}{ผู้ใช้เข้ามาในหน้าแชทบอท}
-	& \setstretch{1.0}{ระบบจะแสดงหน้าหน้าแชทบอท} 
-	&\setstretch{1.0}{\begin{flushleft}ผู้ใช้งาน\end{flushleft}} \\ \cline{2-3} 
+	& \setstretch{1.0}{ระบบจะแสดงหน้าหน้าแชทบอท} \\ \cline{2-3} 
 	& \setstretch{1.0}{ผู้ใช้ส่งข้อความโดยไม่ระบุข้อความ} 
-	& \setstretch{1.0}{ระบบจะไม่ส่งข้อความไปยังแชทบอท} 
-	&\setstretch{1.0}{}\\ \cline{2-3} 
+	& \setstretch{1.0}{ระบบจะไม่ส่งข้อความไปยังแชทบอท} \\ \cline{2-3} 
 	& \setstretch{1.0}{ผู้ใช้ส่งข้อความโดยระบุข้อความ} 
-	& \setstretch{1.0}{ระบบจะส่งข้อความไปยังแชทบอท} 
-	&\setstretch{1.0}{}\\ \cline{2-3} 
+	& \setstretch{1.0}{ระบบจะส่งข้อความไปยังแชทบอท} \\ \cline{2-3} 
 	& \setstretch{1.0}{ผู้ใช้กดเลือกปุ่มพิมพ์ด้วยเสียง และพูด} 
-	& \setstretch{1.0}{ระบบจะแปลงเสียงเป็นข้อความแล้วส่งไปยังแชทบอท} 
-	&\setstretch{1.0}{}\\ \cline{2-3} 
+	& \setstretch{1.0}{ระบบจะแปลงเสียงเป็นข้อความแล้วส่งไปยังแชทบอท} \\ \cline{2-3} 
 	& \setstretch{1.0}{ผู้ใช้กดเลือกปุ่มพิมพ์ด้วยเสียง และไม่พูด} 
-	& \setstretch{1.0}{ระบบจะไม่ส่งข้อความไปยังแชทบอท} 
-	&\setstretch{1.0}{}\\ \cline{2-3} 
+	& \setstretch{1.0}{ระบบจะไม่ส่งข้อความไปยังแชทบอท} \\ \cline{2-3} 
 	& \setstretch{1.0}{เมื่อผู้ใช้กดปุ่มฟังเสียงที่ข้อความ} 
-	& \setstretch{1.0}{ระบบจะพูดตามข้อความที่แชทบอทได้ส่งกลับคืนมา} 
-	&\setstretch{1.0}{}\\ \cline{2-3} \hline
+	& \setstretch{1.0}{ระบบจะพูดตามข้อความที่แชทบอทได้ส่งกลับคืนมา} \\ \hline
     \end{tabular}
 \end{table}
 
-\section{ผลการทดสอบการโพสท์}
+\section{ผลการทดสอบการจัดการโพสท์}
 \begin{table}[H]
-	\caption{ผลการทดสอบการโพสท์}
+	\caption{ผลการทดสอบการจัดการโพสท์}
     \centering	
-	\label{tab:test10}
-    \begin{tabular}{ | p{4cm} | p{4cm} | p{4cm} | p{2cm} | }
+	\label{tab:test5}
+    \begin{tabular}{ | p{4cm} | p{4cm} | p{4cm}  | }
 		\hline
-	\multicolumn{1}{|c|}{การทดสอบ} & \multicolumn{1}{c|}{เงื่อนไขการทดสอบ} & \multicolumn{1}{c|}{ผลการทดสอบ} & \multicolumn{1}{c|}{ผู้ใช้งาน}                             \\ \hline
-	\setstretch{1.0}{ทดสอบการโพสท์}
+	\multicolumn{1}{|c|}{การทดสอบ} & \multicolumn{1}{c|}{เงื่อนไขการทดสอบ} & \multicolumn{1}{c|}{ผลการทดสอบ}   \\ \hline
+	\setstretch{1.0}{ทดสอบการสร้างโพสท์}
 	& \setstretch{1.0}{ผู้ใช้กดโพสท์โดยไม่ระบุข้อความ}
-	& \setstretch{1.0}{ระบบจะแสดงข้อความ  กรุณาระบุข้อความให้ถูกต้อง  } 
-	&\setstretch{1.0}{\begin{flushleft}ผู้ใช้งาน\end{flushleft}} \\ \cline{2-3} 
+	& \setstretch{1.0}{ระบบจะแสดงข้อความ  กรุณาระบุข้อความให้ถูกต้อง  }  \\ \cline{2-3} 
 	& \setstretch{1.0}{ผู้ใช้โพสท์โดยกรอกข้อความ และไม่เพิ่มรูปภาพ} 
-	& \setstretch{1.0}{ระบบจะบันทึกข้อมูลเฉพาะข้อความ} 
-	&\setstretch{1.0}{}\\ \cline{2-3} 
+	& \setstretch{1.0}{ระบบจะบันทึกข้อมูลเฉพาะข้อความ} \\ \cline{2-3} 
 	& \setstretch{1.0}{ผู้ใช้โพสท์โดยกรอกข้อความ และเพิ่มรูปภาพ} 
-	& \setstretch{1.0}{ระบบจะบันทึกข้อมูลข้อความและรูปภาพ} 
-	&\setstretch{1.0}{}\\ \cline{2-3} 
+	& \setstretch{1.0}{ระบบจะบันทึกข้อมูลข้อความและรูปภาพ} \\ \cline{2-3} 
 	& \setstretch{1.0}{ผู้ใช้โพสท์โดยไม่เลือกประเภท} 
-	& \setstretch{1.0}{ระบบจะแสดงข้อความ  กรุณาเลือกประเภท } 
-	&\setstretch{1.0}{}\\ \cline{2-3} \hline
+	& \setstretch{1.0}{ระบบจะแสดงข้อความ  กรุณาเลือกประเภท } \\ \hline
+	\setstretch{1.0}{ทดสอบการแก้ไขโพสท์}
+	& \setstretch{1.0}{ผู้ใช้เลือกปุ่มแก้ไขโพสท์}
+	& \setstretch{1.0}{ระบบจะแสดงหน้าแก้ไขโพสท์ }  \\ \cline{2-3} 
+	& \setstretch{1.0}{ผู้ใช้ไม่ได้แก้ไขข้อความโพสท์}
+	& \setstretch{1.0}{ระบบจะกลับไปหน้ากระดานข่าว } \\ \cline{2-3} 
+	& \setstretch{1.0}{ผู้ใช้แก้ไขข้อความโพสท์}
+	& \setstretch{1.0}{ระบบจะกลับไปหน้ากระดานข่าว และบันทึกข้อมูลลงฐานข้อมูล } \\ \hline
+	\setstretch{1.0}{ทดสอบการลบโพสท์}
+	& \setstretch{1.0}{ผู้ใช้เลือกปุ่มลบโพสท์}
+	& \setstretch{1.0}{ระบบจะแสดงตัวเลือกได้แก่ ยืนยันการลบ และกลับ }  \\ \cline{2-3} 
+	& \setstretch{1.0}{ผู้ใช้เลือกยืนยันการลบโพสท์}
+	& \setstretch{1.0}{ระบบจะทำการลบโพสท์ } \\ \cline{2-3} 
+	& \setstretch{1.0}{ผู้ใช้เลือกกลับ}
+	& \setstretch{1.0}{ระบบจะกลับไปยังหน้ากระดานข่าว } \\ \hline
     \end{tabular}
 \end{table}
 
@@ -245,131 +150,53 @@
 \begin{table}[H]
 	\caption{ผลการทดสอบการเลือกประเภทโพสท์}
     \centering	
-	\label{tab:test11}
-    \begin{tabular}{ | p{4cm} | p{4cm} | p{4cm} | p{2cm} | }
+	\label{tab:test7}
+    \begin{tabular}{ | p{4cm} | p{4cm} | p{4cm} |  }
 		\hline
-	\multicolumn{1}{|c|}{การทดสอบ} & \multicolumn{1}{c|}{เงื่อนไขการทดสอบ} & \multicolumn{1}{c|}{ผลการทดสอบ} & \multicolumn{1}{c|}{ผู้ใช้งาน}                             \\ \hline
+	\multicolumn{1}{|c|}{การทดสอบ} & \multicolumn{1}{c|}{เงื่อนไขการทดสอบ} & \multicolumn{1}{c|}{ผลการทดสอบ}    \\ \hline
 	\setstretch{1.0}{ทดสอบการเลือกประเภทโพสท์}
 	& \setstretch{1.0}{ผู้ใช้เลือกประเภทโพสท์ทั้งหมด}
-	& \setstretch{1.0}{ระบบจะแสดงโพสท์ทั้งหมด } 
-	&\setstretch{1.0}{\begin{flushleft}ผู้ใช้งาน\end{flushleft}} \\ \cline{2-3} 
+	& \setstretch{1.0}{ระบบจะแสดงโพสท์ทั้งหมด }  \\ \cline{2-3} 
 	& \setstretch{1.0}{ผู้ใช้เลือกประเภทโพสท์ทั่วไป}
-	& \setstretch{1.0}{ระบบจะแสดงโพสท์ทั่วไป } 
-	&\setstretch{1.0}{}\\ \cline{2-3} 
+	& \setstretch{1.0}{ระบบจะแสดงโพสท์ทั่วไป } \\ \cline{2-3} 
 	& \setstretch{1.0}{ผู้ใช้เลือกประเภทโพสท์กีฬา}
-	& \setstretch{1.0}{ระบบจะแสดงโพสท์กีฬา } 
-	&\setstretch{1.0}{}\\ \cline{2-3} 
+	& \setstretch{1.0}{ระบบจะแสดงโพสท์กีฬา } \\ \cline{2-3} 
 	& \setstretch{1.0}{ผู้ใช้เลือกประเภทโพสท์ดนตรี}
-	& \setstretch{1.0}{ระบบจะแสดงโพสท์ดนตรี } 
-	&\setstretch{1.0}{}\\ \cline{2-3} 
+	& \setstretch{1.0}{ระบบจะแสดงโพสท์ดนตรี } \\ \cline{2-3} 
 	& \setstretch{1.0}{ผู้ใช้เลือกประเภทโพสท์ศาสนา} 
-	& \setstretch{1.0}{ระบบจะแสดงโพสท์ศาสนา} 
-	&\setstretch{1.0}{}\\ \cline{2-3} \hline
+	& \setstretch{1.0}{ระบบจะแสดงโพสท์ศาสนา} \\ \hline
     \end{tabular}
 \end{table}
 
-\section{ผลการทดสอบการแก้ไขโพสท์}
+\section{ผลการทดสอบการจัดการคอมเมนท์}
 \begin{table}[H]
-	\caption{ผลการทดสอบการแก้ไขโพสท์}
+	\caption{ผลการทดสอบการจัดการคอมเมนท์}
     \centering	
-	\label{tab:test12}
-    \begin{tabular}{ | p{4cm} | p{4cm} | p{4cm} | p{2cm} | }
+	\label{tab:test8}
+    \begin{tabular}{ | p{4cm} | p{4cm} | p{4cm} |  }
 		\hline
-	\multicolumn{1}{|c|}{การทดสอบ} & \multicolumn{1}{c|}{เงื่อนไขการทดสอบ} & \multicolumn{1}{c|}{ผลการทดสอบ} & \multicolumn{1}{c|}{ผู้ใช้งาน}                             \\ \hline
-	\setstretch{1.0}{ทดสอบการแก้ไขโพสท์}
-	& \setstretch{1.0}{ผู้ใช้เลือกปุ่มแก้ไขโพสท์}
-	& \setstretch{1.0}{ระบบจะแสดงหน้าแก้ไขโพสท์ } 
-	&\setstretch{1.0}{\begin{flushleft}ผู้ใช้งาน\end{flushleft}} \\ \cline{2-3} 
-	& \setstretch{1.0}{ผู้ใช้ไม่ได้แก้ไขข้อความโพสท์}
-	& \setstretch{1.0}{ระบบจะกลับไปหน้ากระดานข่าว } 
-	&\setstretch{1.0}{}\\ \cline{2-3} 
-	& \setstretch{1.0}{ผู้ใช้แก้ไขข้อความโพสท์}
-	& \setstretch{1.0}{ระบบจะกลับไปหน้ากระดานข่าว และบันทึกข้อมูลลงฐานข้อมูล } 
-	&\setstretch{1.0}{}\\ \cline{2-3} \hline
-    \end{tabular}
-\end{table}
-
-\section{ผลการทดสอบการลบโพสท์}
-\begin{table}[H]
-	\caption{ผลการทดสอบการลบโพสท์}
-    \centering	
-	\label{tab:test13}
-    \begin{tabular}{ | p{4cm} | p{4cm} | p{4cm} | p{2cm} | }
-		\hline
-	\multicolumn{1}{|c|}{การทดสอบ} & \multicolumn{1}{c|}{เงื่อนไขการทดสอบ} & \multicolumn{1}{c|}{ผลการทดสอบ} & \multicolumn{1}{c|}{ผู้ใช้งาน}                             \\ \hline
-	\setstretch{1.0}{ทดสอบการลบโพสท์}
-	& \setstretch{1.0}{ผู้ใช้เลือกปุ่มลบโพสท์}
-	& \setstretch{1.0}{ระบบจะแสดงตัวเลือกได้แก่ ยืนยันการลบ และกลับ } 
-	&\setstretch{1.0}{\begin{flushleft}ผู้ใช้งาน\end{flushleft}} \\ \cline{2-3} 
-	& \setstretch{1.0}{ผู้ใช้เลือกยืนยันการลบโพสท์}
-	& \setstretch{1.0}{ระบบจะทำการลบโพสท์ } 
-	&\setstretch{1.0}{}\\ \cline{2-3} 
-	& \setstretch{1.0}{ผู้ใช้เลือกกลับ}
-	& \setstretch{1.0}{ระบบจะกลับไปยังหน้ากระดานข่าว } 
-	&\setstretch{1.0}{}\\ \cline{2-3} \hline
-    \end{tabular}
-\end{table}
-
-\section{ผลการทดสอบการคอมเมนท์}
-\begin{table}[H]
-	\caption{ผลการทดสอบการคอมเมนท์}
-    \centering	
-	\label{tab:test14}
-    \begin{tabular}{ | p{4cm} | p{4cm} | p{4cm} | p{2cm} | }
-		\hline
-	\multicolumn{1}{|c|}{การทดสอบ} & \multicolumn{1}{c|}{เงื่อนไขการทดสอบ} & \multicolumn{1}{c|}{ผลการทดสอบ} & \multicolumn{1}{c|}{ผู้ใช้งาน}                             \\ \hline
+	\multicolumn{1}{|c|}{การทดสอบ} & \multicolumn{1}{c|}{เงื่อนไขการทดสอบ} & \multicolumn{1}{c|}{ผลการทดสอบ}\\ \hline
 	\setstretch{1.0}{ทดสอบการคอมเมนท์}
 	& \setstretch{1.0}{ผู้ใช้เลือกปุ่มลบคอมเมนท์}
-	& \setstretch{1.0}{ระบบจะแสดงหน้าคอมเมนท์ } 
-	&\setstretch{1.0}{\begin{flushleft}ผู้ใช้งาน\end{flushleft}} \\ \cline{2-3} 
+	& \setstretch{1.0}{ระบบจะแสดงหน้าคอมเมนท์ }  \\ \cline{2-3} 
 	& \setstretch{1.0}{ผู้ใช้กรอกข้อความและส่งคอมเมนท์}
-	& \setstretch{1.0}{ระบบจะทำการบันทึกคอมเมนท์ และแสดงยังหน้าคอมเมนท์ } 
-	&\setstretch{1.0}{}\\ \cline{2-3} 
+	& \setstretch{1.0}{ระบบจะทำการบันทึกคอมเมนท์ และแสดงยังหน้าคอมเมนท์ } \\ \cline{2-3} 
 	& \setstretch{1.0}{ผู้ใช้ไม่กรอกข้อความและส่งคอมเมนท์}
-	& \setstretch{1.0}{ระบบจะแสดงข้อความ  กรุณากรอกคอมเมนท์  } 
-	&\setstretch{1.0}{}\\ \cline{2-3} \hline
-    \end{tabular}
-\end{table}
-
-\section{ผลการทดสอบการแก้ไขคอมเมนท์}
-\begin{table}[H]
-	\caption{ผลการทดสอบการแก้ไขคอมเมนท์}
-    \centering	
-	\label{tab:test15}
-    \begin{tabular}{ | p{4cm} | p{4cm} | p{4cm} | p{2cm} | }
-		\hline
-	\multicolumn{1}{|c|}{การทดสอบ} & \multicolumn{1}{c|}{เงื่อนไขการทดสอบ} & \multicolumn{1}{c|}{ผลการทดสอบ} & \multicolumn{1}{c|}{ผู้ใช้งาน}                             \\ \hline
+	& \setstretch{1.0}{ระบบจะแสดงข้อความ  กรุณากรอกคอมเมนท์  } \\ \hline
 	\setstretch{1.0}{ทดสอบการแก้ไขคอมเมนท์}
 	& \setstretch{1.0}{ผู้ใช้เลือกปุ่มแก้ไขคอมเมนท์}
-	& \setstretch{1.0}{ระบบจะแสดงหน้าแก้ไขคอมเมนท์ } 
-	&\setstretch{1.0}{\begin{flushleft}ผู้ใช้งาน\end{flushleft}} \\ \cline{2-3} 
+	& \setstretch{1.0}{ระบบจะแสดงหน้าแก้ไขคอมเมนท์ }  \\ \cline{2-3} 
 	& \setstretch{1.0}{ผู้ใช้ไม่ได้แก้ไขข้อความคอมเมนท์}
-	& \setstretch{1.0}{ระบบจะกลับไปหน้ากระดานข่าว } 
-	&\setstretch{1.0}{}\\ \cline{2-3} 
+	& \setstretch{1.0}{ระบบจะกลับไปหน้ากระดานข่าว } \\ \cline{2-3} 
 	& \setstretch{1.0}{ผู้ใช้แก้ไขข้อความคอมเมนท์}
-	& \setstretch{1.0}{ระบบจะกลับไปหน้าคอมเมนท์ และบันทึกข้อมูลลงฐานข้อมูล } 
-	&\setstretch{1.0}{}\\ \cline{2-3} \hline
-    \end{tabular}
-\end{table}
-
-\section{ผลการทดสอบการลบคอมเมนท์}
-\begin{table}[H]
-	\caption{ผลการทดสอบการลบคอมเมนท์}
-    \centering	
-	\label{tab:test16}
-    \begin{tabular}{ | p{4cm} | p{4cm} | p{4cm} | p{2cm} | }
-		\hline
-	\multicolumn{1}{|c|}{การทดสอบ} & \multicolumn{1}{c|}{เงื่อนไขการทดสอบ} & \multicolumn{1}{c|}{ผลการทดสอบ} & \multicolumn{1}{c|}{ผู้ใช้งาน}                             \\ \hline
+	& \setstretch{1.0}{ระบบจะกลับไปหน้าคอมเมนท์ และบันทึกข้อมูลลงฐานข้อมูล } \\ \hline
 	\setstretch{1.0}{ทดสอบการลบคอมเมนท์}
 	& \setstretch{1.0}{ผู้ใช้เลือกปุ่มลบคอมเมนท์}
-	& \setstretch{1.0}{ระบบจะแสดงตัวเลือกได้แก่ ยืนยันการลบ และกลับ } 
-	&\setstretch{1.0}{\begin{flushleft}ผู้ใช้งาน\end{flushleft}} \\ \cline{2-3} 
+	& \setstretch{1.0}{ระบบจะแสดงตัวเลือกได้แก่ ยืนยันการลบ และกลับไปหน้าคอมเมนท์ } \\ \cline{2-3} 
 	& \setstretch{1.0}{ผู้ใช้เลือกยืนยันการลบคอมเมนท์}
-	& \setstretch{1.0}{ระบบจะทำการลบคอมเมนท์ } 
-	&\setstretch{1.0}{}\\ \cline{2-3} 
+	& \setstretch{1.0}{ระบบจะทำการลบคอมเมนท์ } \\ \cline{2-3} 
 	& \setstretch{1.0}{ผู้ใช้เลือกกลับ}
-	& \setstretch{1.0}{ระบบจะกลับไปยังหน้าคอมเมนท์ } 
-	&\setstretch{1.0}{}\\ \cline{2-3} \hline
+	& \setstretch{1.0}{ระบบจะกลับไปยังหน้าคอมเมนท์ } \\ \hline
     \end{tabular}
 \end{table}
 
@@ -377,107 +204,52 @@
 \begin{table}[H]
 	\caption{ผลการทดสอบค้นหาเพื่อน}
     \centering	
-	\label{tab:test17}
-    \begin{tabular}{ | p{4cm} | p{4cm} | p{4cm} | p{2cm} | }
+	\label{tab:test10}
+    \begin{tabular}{ | p{4cm} | p{4cm} | p{4cm} |  }
 		\hline
-	\multicolumn{1}{|c|}{การทดสอบ} & \multicolumn{1}{c|}{เงื่อนไขการทดสอบ} & \multicolumn{1}{c|}{ผลการทดสอบ} & \multicolumn{1}{c|}{ผู้ใช้งาน}                             \\ \hline
+	\multicolumn{1}{|c|}{การทดสอบ} & \multicolumn{1}{c|}{เงื่อนไขการทดสอบ} & \multicolumn{1}{c|}{ผลการทดสอบ} \\ \hline
 	\setstretch{1.0}{ทดสอบการค้นหาเพื่อน}
 	& \setstretch{1.0}{ผู้ใช้กรอกช่องค้นหาเพื่อน}
-	& \setstretch{1.0}{ระบบจะแสดงเพื่อนที่ถูกค้นหา } 
-	&\setstretch{1.0}{\begin{flushleft}ผู้ใช้งาน\end{flushleft}} \\ \cline{2-3} 
+	& \setstretch{1.0}{ระบบจะแสดงเพื่อนที่ถูกค้นหา }  \\ \cline{2-3} 
 	& \setstretch{1.0}{ผู้ใช้กรอกไม่ช่องค้นหาเพื่อน}
-	& \setstretch{1.0}{ระบบจะแสดงเพื่อนทั้งหมด } 
-	&\setstretch{1.0}{}\\ \cline{2-3} \hline
+	& \setstretch{1.0}{ระบบจะแสดงเพื่อนทั้งหมด } \\ \hline
     \end{tabular}
 \end{table}
 
-\section{ผลการทดสอบเพิ่มสมาชิกในครอบครัว}
+\section{ผลการทดสอบจัดการครอบครัว}
 \begin{table}[H]
-	\caption{ผลการทดสอบเพิ่มสมาชิกในครอบครัว}
+	\caption{ผลการทดสอบจัดการครอบครัว}
     \centering	
-	\label{tab:test18}
-    \begin{tabular}{ | p{4cm} | p{4cm} | p{4cm} | p{2cm} | }
+	\label{tab:test11}
+    \begin{tabular}{ | p{4cm} | p{4cm} | p{4cm} |  }
 		\hline
-	\multicolumn{1}{|c|}{การทดสอบ} & \multicolumn{1}{c|}{เงื่อนไขการทดสอบ} & \multicolumn{1}{c|}{ผลการทดสอบ} & \multicolumn{1}{c|}{ผู้ใช้งาน}                             \\ \hline
+	\multicolumn{1}{|c|}{การทดสอบ} & \multicolumn{1}{c|}{เงื่อนไขการทดสอบ} & \multicolumn{1}{c|}{ผลการทดสอบ}  \\ \hline
 	\setstretch{1.0}{ทดสอบเพิ่มสมาชิกในครอบครัว}
 	& \setstretch{1.0}{ผู้ใช้ไม่ได้เป็นสมาชิกในครอบครัว และกดเพิ่มสมาชิก}
-	& \setstretch{1.0}{ระบบแสดงข้อความว่า  เพิ่มสมาชิกเรียบร้อย } 
-	&\setstretch{1.0}{\begin{flushleft}ผู้ใช้งาน\end{flushleft}} \\ \cline{2-3} 
+	& \setstretch{1.0}{ระบบแสดงข้อความว่า  เพิ่มสมาชิกเรียบร้อย } \\ \cline{2-3} 
 	& \setstretch{1.0}{ผู้ใช้เป็นสมาชิกในครอบครัว และกดเพิ่มสมาชิก}
-	& \setstretch{1.0}{ระบบแสดงข้อความว่า  เป็นสมาชิกในครอบครัวอยู่แล้ว } 
-	&\setstretch{1.0}{}\\ \cline{2-3} \hline
-    \end{tabular}
-\end{table}
-
-\section{ผลการทดสอบแก้ไขตำแหน่งสมาชิก}
-\begin{table}[H]
-	\caption{ผลการทดสอบแก้ไขตำแหน่งสมาชิก}
-    \centering	
-	\label{tab:test19}
-    \begin{tabular}{ | p{4cm} | p{4cm} | p{4cm} | p{2cm} | }
-		\hline
-	\multicolumn{1}{|c|}{การทดสอบ} & \multicolumn{1}{c|}{เงื่อนไขการทดสอบ} & \multicolumn{1}{c|}{ผลการทดสอบ} & \multicolumn{1}{c|}{ผู้ใช้งาน}                             \\ \hline
-	\setstretch{1.0}{ทดสอบแก้ไขตำแหน่งสมาชิก}
-	& \setstretch{1.0}{ผู้ใช้เลือกตำแหน่งสมาชิก}
-	& \setstretch{1.0}{ระบบแสดงหน้าให้เลือกตำแหน่งสมาชิก} 
-	&\setstretch{1.0}{\begin{flushleft}ผู้ใช้งาน\end{flushleft}} \\ \cline{2-3} 
-	& \setstretch{1.0}{ผู้ใช้เลือกตำแหน่งสมาชิก}
-	& \setstretch{1.0}{ระบบแสดงข้อความว่า  แก้ไขเรียบร้อยแล้ว } 
-	&\setstretch{1.0}{}\\ \cline{2-3} \hline
-    \end{tabular}
-\end{table}
-
-\section{ผลการทดสอบการลบสมาชิกในครอบครัว}
-\begin{table}[H]
-	\caption{ผลการทดสอบการลบสมาชิกในครอบครัว}
-    \centering	
-	\label{tab:test20}
-    \begin{tabular}{ | p{4cm} | p{4cm} | p{4cm} | p{2cm} | }
-		\hline
-	\multicolumn{1}{|c|}{การทดสอบ} & \multicolumn{1}{c|}{เงื่อนไขการทดสอบ} & \multicolumn{1}{c|}{ผลการทดสอบ} & \multicolumn{1}{c|}{ผู้ใช้งาน}                             \\ \hline
+	& \setstretch{1.0}{ระบบแสดงข้อความว่า  เป็นสมาชิกในครอบครัวอยู่แล้ว } \\ \hline
 	\setstretch{1.0}{ทดสอบการลบสมาชิกในครอบครัว}
 	& \setstretch{1.0}{ผู้ใช้เลือกปุ่มลบสมาชิกในครอบครัว}
-	& \setstretch{1.0}{ระบบลบสมาชิกในครอบครัวและแสดงข้อความ  ลบสมาชิกเรียบร้อยแล้ว } 
-	&\setstretch{1.0}{\begin{flushleft}ผู้ใช้งาน\end{flushleft}} \\ \cline{2-3} 
+	& \setstretch{1.0}{ระบบลบสมาชิกในครอบครัวและแสดงข้อความ  ลบสมาชิกเรียบร้อยแล้ว } \\ \cline{2-3} 
 	& \setstretch{1.0}{ผู้ใช้ไม่เลือกลบตำแหน่งสมาชิกในครอบครัว}
-	& \setstretch{1.0}{ระบบจะกลับไปยังหน้าแสดงสมาชิกในครอบครัว } 
-	&\setstretch{1.0}{}\\ \cline{2-3} \hline
+	& \setstretch{1.0}{ระบบจะกลับไปยังหน้าแสดงสมาชิกในครอบครัว } \\ \hline
     \end{tabular}
 \end{table}
 
-\section{ผลการทดสอบแสดงตำแหน่งของครอบครัว}
-\begin{table}[H]
-	\caption{ผลการทดสอบแสดงตำแหน่งของครอบครัว}
-    \centering	
-	\label{tab:test21}
-    \begin{tabular}{ | p{4cm} | p{4cm} | p{4cm} | p{2cm} | }
-		\hline
-	\multicolumn{1}{|c|}{การทดสอบ} & \multicolumn{1}{c|}{เงื่อนไขการทดสอบ} & \multicolumn{1}{c|}{ผลการทดสอบ} & \multicolumn{1}{c|}{ผู้ใช้งาน}                             \\ \hline
-	\setstretch{1.0}{ทดสอบแสดงตำแหน่งของครอบครัว}
-	& \setstretch{1.0}{ผู้ใช้เลือกเมนูตำแหน่งของครอบครัว เปิดค้นหาตำแหน่ง}
-	& \setstretch{1.0}{ระบบแสดงตำแหน่งของครอบครัว} 
-	&\setstretch{1.0}{\begin{flushleft}ผู้ใช้งาน\end{flushleft}} \\ \cline{2-3} 
-	& \setstretch{1.0}{ผู้ใช้เลือกเมนูตำแหน่งของครอบครัว ปิดค้นหาตำแหน่ง}
-	& \setstretch{1.0}{ระบบไม่แสดงตำแหน่งของครอบครัว } 
-	&\setstretch{1.0}{}\\ \cline{2-3} \hline
-    \end{tabular}
-\end{table}
-
-\section{ผลการทดสอบส่งเรียงรอบบริเวณ}
+\section{ผลการทดสอบส่งเสียงรอบบริเวณ}
 \begin{table}[H]
 	\caption{ผลการทดสอบส่งเรียงรอบบริเวณ}
     \centering	
-	\label{tab:test22}
-    \begin{tabular}{ | p{4cm} | p{4cm} | p{4cm} | p{2cm} | }
+	\label{tab:test13}
+    \begin{tabular}{ | p{4cm} | p{4cm} | p{4cm} |  }
 		\hline
-	\multicolumn{1}{|c|}{การทดสอบ} & \multicolumn{1}{c|}{เงื่อนไขการทดสอบ} & \multicolumn{1}{c|}{ผลการทดสอบ} & \multicolumn{1}{c|}{ผู้ใช้งาน}                             \\ \hline
+	\multicolumn{1}{|c|}{การทดสอบ} & \multicolumn{1}{c|}{เงื่อนไขการทดสอบ} & \multicolumn{1}{c|}{ผลการทดสอบ}\\ \hline
 	\setstretch{1.0}{ทดสอบแสดงส่งเรียงรอบบริเวณ}
 	& \setstretch{1.0}{ผู้ใช้เลือกเมนูส่งเรียงรอบบริเวณ}
-	& \setstretch{1.0}{ระบบส่งเสียงไซเรนรอบบริเวณ} 
-	&\setstretch{1.0}{\begin{flushleft}ผู้ใช้งาน\end{flushleft}} \\ \cline{2-3} 
+	& \setstretch{1.0}{ระบบส่งเสียงไซเรนรอบบริเวณ} \\ \cline{2-3} 
 	& \setstretch{1.0}{ผู้ใช้เลือกปุ่มหยุดการเสียงรอบบริเวณ}
-	& \setstretch{1.0}{ระบบจะหยุดการส่งเสียงรอบบริเวณ } 
-	&\setstretch{1.0}{}\\ \cline{2-3} \hline
+	& \setstretch{1.0}{ระบบจะหยุดการส่งเสียงรอบบริเวณ } \\ \hline
     \end{tabular}
 \end{table}
 
@@ -485,47 +257,21 @@
 \begin{table}[H]
 	\caption{ผลการทดสอบขอความช่วยเหลือไปยังครอบครัว}
     \centering	
-	\label{tab:test23}
-    \begin{tabular}{ | p{4cm} | p{4cm} | p{4cm} | p{2cm} | }
+	\label{tab:test14}
+    \begin{tabular}{ | p{4cm} | p{4cm} | p{4cm} |  }
 		\hline
-	\multicolumn{1}{|c|}{การทดสอบ} & \multicolumn{1}{c|}{เงื่อนไขการทดสอบ} & \multicolumn{1}{c|}{ผลการทดสอบ} & \multicolumn{1}{c|}{ผู้ใช้งาน}                             \\ \hline
+	\multicolumn{1}{|c|}{การทดสอบ} & \multicolumn{1}{c|}{เงื่อนไขการทดสอบ} & \multicolumn{1}{c|}{ผลการทดสอบ} \\ \hline
 	\setstretch{1.0}{ทดสอบขอความช่วยเหลือไปยังครอบครัว}
 	& \setstretch{1.0}{ผู้ใช้ขอความช่วยเหลือไปยังครอบครัว}
-	& \setstretch{1.0}{ระบบแสดงหน้าขอความช่วยเหลือครอบครัว} 
-	&\setstretch{1.0}{\begin{flushleft}ผู้ใช้งาน\end{flushleft}} \\ \cline{2-3} 
+	& \setstretch{1.0}{ระบบแสดงหน้าขอความช่วยเหลือครอบครัว} \\ \cline{2-3} 
 	& \setstretch{1.0}{ผู้ใช้เลือกปุ่มโทรหาสมาชิกในครอบครัว และสมาชิกมีข้อมูลเบอร์โทรศัพท์}
-	& \setstretch{1.0}{ระบบจะเรียกใช้งานการโทรของมือถือผู้ใช้พร้อมกับเบอร์ของสมาชิก } 
-	&\setstretch{1.0}{}\\ \cline{2-3} 
+	& \setstretch{1.0}{ระบบจะเรียกใช้งานการโทรของมือถือผู้ใช้พร้อมกับเบอร์ของสมาชิก } \\ \cline{2-3} 
 	& \setstretch{1.0}{ผู้ใช้เลือกปุ่มโทรหาสมาชิกในครอบครัว และสมาชิกไม่มีข้อมูลเบอร์โทรศัพท์}
-	& \setstretch{1.0}{ระบบแสดงข้อความ  สมาชิกไม่ได้ระบุเบอร์โทรศัพท์  } 
-	&\setstretch{1.0}{}\\ \cline{2-3} 
+	& \setstretch{1.0}{ระบบแสดงข้อความ  สมาชิกไม่ได้ระบุเบอร์โทรศัพท์  }\\ \cline{2-3} 
 	& \setstretch{1.0}{ผู้ใช้เลือกปุ่มส่งข้อความหาสมาชิกในครอบครัว และสมาชิกมีข้อมูลเบอร์โทรศัพท์}
-	& \setstretch{1.0}{ระบบจะเรียกใช้งานการส่งข้อความของมือถือผู้ใช้พร้อมกับเบอร์ของสมาชิก และข้อความขอความช่วยเหลือ } 
-	&\setstretch{1.0}{}\\ \cline{2-3} 
+	& \setstretch{1.0}{ระบบจะเรียกใช้งานการส่งข้อความของมือถือผู้ใช้พร้อมกับเบอร์ของสมาชิก และข้อความขอความช่วยเหลือ } \\ \cline{2-3} 
 	& \setstretch{1.0}{ผู้ใช้เลือกปุ่มส่งข้อความหาสมาชิกในครอบครัว และสมาชิกไม่มีข้อมูลเบอร์โทรศัพท์}
-	& \setstretch{1.0}{ระบบแสดงข้อความ  สมาชิกไม่ได้ระบุเบอร์โทรศัพท์  } 
-	&\setstretch{1.0}{}\\ \cline{2-3} \hline
-    \end{tabular}
-\end{table}
-
-\section{ผลการทดสอบเพิ่มเพื่อน}
-\begin{table}[H]
-	\caption{ผลการทดสอบเพิ่มเพื่อน}
-    \centering	
-	\label{tab:test24}
-    \begin{tabular}{ | p{4cm} | p{4cm} | p{4cm} | p{2cm} | }
-		\hline
-	\multicolumn{1}{|c|}{การทดสอบ} & \multicolumn{1}{c|}{เงื่อนไขการทดสอบ} & \multicolumn{1}{c|}{ผลการทดสอบ} & \multicolumn{1}{c|}{ผู้ใช้งาน}                             \\ \hline
-	\setstretch{1.0}{ทดสอบเพิ่มเพื่อน}
-	& \setstretch{1.0}{ผู้ใช้เป็นเพื่อนกับผู้ใช้แล้ว และกดเพิ่มเพื่อน}
-	& \setstretch{1.0}{ระบบแสดงข้อความ  คุณได้เป็นเพื่อนกันแล้ว } 
-	&\setstretch{1.0}{\begin{flushleft}ผู้ใช้งาน\end{flushleft}} \\ \cline{2-3} 
-	& \setstretch{1.0}{ผู้ใช้ส่งคำร้องขอให้กับผู้ใช้แล้ว และกดเพิ่มเพื่อน}
-	& \setstretch{1.0}{ระบบแสดงข้อความ  คุณได้ส่งคำร้องขอเป็นเพื่อนแล้ว  } 
-	&\setstretch{1.0}{}\\ \cline{2-3} 
-	& \setstretch{1.0}{ผู้ใช้ไม่เคยส่งคำร้องขอกับผู้ใช้ และกดเพิ่มเพื่อน}
-	& \setstretch{1.0}{ระบบแสดงข้อความ  คุณได้ส่งคำร้องขอไปที่ ชื่อผู้ใช้ เรียบร้อยแล้ว  } 
-	&\setstretch{1.0}{}\\ \cline{2-3} \hline
+	& \setstretch{1.0}{ระบบแสดงข้อความ  สมาชิกไม่ได้ระบุเบอร์โทรศัพท์  } \\ \hline
     \end{tabular}
 \end{table}
 
@@ -533,48 +279,23 @@
 \begin{table}[H]
 	\caption{ผลการทดสอบการแชทกับเพื่อน}
     \centering	
-	\label{tab:test25}
-    \begin{tabular}{ | p{4cm} | p{4cm} | p{4cm} | p{2cm} | }
+	\label{tab:test15}
+    \begin{tabular}{ | p{4cm} | p{4cm} | p{4cm} |  }
 		\hline
-	\multicolumn{1}{|c|}{การทดสอบ} & \multicolumn{1}{c|}{เงื่อนไขการทดสอบ} & \multicolumn{1}{c|}{ผลการทดสอบ} & \multicolumn{1}{c|}{ผู้ใช้งาน}                             \\ \hline
+	\multicolumn{1}{|c|}{การทดสอบ} & \multicolumn{1}{c|}{เงื่อนไขการทดสอบ} & \multicolumn{1}{c|}{ผลการทดสอบ} \\ \hline
 	\setstretch{1.0}{ทดสอบการแชทกับเพื่อน}
 	& \setstretch{1.0}{ผู้ใช้ไม่กรอกข้อความ และกดส่งข้อความ}
-	& \setstretch{1.0}{ระบบจะไม่ส่งข้อความ} 
-	&\setstretch{1.0}{\begin{flushleft}ผู้ใช้งาน\end{flushleft}} \\ \cline{2-3} 
+	& \setstretch{1.0}{ระบบจะไม่ส่งข้อความ} \\ \cline{2-3} 
 	& \setstretch{1.0}{ผู้ใช้กรอกข้อความ และส่งข้อความ}
-	& \setstretch{1.0}{ระบบจะส่งข้อความ } 
-	&\setstretch{1.0}{}\\ \cline{2-3} 
+	& \setstretch{1.0}{ระบบจะส่งข้อความ } \\ \cline{2-3} 
 	& \setstretch{1.0}{ผู้ใช้เลือกรูปและกรอกข้อความ จากนั้นส่งข้อความ}
-	& \setstretch{1.0}{ระบบจะส่งรูปและข้อความ และแสดงรูปและข้อความ } 
-	&\setstretch{1.0}{}\\ \cline{2-3} 
+	& \setstretch{1.0}{ระบบจะส่งรูปและข้อความ และแสดงรูปและข้อความ } \\ \cline{2-3} 
 	& \setstretch{1.0}{ผู้ใช้เลือกรูปและไม่กรอกข้อความ จากนั้นส่งข้อความ}
-	& \setstretch{1.0}{ระบบจะส่งรูป และแสดงรูป } 
-	&\setstretch{1.0}{}\\ \cline{2-3} 
+	& \setstretch{1.0}{ระบบจะส่งรูป และแสดงรูป } \\ \cline{2-3} 
 	& \setstretch{1.0}{ผู้ใช้เลือกปุ่มลบข้อความ}
-	& \setstretch{1.0}{ระบบจะลบข้อความ } 
-	&\setstretch{1.0}{}\\ \cline{2-3} 
+	& \setstretch{1.0}{ระบบจะลบข้อความ } \\ \cline{2-3} 
 	& \setstretch{1.0}{ผู้ใช้เลือกปุ่มลบข้อความทั้งหมด}
-	& \setstretch{1.0}{ระบบจะลบข้อความทั้งหมดระหว่างผู้ใช้งาน } 
-	&\setstretch{1.0}{}\\ \cline{2-3} \hline
-    \end{tabular}
-\end{table}
-
-
-\section{ผลการทดสอบเพิ่มกลุ่ม}
-\begin{table}[H]
-	\caption{ผลการทดสอบเพิ่มกลุ่ม}
-    \centering	
-	\label{tab:test26}
-    \begin{tabular}{ | p{4cm} | p{4cm} | p{4cm} | p{2cm} | }
-		\hline
-	\multicolumn{1}{|c|}{การทดสอบ} & \multicolumn{1}{c|}{เงื่อนไขการทดสอบ} & \multicolumn{1}{c|}{ผลการทดสอบ} & \multicolumn{1}{c|}{ผู้ใช้งาน}                             \\ \hline
-	\setstretch{1.0}{ทดสอบเพิ่มกลุ่ม}
-	& \setstretch{1.0}{ผู้ใช้เปลี่ยนรูปกลุ่ม และเปลี่ยนชื่อกลุ่ม และกดสร้างกลุ่ม}
-	& \setstretch{1.0}{ระบบจะบันทึกรูปภาพและชื่อกลุ่ม} 
-	&\setstretch{1.0}{\begin{flushleft}ผู้ใช้งาน\end{flushleft}} \\ \cline{2-3} 
-	& \setstretch{1.0}{ผู้ใช้ไม่เปลี่ยนรูปกลุ่ม และไม่เปลี่ยนชื่อกลุ่ม และกดสร้างกลุ่ม}
-	& \setstretch{1.0}{ระบบจะบันทึกรูปภาพของระบบ และชื่อกลุ่มของระบบ } 
-	&\setstretch{1.0}{}\\ \cline{2-3} \hline
+	& \setstretch{1.0}{ระบบจะลบข้อความทั้งหมดระหว่างผู้ใช้งาน } \\ \hline
     \end{tabular}
 \end{table}
 
@@ -582,32 +303,25 @@
 \begin{table}[H]
 	\caption{ผลการทดสอบจัดการกลุ่ม}
     \centering	
-	\label{tab:test27}
-    \begin{tabular}{ | p{4cm} | p{4cm} | p{4cm} | p{2cm} | }
+	\label{tab:test17}
+    \begin{tabular}{ | p{4cm} | p{4cm} | p{4cm} |  }
 		\hline
-	\multicolumn{1}{|c|}{การทดสอบ} & \multicolumn{1}{c|}{เงื่อนไขการทดสอบ} & \multicolumn{1}{c|}{ผลการทดสอบ} & \multicolumn{1}{c|}{ผู้ใช้งาน}                             \\ \hline
+	\multicolumn{1}{|c|}{การทดสอบ} & \multicolumn{1}{c|}{เงื่อนไขการทดสอบ} & \multicolumn{1}{c|}{ผลการทดสอบ}   \\ \hline
 	\setstretch{1.0}{ทดสอบจัดการกลุ่ม}
 	& \setstretch{1.0}{เจ้าของกลุ่มคลิกเลือกเพิ่มสมาชิกกลุ่ม}
-	& \setstretch{1.0}{ระบบจะเพิ่มสมาชิกเข้ามาในกลุ่ม} 
-	&\setstretch{1.0}{\begin{flushleft}ผู้ใช้งาน\end{flushleft}} \\ \cline{2-3} 
+	& \setstretch{1.0}{ระบบจะเพิ่มสมาชิกเข้ามาในกลุ่ม} \\ \cline{2-3} 
 	& \setstretch{1.0}{เจ้าของกลุ่มเลือกลบสมาชิกกลุ่ม}
-	& \setstretch{1.0}{ระบบจะลบสมาชิกเข้ามาในกลุ่ม } 
-	&\setstretch{1.0}{}\\ \cline{2-3} 
+	& \setstretch{1.0}{ระบบจะลบสมาชิกเข้ามาในกลุ่ม } \\ \cline{2-3} 
 	& \setstretch{1.0}{เจ้าของกลุ่มเลือกข้อมูลกลุ่ม}
-	& \setstretch{1.0}{ระบบจะแสดงแยกระหว่างเจ้าของกลุ่ม และสมาชิกในกลุ่ม } 
-	&\setstretch{1.0}{}\\ \cline{2-3} 
+	& \setstretch{1.0}{ระบบจะแสดงแยกระหว่างเจ้าของกลุ่ม และสมาชิกในกลุ่ม } \\ \cline{2-3} 
 	& \setstretch{1.0}{เจ้าของกลุ่มเลือกลบกลุ่ม}
-	& \setstretch{1.0}{ระบบลบสมาชิกทุกคนในกลุ่ม และลบกลุ่ม จากนั้นจะกลับไปหน้าแสดงกลุ่ม } 
-	&\setstretch{1.0}{}\\ \cline{2-3} 
+	& \setstretch{1.0}{ระบบลบสมาชิกทุกคนในกลุ่ม และลบกลุ่ม จากนั้นจะกลับไปหน้าแสดงกลุ่ม } \\ \cline{2-3} 
 	& \setstretch{1.0}{สมาชิกในกลุ่มเลือกออกจากกลุ่ม}
-	& \setstretch{1.0}{ระบบจะลบสมาชิกออกจากกลุ่ม } 
-	&\setstretch{1.0}{}\\ \cline{2-3} 
+	& \setstretch{1.0}{ระบบจะลบสมาชิกออกจากกลุ่ม } \\ \cline{2-3} 
 	& \setstretch{1.0}{ผู้ใช้กรอกข้อความและกดส่งข้อความ}
-	& \setstretch{1.0}{ระบบจะบันทึกข้อความและแสดงข้อความ } 
-	&\setstretch{1.0}{}\\ \cline{2-3} 
+	& \setstretch{1.0}{ระบบจะบันทึกข้อความและแสดงข้อความ } \\ \cline{2-3} 
 	& \setstretch{1.0}{ผู้ใช้ไม่กรอกข้อความและกดส่งข้อความ}
-	& \setstretch{1.0}{ระบบจะไม่บันทึกข้อความ และไม่แสดงข้อความ } 
-	&\setstretch{1.0}{}\\ \cline{2-3} \hline
+	& \setstretch{1.0}{ระบบจะไม่บันทึกข้อความ และไม่แสดงข้อความ } \\ \hline
     \end{tabular}
 \end{table}
 
@@ -615,64 +329,18 @@
 \begin{table}[H]
 	\caption{ผลการทดสอบเพิ่มการแจ้งเตือนการทานยา}
     \centering	
-	\label{tab:test28}
-    \begin{tabular}{ | p{4cm} | p{4cm} | p{4cm} | p{2cm} | }
+	\label{tab:test18}
+    \begin{tabular}{ | p{4cm} | p{4cm} | p{4cm} |  }
 		\hline
-	\multicolumn{1}{|c|}{การทดสอบ} & \multicolumn{1}{c|}{เงื่อนไขการทดสอบ} & \multicolumn{1}{c|}{ผลการทดสอบ} & \multicolumn{1}{c|}{ผู้ใช้งาน}                             \\ \hline
+	\multicolumn{1}{|c|}{การทดสอบ} & \multicolumn{1}{c|}{เงื่อนไขการทดสอบ} & \multicolumn{1}{c|}{ผลการทดสอบ}   \\ \hline
 	\setstretch{1.0}{ทดสอบเพิ่มการแจ้งเตือนการทานยา}
 	& \setstretch{1.0}{ผู้ใช้เลือกประเภท กรอกชื่อยา กรอกจำนวน เลือกช่วงเวลา และกดบันทึกข้อมูลยา}
-	& \setstretch{1.0}{ระบบจะบันทึกข้อมูล และแสดงข้อความ  บันทึกข้อมูลยาเรียบร้อยแล้ว } 
-	&\setstretch{1.0}{\begin{flushleft}ผู้ใช้งาน\end{flushleft}} \\ \cline{2-3} 
+	& \setstretch{1.0}{ระบบจะบันทึกข้อมูล และแสดงข้อความ  บันทึกข้อมูลยาเรียบร้อยแล้ว } \\ \cline{2-3} 
 	& \setstretch{1.0}{ผู้ใช้ไม่กรอกข้อมูล และกดบันทึกข้อมูลยา}
-	& \setstretch{1.0}{ระบบจะแสดงข้อความ  กรอกข้อมูลให้ถูกต้อง  } 
-	&\setstretch{1.0}{}\\ \cline{2-3} 
+	& \setstretch{1.0}{ระบบจะแสดงข้อความ  กรอกข้อมูลให้ถูกต้อง  } \\ \cline{2-3} 
 	& \setstretch{1.0}{ผู้ใช้เลือกตั้งเวลาแจ้งเตือน}
-	& \setstretch{1.0}{ระบบจะแสดงรูปแบบเวลาแบบ 24 Hrs } 
-	&\setstretch{1.0}{}\\ \cline{2-3} 
+	& \setstretch{1.0}{ระบบจะแสดงรูปแบบเวลาแบบ 24 Hrs } \\ \cline{2-3} 
 	& \setstretch{1.0}{ผู้ใช้เลือกประเภท}
-	& \setstretch{1.0}{ระบบจะให้เลือกได้ 2 ประเภท ได้แก่ สำหรับรับประทาน และ สำหรับฉีด } 
-	&\setstretch{1.0}{}\\ \cline{2-3} \hline
-    \end{tabular}
-\end{table}
-
-\section{ผลการทดสอบเพิ่มการแจ้งเตือนการทานยา}
-\begin{table}[H]
-	\caption{ผลการทดสอบเพิ่มการแจ้งเตือนการทานยา}
-    \centering	
-	\label{tab:test29}
-    \begin{tabular}{ | p{4cm} | p{4cm} | p{4cm} | p{2cm} | }
-		\hline
-	\multicolumn{1}{|c|}{การทดสอบ} & \multicolumn{1}{c|}{เงื่อนไขการทดสอบ} & \multicolumn{1}{c|}{ผลการทดสอบ} & \multicolumn{1}{c|}{ผู้ใช้งาน}                             \\ \hline
-	\setstretch{1.0}{ทดสอบเพิ่มการแจ้งเตือนการทานยา}
-	& \setstretch{1.0}{ผู้ใช้เลือกประเภท กรอกชื่อยา กรอกจำนวน เลือกช่วงเวลา และกดบันทึกข้อมูลยา}
-	& \setstretch{1.0}{ระบบจะบันทึกข้อมูล และแสดงข้อความ  บันทึกข้อมูลยาเรียบร้อยแล้ว } 
-	&\setstretch{1.0}{\begin{flushleft}ผู้ใช้งาน\end{flushleft}} \\ \cline{2-3} 
-	& \setstretch{1.0}{ผู้ใช้ไม่กรอกข้อมูล และกดบันทึกข้อมูลยา}
-	& \setstretch{1.0}{ระบบจะแสดงข้อความ  กรอกข้อมูลให้ถูกต้อง  } 
-	&\setstretch{1.0}{}\\ \cline{2-3} 
-	& \setstretch{1.0}{ผู้ใช้เลือกตั้งเวลาแจ้งเตือน}
-	& \setstretch{1.0}{ระบบจะแสดงรูปแบบเวลาแบบ 24 Hrs } 
-	&\setstretch{1.0}{}\\ \cline{2-3} 
-	& \setstretch{1.0}{ผู้ใช้เลือกประเภท}
-	& \setstretch{1.0}{ระบบจะให้เลือกได้ 2 ประเภท ได้แก่ สำหรับรับประทาน และ สำหรับฉีด } 
-	&\setstretch{1.0}{}\\ \cline{2-3} \hline
-    \end{tabular}
-\end{table}
-
-\section{ผลการทดสอบแก้ไขข้อมูลส่วนตัว}
-\begin{table}[H]
-	\caption{ผลการทดสอบแก้ไขข้อมูลส่วนตัว}
-    \centering	
-	\label{tab:test30}
-    \begin{tabular}{ | p{4cm} | p{4cm} | p{4cm} | p{2cm} | }
-		\hline
-	\multicolumn{1}{|c|}{การทดสอบ} & \multicolumn{1}{c|}{เงื่อนไขการทดสอบ} & \multicolumn{1}{c|}{ผลการทดสอบ} & \multicolumn{1}{c|}{ผู้ใช้งาน}                             \\ \hline
-	\setstretch{1.0}{ทดสอบแก้ไขข้อมูลส่วนตัว}
-	& \setstretch{1.0}{ผู้ใช้กรอกข้อมูลต่างจากเดิม และกดบันทึกการแก้ไข}
-	& \setstretch{1.0}{ระบบจะบันทึกข้อมูล และแสดงข้อความ  บันทึกข้อมูลยาเรียบร้อยแล้ว } 
-	&\setstretch{1.0}{\begin{flushleft}ผู้ใช้งาน\end{flushleft}} \\ \cline{2-3} 
-	& \setstretch{1.0}{ผู้ใช้ไม่กรอกข้อมูล และกดบันทึกการแก้ไข}
-	& \setstretch{1.0}{ระบบจะแสดงข้อความ  กรุณากรอกข้อมูลให้ถูกต้อง  } 
-	&\setstretch{1.0}{}\\ \cline{2-3} \hline
+	& \setstretch{1.0}{ระบบจะให้เลือกได้ 2 ประเภท ได้แก่ สำหรับรับประทาน และ สำหรับฉีด } \\ \hline
     \end{tabular}
 \end{table}
