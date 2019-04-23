@@ -27,12 +27,7 @@
 	\label{Fig:structure_app}
 \end{figure}
 
-จากรูปที่ \ref{Fig:structure_app} สามารถอธิบายโครงสร้างและเทคโนโลยีของแอปพลิเคชันสูงวัยมายเฟรนด์ ได้ดังนี้
-
-
-แอปพลิเคชันสูงวัยมายเฟรนด์ รองรับการทำงานของผู้ใช้งานบนแอปพลิเคชันพัฒนาด้วย Ionic Framework ที่มีการใช้ Google Maps API ในการใช้งานแผนที่ โดย
-แอปพลิเคชันได้เก็บข้อมูลไว้ที่ Firebase Cloud Firestore ส่วนสำหรับทำการเข้าสู่ระบบด้วยอีเมลล์ใช้ Authentication ของ Firebase ในส่วนของแชทบอทใช้ 
-Dialogflow ที่เป็นแพลทฟอร์มในการทำแชทบอทโดยดึงข้อมูลจาก Firebase Cloud Firestore
+จากรูปที่ \ref{Fig:structure_app} สามารถอธิบายโครงสร้างและเทคโนโลยีของแอปพลิเคชัน โดยเริ่มจากผู้ใช้ติดต่อระบบผ่านระบบ iOS และ Android ซึ่งจะโหลดข้อมูลจากฐานข้อมูลมาแสดงในหน้าจอ เมื่อผู้ใช้ใช้งานแผนที่ระบบจะเรียกใช้งาน Google Maps API เพื่อดึงแผนที่มาแสดงที่หน้าจอ ถ้าหากผู้ใช้เลือกคุยกับแชทบอทจะเรียกข้อมูลจาก Dialogflow เพื่อตอบแบบเรียลไทม์
 
 \section{การวิเคราะห์ความต้องการของระบบ (System Requirements)}
 
@@ -64,7 +59,7 @@ Dialogflow ที่เป็นแพลทฟอร์มในการทำ
 	\subsection{หน้าเข้าสู่ระบบ}
 		\begin{figure}[H]
 			\centering
-			\includegraphics[width=0.6\textwidth]{Figures/3/UI/login}
+			\includegraphics[width=0.5\textwidth]{Figures/3/UI/login}
 			\caption{หน้าจอเข้าสู่ระบบ}
 			\label{Fig:หน้าจอเข้าสู่ระบบ}
 		\end{figure}
@@ -80,7 +75,7 @@ Dialogflow ที่เป็นแพลทฟอร์มในการทำ
 
 		\begin{figure}[H]
 			\centering
-			\includegraphics[width=0.6\textwidth]{Figures/3/UI/main}
+			\includegraphics[width=0.7\textwidth]{Figures/3/UI/main}
 			\caption{หน้าจอหลัก}
 			\label{Fig:หน้าจอหลัก}
 		\end{figure}
@@ -103,7 +98,7 @@ Dialogflow ที่เป็นแพลทฟอร์มในการทำ
 
 		\begin{figure}[H]
 			\centering
-			\includegraphics[width=0.6\textwidth]{Figures/3/UI/chatbot}
+			\includegraphics[width=0.5\textwidth]{Figures/3/UI/chatbot}
 			\caption{หน้าแชทบอทคุยกับปู่จอห์น}
 			\label{Fig:แชทบอท}
 		\end{figure}
@@ -121,7 +116,7 @@ Dialogflow ที่เป็นแพลทฟอร์มในการทำ
 
 		\begin{figure}[H]
 			\centering
-			\includegraphics[width=0.6\textwidth]{Figures/3/UI/board}
+			\includegraphics[width=0.5\textwidth]{Figures/3/UI/board}
 			\caption{หน้าจอกระดานข่าว}
 			\label{Fig:กระดานข่าว}
 		\end{figure} \\
@@ -136,10 +131,9 @@ Dialogflow ที่เป็นแพลทฟอร์มในการทำ
 			\item ส่วนที่ 5 ปุ่มสำหรับแก้ไขโพสท์
 			\item ส่วนที่ 6 ปุ่มสำหรับลบโพสท์
 			\item ส่วนที่ 7 ข้อความโพสท์ของผู้ใช้
-			\item ส่วนที่ 8 รูปภาพโพสท์ของผู้ใช้
-			\item ส่วนที่ 9 ปุ่มสำหรับกดถูกใจ
-			\item ส่วนที่ 10 ปุ่มสำหรับแสดงความคิดเห็น
-			\item ส่วนที่ 11 ข้อความแสดงระยะเวลาหลังจากโพสท์ถูกสร้าง
+			\item ส่วนที่ 8 ปุ่มสำหรับกดถูกใจ
+			\item ส่วนที่ 9 ปุ่มสำหรับแสดงความคิดเห็น
+			\item ส่วนที่ 10 ข้อความแสดงระยะเวลาหลังจากโพสท์ถูกสร้าง
 		\end{itemize}
 
 		\begin{figure}[H]
@@ -171,13 +165,14 @@ Dialogflow ที่เป็นแพลทฟอร์มในการทำ
 
 		\begin{figure}[H]
 			\centering
-			\includegraphics[width=0.6\textwidth]{Figures/3/UI/help}
+			\includegraphics[width=0.5\textwidth]{Figures/3/UI/help}
 			\caption{หน้าฉุกเฉิน}
 			\label{Fig:ฉุกเฉิน}
 		\end{figure}
 		จากภาพที่ \ref{Fig:ฉุกเฉิน} การออกแบบหลักประกอบไปด้วย 2 ส่วนดังนี้
 		\begin{itemize}
 			\item ส่วนที่ 1 ปุ่มสำหรับแสดงเสียงเพื่อขอความช่วยเหลือ
+			\item ส่วนที่ 2 ปุ่มสำหรับปิดเสียงเพื่อขอความช่วยเหลือ
 			\item ส่วนที่ 2 ปุ่มสำหรับไปยังหน้าเลือกครอบครัวเพื่อขอความช่วยเหลือจากครอบครัว
 		\end{itemize}
 
@@ -198,7 +193,7 @@ Dialogflow ที่เป็นแพลทฟอร์มในการทำ
 
 		\begin{figure}[H]
 			\centering
-			\includegraphics[width=0.6\textwidth]{Figures/3/UI/howto}
+			\includegraphics[width=0.5\textwidth]{Figures/3/UI/howto}
 			\caption{หน้าวิธีใช้งาน}
 			\label{Fig:วิธีใช้งาน}
 		\end{figure}
@@ -212,7 +207,7 @@ Dialogflow ที่เป็นแพลทฟอร์มในการทำ
 
 		\begin{figure}[H]
 			\centering
-			\includegraphics[width=0.6\textwidth]{Figures/3/UI/group}
+			\includegraphics[width=0.5\textwidth]{Figures/3/UI/group}
 			\caption{หน้าจอแสดงกลุ่ม}
 			\label{Fig:กลุ่ม}
 		\end{figure}
@@ -229,7 +224,7 @@ Dialogflow ที่เป็นแพลทฟอร์มในการทำ
 
 		\begin{figure}[H]
 			\centering
-			\includegraphics[width=0.6\textwidth]{Figures/3/UI/friend}
+			\includegraphics[width=0.5\textwidth]{Figures/3/UI/friend}
 			\caption{หน้าจอแสดงเพื่อน}
 			\label{Fig:เพื่อน}
 		\end{figure}
@@ -240,16 +235,17 @@ Dialogflow ที่เป็นแพลทฟอร์มในการทำ
 			\item ส่วนที่ 3 ปุ่มสำหรับไปยังหน้าจอแสดงเพื่อน
 			\item ส่วนที่ 4 รูปภาพของเพื่อนที่รอการยืนยัน
 			\item ส่วนที่ 5 ชื่อของเพื่อนที่รอการยืนยัน
-			\item ส่วนที่ 6 ปุ่มสำหรับยกเลิกคำขอร้องเป็นเพื่อน
-			\item ส่วนที่ 7 รูปภาพของเพื่อน
-			\item ส่วนที่ 8 ชื่อของเพื่อน
-			\item ส่วนที่ 9 ปุ่มสำหรับแชทกับเพื่อน
-			\item ส่วนที่ 10 ปุ่มสำหรับลบเพื่อน
+			\item ส่วนที่ 6 ปุ่มสำหรับยืนยันคำร้องขอเป็นเพื่อน
+			\item ส่วนที่ 7 ปุ่มสำหรับยกเลิกคำขอร้องเป็นเพื่อน
+			\item ส่วนที่ 8 รูปภาพของเพื่อน
+			\item ส่วนที่ 9 ชื่อของเพื่อน
+			\item ส่วนที่ 10 ปุ่มสำหรับแชทกับเพื่อน
+			\item ส่วนที่ 11 ปุ่มสำหรับลบเพื่อน
 		\end{itemize} \\
 
 		\begin{figure}[H]
 			\centering
-			\includegraphics[width=0.6\textwidth]{Figures/3/UI/notification}
+			\includegraphics[width=0.5\textwidth]{Figures/3/UI/notification}
 			\caption{หน้าแสดงรายการแจ้งเตือนการทานยา}
 			\label{Fig:รายการทานยา}
 		\end{figure}
@@ -263,7 +259,7 @@ Dialogflow ที่เป็นแพลทฟอร์มในการทำ
 
 		\begin{figure}[H]
 			\centering
-			\includegraphics[width=0.6\textwidth]{Figures/3/UI/addnotification}
+			\includegraphics[width=0.5\textwidth]{Figures/3/UI/addnotification}
 			\caption{หน้าแสดงการเพิ่มการแจ้งเตือนทานยา}
 			\label{Fig:เพิ่มทานยา}
 		\end{figure}
@@ -278,7 +274,7 @@ Dialogflow ที่เป็นแพลทฟอร์มในการทำ
 
 		\begin{figure}[H]
 			\centering
-			\includegraphics[width=0.6\textwidth]{Figures/3/UI/profile}
+			\includegraphics[width=0.5\textwidth]{Figures/3/UI/profile}
 			\caption{หน้าจอแสดงข้อมูลส่วนตัวของผู้ใช้}
 			\label{Fig:โปรไฟล์}
 		\end{figure}
@@ -563,7 +559,7 @@ Dialogflow ที่เป็นแพลทฟอร์มในการทำ
 		    			\textbf{Use Case Title : คุยกับแชทบอท} & \multicolumn{1}{c|}{\textbf{Use case Id : 12 }} \\ \hline
 		    			\multicolumn{2}{|l|}{Primary Actor : ผู้ใช้งาน} \\ \hline
 		    			\multicolumn{2}{|l|}{Stakeholder Actor : -} \\ \hline
-		    			\multicolumn{2}{|p{\linewidth}|}{Main Flow : สามารถคุยโต้ตอบกับแชทบอทได้} \\ \hline
+		    			\multicolumn{2}{|p{\linewidth}|}{Main Flow : สามารถคุยโต้ตอบกับแชทบอทได้ โดยแชทบอทจะต้องรับรหัสการใช้งานจาก Dialgflow สำหรับติตดต่อใช้งาน} \\ \hline
 						\multicolumn{2}{|p{\linewidth}|}{Exceptional Flow ที่ 1 : หากผู้ใช้งานไม่เชื่อมต่ออินเทอร์เน็ตจะไม่คุยกับแชทบอทได้} \\ \hline
 						\multicolumn{2}{|p{\linewidth}|}{Exceptional Flow ที่ 2 : หากผู้ใช้งานไม่เข้าสู่ระบบจะไม่คุยกับแชทบอทได้} \\ \hline
 						\multicolumn{2}{|p{\linewidth}|}{Pre-condition : เข้าสู่ระบบ} \\ \hline
@@ -616,7 +612,7 @@ Dialogflow ที่เป็นแพลทฟอร์มในการทำ
 
 \begin{sidewaysfigure}
 	\begin{figure}[H]
-		\includegraphics[width=1.1\columnwidth]{Figures/3/Class/classdiagrams}
+		\includegraphics[width=1.0\columnwidth]{Figures/3/Class/classdiagrams}
 		\caption{Class Diagram ของแอปพลิเคชันสูงวัยมายเฟรนด์}
 		\label{Fig:classdiagram}
 	\end{figure}
@@ -734,9 +730,8 @@ Sequence Diagram ที่ใช้อธิบายการทำงานข
 \end{sidewaysfigure}
 \newpage
 จากภาพที่ \ref{Fig:Sequence-login} สามารถอธิบายแผนภาพ Sequence Diagram การเข้าสู่ระบบ ได้ดังนี้
-เมื่อผู้ใช้กรอก e-mail และ password แล้วกดปุ่มเข้าสู่ระบบ จากนั้นระบบจะเรียกฟังก์ชัน login() เพื่อส่งข้อมูลไปตรวจที่ AuthFibase ที่เป็นบริการ
-ของ Firebase ในการเข้าสู่ระบบด้วยอีเมลล์ จากนั้นจะส่งข้อมูลกลับมายัง ToastController เพื่อเช็คข้อมูลว่ามีหรือไม่ ถ้ามีข้อมูลจะแสดงข้อความว่า 
-เข้าสู่ระบบสำเร็จและไปยังหน้าหลัก ถ้าไม่สำเร็จระบบจะแสดงข้อความว่า กรุณากรอกชื่อผู้ใช้หรือรหัสผ่านให้ถูกต้อง
+เมื่อผู้ใช้กรอก e-mail และ password แล้วกดปุ่มเข้าสู่ระบบ จากนั้นระบบจะเรียกฟังก์ชัน login(email,password) เพื่อส่งข้อมูลไปตรวจที่ Firebase เพื่อตรวจสอบ
+ว่า email และ password ถูกต้องหรือไม่ ถ้าไม่ถูกต้องจะส่งค่ากลับคืนมาแล้วระบบจะแสดงข้อความว่ากรุณากรอกข้อมลให้ถูกต้อง ถ้าถูกต้องระบบจะแสดงข้อความว่าท่านได้เข้าสู่ระบบสำเร็จแล้ว
 
 \begin{sidewaysfigure}
 \begin{figure}[H]
@@ -767,9 +762,8 @@ Sequence Diagram ที่ใช้อธิบายการทำงานข
 
 จากภาพที่ \ref{Fig:Sequence-feed} สามารถอธิบายแผนภาพ Sequence Diagram การแสดงหน้ากระดานข่าว ได้ดังนี้ 
 \begin{itemize}
-\item เมื่อผู้ใช้งานเข้ามายังหน้ากระดานข่าว ระบบจะดึงข้อมูลมาจากไฟล์เบสเพื่อแสดงโพสท์ทั้งหมด เมื่อผู้ใช้กดปุ่มโพสท์ระบบจะเรียกฟังก์ชัน post() 
-ระบบจะตรวจสอบว่าข้อมูลที่เราต้องการโพสท์มีการเพิ่มรูปหรือไม่ ถ้ามีรูประบบส่งที่อยู่รูปไปทำงานฟังก์ชัน uploadImgPost(uid,img) 
-เพื่อเก็บข้อมูลลงใน Firebas Storage หลังจากนั้นจะบันทึกโพสท์ที่เราสร้างไว้ใน Firebase ถ้าโพสท์ไม่มีรูปภาพจะบันทึกข้อมูลไว้ใน Firebase ทันที 
+\item เมื่อผู้ใช้งานเข้ามายังหน้ากระดานข่าว ระบบจะเรียกฟังก์ชัน getPost() จะดึงข้อมูลมาจากไฟล์เบสเพื่อแสดงโพสท์ทั้งหมด เมื่อผู้ใช้กดปุ่มโพสท์ระบบจะเรียกฟังก์ชัน post() 
+ระบบจะตรวจสอบว่าข้อมูลถูกต้องหรือไม่ จากนั้นระบบจะบันทึกโพสท์ที่เราสร้างไว้ในฐานข้อมูล
 \item เมื่อผู้ใช้กดปุ่มถูกใจ ระบบจะส่งข้อมูลไอดีของผู้ที่กดส่งไปเก็บไว้ยังฐานข้อมูล Firebase แล้วจึงส่ง Response กลับมาหาผู้ใช้
 \item เมื่อผู้ใช้กดเลือกเมนูแก้ไขโพสท์แล้วกดปุ่มบันทึกข้อมูล ระบบจะทำการเรียกใช้ฟังก์ชัน edit() เพื่อส่ง id ไปเช็คข้อมูลใน Firebase แล้วจึงแก้ไขข้อมูล หากมี Response กลับคืนมาจะแสดงข้อความบันทึกข้อมูลสำเร็จ แต่ถ้าไม่มี Response กลับคืนมาจะแสดงข้อความว่าบันทึกข้อมูลไม่สำเร็จ
 \item เมื่อผู้ใช้กดเลือกเมนูลบโพสท์แล้วกดปุ่มยืนยัน ระบบจะทำการเรียกใช้ฟังก์ชัน delete() เพื่อส่ง id ไปเช็คข้อมูลใน Firebase แล้วจึงลบข้อมูล หากมี Response กลับคืนมาจะแสดงลบข้อมูลสำเร็จ แต่ถ้าไม่มี Response กลับคืนมาจะแสดงข้อความว่าลบข้อมูลไม่สำเร็จ
@@ -787,7 +781,7 @@ Sequence Diagram ที่ใช้อธิบายการทำงานข
 \newpage
 
 จากภาพที่ \ref{Fig:Sequence-addgroup} สามารถอธิบายแผนภาพ Sequence Diagram ของการเพิ่มกลุ่ม ได้ดังนี้ เมื่อผู้ใช้
-กดปุ่มเพิ่มกลุ่มระบบจะเรียกฟังก์ชัน ionViewWillEnter() เพื่อแสดงหน้าเพิ่มกลุ่ม ต่อมาผู้ใช้กรอกข้อมูลเสร็จแล้วกดสร้างกลุ่ม 
+กดปุ่มเพิ่มกลุ่มระบบ และผู้ใช้เลือกรูปและชื่อกลุ่มเรียบร้อยแล้วและกดปุ่มสร้างกลุ่ม  
 จากนั้นระบบจะเรียกฟังก์ชัน creategroup() ในคลาส NewGroupsPage เพื่อบันทึกข้อมูลลงใน Firebase เมื่อเพิ่มฐานข้อมูลเสร็จเรียบร้อยแล้ว 
 ระบบจะแสดงหน้ากลุ่ม
 \newpage
@@ -805,7 +799,7 @@ Sequence Diagram ที่ใช้อธิบายการทำงานข
 \begin{itemize}
 	\item เมื่อผู้ใช้กดเลือกหน้าข้อมูลส่วนตัว ระบบจะเรียกฟังก์ชัน ionViewWillEnter() เพื่อเรียกข้อมูลผู้ใช้และโพสท์จากฐานข้อมูลมาแสดงหน้าข้อมูลส่วนตัว
 	\item เมื่อผู้ใช้กดเลือกปุ่มเปลี่ยนรูปประจำตัว ระบบจะเรียกฟังก์ชัน changeProfilePicture() เพื่อให้ผู้ใช้เลือกรูปแบบการแก้ไขรูปภาพจาก camera plugin เพื่อใช้งานกล้องและแกลลอรี่ 
-	หลังจากนั้นจะส่งข้อมูล url ไปยัง Firebase storage เพื่อทำการเพิ่มหรือแก้ไขข้อมูล แล้วส่งสถานะกลับมายังผู้ใช้งาน ถ้าหากสามารถเปลี่ยนได้จะส่งข้อความว่า แก้ไขรูปสำเร็จ 
+	หลังจากนั้นจะส่งข้อมูล url ไปยังฐานข้อมูลเพื่อทำการเพิ่มหรือแก้ไขข้อมูล แล้วส่งสถานะกลับมายังผู้ใช้งาน ถ้าหากสามารถเปลี่ยนได้จะส่งข้อความว่า แก้ไขรูปสำเร็จ 
 	แต่ถ้าไม่สามารถแก้ไขรูปได้จะส่งข้อความว่า แก้ไขไม่สำเร็จ 
 	\item เมื่อผู้ใช้เลือกปุ่มแก้ไขข้อมูลส่วนตัว ระบบจะเรียกฟังก์ชัน getUserEdit() ในคลาส EditUserPage จากนั้นจะแสดงหน้าแก้ไขข้อมูลส่วนตัว เมื่อผู้ใช้กรอกข้อมูลส่วนตัวเรียบร้อยแล้ว จะเรียกฟังก์ชัน edituser() 
 	จากนั้นจะส่งข้อมูลที่ถูกแก้ไขไปฐานข้อมูล ฐานข้อมูลตรวจสอบและอัพเดทข้อมูลที่ถูกแก้ไข จากนั้นฐานข้อมูลจะส่งข้อความกลับมาว่า แก้ไขข้อมูลสำเร็จแล้ว
@@ -842,7 +836,7 @@ Sequence Diagram ที่ใช้อธิบายการทำงานข
 \newpage
 
 จากภาพที่ \ref{Fig:Sequence-danger} สามารถอธิบายแผนภาพ Sequence Diagram ของฉุกเฉิน ได้ดังนี้ 
-ผู้ใช้กดเลือกเมนฉุกเฉิน ระบบจะเรียกฟังก์ชัน ionViewWillEnter() ในคลาสแสดงหน้าฉุกเฉิน เมื่อผู้ใช้กดปุ่มแจ้งเตือนรอบบริเวณ ระบบจะเรียกฟังก์ชัน sound() เพื่อใช้งาน NativeAudio Plugin ที่ใช้สำหรับแสดงเสียงแล้วแสดงเสียงแก่ผู้ใช้งาน 
+ผู้ใช้กดเลือกเมนฉุกเฉินระบบจะแสดงหน้าจอฉุกเฉิน เมื่อผู้ใช้กดปุ่มแจ้งเตือนรอบบริเวณระบบจะเรียกฟังก์ชัน sound() เพื่อใช้งาน NativeAudio Plugin ที่ใช้สำหรับแสดงเสียงแล้วแสดงเสียงแก่ผู้ใช้งาน 
 เมื่อผู้ใช้คลิกที่ปุ่มหยุด ระบบจะหยุดเสียงที่ผู้ใช้ได้กดปุ่มแจ้งเตือนรอบบริเวณก่อนหน้านี้ เมื่อผู้ใช้เลือกปุ่มช่วยเหลือ จะเรียกใช้คลาส HelpFamilyPage จากนั้น Contructor จะเรียกข้อมูลสมาชิกครอบครัวในฐานข้อมูลมาแสดง 
 ถ้าผู้ใช้กดปุ่มโทร ระบบจะเรียกฟังก์ชัน call(key) จากนั้นจะ get เบอร์มือถือของเพื่อนเพื่อใช้ CallNumber Plugin สำหรับโทร เมื่อผู้ใช้กดปุ่มส่งข้อความ ระบบจะเรียกฟังก์ชัน sendSMS(key) ที่อยู่ภายในคลาส HelpFamilyPage และเรียกใช้ SocialSharing Plugin ในการส่ง SMS ที่
 มีข้อความว่า "ช่วยด้วย !!! นี่ (ชื่อผู้ใช้) เอง ตอนนี้มีปัญหาช่วยติดต่อกลับที่ (เบอร์มือถือผู้ใช้) ด้วยนะ ด่วน ๆ"

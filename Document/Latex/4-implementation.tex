@@ -6,28 +6,17 @@
 	\item การสมัครสมาชิก
 	\item การเข้าสู่ระบบ
 	\item ส่วนจัดการแชทบอท
-	\item การพัฒนาในส่วนของ Dialogflow ที่ใช้ fulfillment ในการเชื่อมต่อกับ Firebase
-	\item การจัดการโพสท์
+	\item การจัดการส่วนของ Dialogflow
+	\item การจัดการโพสท์และคอมเมนท์
 	\begin{enumerate}[label=4.5.\arabic*]
 		\item การเพิ่มโพสท์
 		\item การลบโพสท์
+		\item การกดถูกใจโพสท์
+		\item การเลือกหมวดโพสท์
+		\item การจัดการคอมเมนท์
 	\end{enumerate}	
-	\item การกดถูกใจโพสท์
-	\item การเลือกหมวดโพสท์
-	\item การจัดการคอมเมนท์
 	\item การค้นหาเพื่อน
-	\item การจัดการแจ้งเตือน
-	\begin{enumerate}[label=4.10.\arabic*]
-		\item การแจ้งเตือนรอบบริเวณ
-		\item การเพิ่มการแจ้งเตือนการทานยา
-	\end{enumerate}	
-	\item การจัดการครอบครัว
-	\begin{enumerate}[label=4.11.\arabic*]
-		\item ส่วนของการแสดงผลครอบครัว
-		\item การโทรหาสมาชิกในครอบครัว
-		\item การส่งข้อความหาสมาชิกในครอบครัว
-		\item การแสดงตำแหน่งสมาชิกในครอบครัว
-	\end{enumerate}	
+	\item การเพิ่มการแจ้งเตือนการทานยา
 \end{enumerate}	
 
 
@@ -530,7 +519,7 @@ alert.present();
 
 % start ส่วนของการถูกใจ
 
-\section{การกดถูกใจโพสท์}
+\subsection{การกดถูกใจโพสท์}
 เมื่อผู้ใช้เลือกปุ่มถูกใจ ระบบจะมีการทำงาน แสดงดังรูปที่ \ref{Fig:4-likepost}
 
 \begin{figure}[H]
@@ -567,7 +556,7 @@ this.http.post("https://us-central1-oldmyfriends.cloudfunctions.net/updateLikesC
 \begin{itemize}[label={--}]
 \item บรรทัดที่ 2 - 6 เป็นการสร้างการโหลดเพื่อรอการส่งกลับของข้อมูล ใช้งานเมื่อฟังก์ชัน like() ทำงาน
 \item บรรทัดที่ 7 - 11 เป็นการกำหนดตัวแปรที่จะส่งไปแบบ post
-\item บรรทัดที่ 12 - 21 เป็นการกำหนดเส้นทางเพือส่งข้อมูล JSON ไปตรวจสอบที่ Cloud functions ของ Firebase ฐานข้อมูลจะเช็คข้อมูลการถูกใจแล้วบันทึก หรือแก้ไขลงฐานข้อมูล
+\item บรรทัดที่ 12 - 21 เป็นการกำหนดเส้นทางเพือส่งข้อมูล JSON ไปตรวจสอบที่ฐานข้อมูล จากนั้นฐานข้อมูลจะเช็คข้อมูลการถูกใจแล้วบันทึก หรือแก้ไขลงฐานข้อมูล
 \end{itemize}
 \newpage
 
@@ -575,7 +564,7 @@ this.http.post("https://us-central1-oldmyfriends.cloudfunctions.net/updateLikesC
 
 % start ส่วนของการเลือกหมวดโพสท์
 
-\section{การเลือกหมวดโพสท์}
+\subsection{การเลือกหมวดโพสท์}
 เมื่อผู้ใช้กรอกข้อความแล้วกดปุ่มคอมเมนท์ ระบบจะมีการทำงาน แสดงดังรูปที่ \ref{Fig:4-selectpost}
 
 \begin{figure}[H]
@@ -618,7 +607,7 @@ if($event === "all"){
 
 % start ส่วนของการคอมเมนท์
 
-\section{การจัดการคอมเมนท์}
+\subsection{การจัดการคอมเมนท์}
 เมื่อผู้ใช้กรอกข้อความแล้วกดปุ่มคอมเมนท์ ระบบจะมีการทำงาน แสดงดังรูปที่ \ref{Fig:4-commentspost}
 
 \begin{figure}[H]
@@ -702,7 +691,6 @@ this.myfriends = tempfriends;
 \caption{Code การค้นหาเพื่อน}
 \label{Fig:4-addfamily}
 \end{figure}
-
 จากรูปที่ \ref{Fig:4-addfamily} โครงสร้างของไฟล์ FamilybuddysPage.ts สามารถอธิบายการทำงานได้ดังนี้
 \begin{itemize}[label={--}]
 \item บรรทัดที่ 1 ถูกเรียกใช้เมื่อผู้ใช้กรอกข้อมูลเพื่อนโดยจะส่งมาในตัวแปร searchbar
@@ -712,43 +700,42 @@ this.myfriends = tempfriends;
 \item บรรทัดที่ 8 - 12 กำหนด tempfriends เท่ากับชื่อเพื่อนอย่างน้อยหนึ่งตัว จะ return เป็น true ถ้าไม่ตรงจะ return เป็น false
 \item บรรทัดที่ 14 ให้ตัวแปร myfriends เท่ากับ tempfriends คือเพื่อนที่ถูกค้นหาเจอ
 \end{itemize}
-\newpage
 
 % end ส่วนของการเพิ่มสมาชิกครอบครัว
 
-\section{การจัดการแจ้งเตือน}
+% \section{การจัดการแจ้งเตือน}
 
-% start พัฒนาในส่วนของการแจ้งเตือนรอบบริเวณ
+% % start พัฒนาในส่วนของการแจ้งเตือนรอบบริเวณ
 
-\subsection{การแจ้งเตือนรอบบริเวณ}
-เมื่อผู้ใช้กดปุ่มแจ้งเตือนรอบบริเวณ ระบบจะมีการทำงาน แสดงดังรูปที่ \ref{Fig:4-danger}
+% \subsection{การแจ้งเตือนรอบบริเวณ}
+% เมื่อผู้ใช้กดปุ่มแจ้งเตือนรอบบริเวณ ระบบจะมีการทำงาน แสดงดังรูปที่ \ref{Fig:4-danger}
 
-\begin{figure}[H]
-{\setstretch{1.0}\lstset{language=Pascal}
-\begin{lstlisting}
-constructor() {
-this.nativeAudio.preloadComplex('1', 'assets/sound/help.mp3',1,1,0);
-}
-sound() {
-this.nativeAudio.play('1').then(()=>{console.log('Playing')});
-}
-\end{lstlisting}}
-\caption{Code การแจ้งเตือนรอบบริเวณ}
-\label{Fig:4-danger}
-\end{figure}
+% \begin{figure}[H]
+% {\setstretch{1.0}\lstset{language=Pascal}
+% \begin{lstlisting}
+% constructor() {
+% this.nativeAudio.preloadComplex('1', 'assets/sound/help.mp3',1,1,0);
+% }
+% sound() {
+% this.nativeAudio.play('1').then(()=>{console.log('Playing')});
+% }
+% \end{lstlisting}}
+% \caption{Code การแจ้งเตือนรอบบริเวณ}
+% \label{Fig:4-danger}
+% \end{figure}
 
-จากรูปที่ \ref{Fig:4-danger} โครงสร้างของไฟล์ HelpPage.ts สามารถอธิบายการทำงานได้ดังนี้
-\begin{itemize}[label={--}]
-\item บรรทัดที่ 2 เรียกใช้ nativeaudio plugin เป็นการโหลดเสียงสำหรับรอเปิดการใช้งานเสียง จะถูกเรียกเมื่อหน้าฉุกเฉินถูกเรียกใช้งาน
-\item บรรทัดที่ 5 เรียกใช้ nativeAudio plugin เพื่อเล่นเสียง
-\end{itemize}
-\newline
+% จากรูปที่ \ref{Fig:4-danger} โครงสร้างของไฟล์ HelpPage.ts สามารถอธิบายการทำงานได้ดังนี้
+% \begin{itemize}[label={--}]
+% \item บรรทัดที่ 2 เรียกใช้ nativeaudio plugin เป็นการโหลดเสียงสำหรับรอเปิดการใช้งานเสียง จะถูกเรียกเมื่อหน้าฉุกเฉินถูกเรียกใช้งาน
+% \item บรรทัดที่ 5 เรียกใช้ nativeAudio plugin เพื่อเล่นเสียง
+% \end{itemize}
+% \newline
 
-% end พัฒนาในส่วนของการแจ้งเตือนรอบบริเวณ
+% % end พัฒนาในส่วนของการแจ้งเตือนรอบบริเวณ
 
-% start พัฒนาใส่ของการเพิ่มแจ้งเตือนทานยา
+% % start พัฒนาใส่ของการเพิ่มแจ้งเตือนทานยา
 
-\subsection{การเพิ่มการแจ้งเตือนการทานยา}
+\section{การเพิ่มการแจ้งเตือนการทานยา}
 เมื่อผู้ใช้กรอกข้อมูลยาที่ต้องการแจ้งเตือนแล้วกดปุ่มบันทึกการแจ้งเตือน ระบบจะมีการทำงาน แสดงดังรูปที่ \ref{Fig:4-alarm}
 
 \begin{figure}[H]
@@ -811,252 +798,252 @@ firebase.firestore().collection("medicine").add({
 % end พัฒนาใส่ของการเพิ่มแจ้งเตือนทานยา
 
 
-\section{การจัดการครอบครัว}
+% \section{การจัดการครอบครัว}
 
-% start ส่วนของการแสดงผลครอบครัว
+% % start ส่วนของการแสดงผลครอบครัว
 
-\subsection{ส่วนของการแสดงผลครอบครัว}
-เมื่อผู้ใช้เรียกใช้งานหน้าครอบครัว ระบบจะมีการทำงาน แสดงดังรูปที่ \ref{Fig:4-family}
+% \subsection{ส่วนของการแสดงผลครอบครัว}
+% เมื่อผู้ใช้เรียกใช้งานหน้าครอบครัว ระบบจะมีการทำงาน แสดงดังรูปที่ \ref{Fig:4-family}
 
-\begin{figure}[H]
-{\setstretch{1.0}\lstset{language=Pascal}
-\begin{lstlisting}
-getfamilys() {
-this.familyservice.getmyfamilys().then((data) => {
-	this.myfamilys = data;
-})
-}
-\end{lstlisting}}
-\caption{Code ส่วนการดึงข้อมูลครอบครัวมาแสดง}
-\label{Fig:4-family}
-\end{figure}
+% \begin{figure}[H]
+% {\setstretch{1.0}\lstset{language=Pascal}
+% \begin{lstlisting}
+% getfamilys() {
+% this.familyservice.getmyfamilys().then((data) => {
+% 	this.myfamilys = data;
+% })
+% }
+% \end{lstlisting}}
+% \caption{Code ส่วนการดึงข้อมูลครอบครัวมาแสดง}
+% \label{Fig:4-family}
+% \end{figure}
 
-จากรูปที่ \ref{Fig:4-family} โครงสร้างของไฟล์ family.ts สามารถอธิบายการทำงานได้ดังนี้
-\begin{itemize}[label={--}]
-\item บรรทัดที่ 2 เป็นการเรียกใช้ฟังก์ชัน getmyfamilys() ในคลาส FamilyProvider
-\item บรรทัดที่ 3 หลังจากทำฟังก์ชันเสร็จเรียบร้อยแล้วจะส่งข้อมูลคืนมาไว้ในตัวแปร data จากนั้นเก็บข้อมูลครอบครัวไว้ในตัวแปร myfalilys
-\end{itemize}
-\newpage
-% html familys
+% จากรูปที่ \ref{Fig:4-family} โครงสร้างของไฟล์ family.ts สามารถอธิบายการทำงานได้ดังนี้
+% \begin{itemize}[label={--}]
+% \item บรรทัดที่ 2 เป็นการเรียกใช้ฟังก์ชัน getmyfamilys() ในคลาส FamilyProvider
+% \item บรรทัดที่ 3 หลังจากทำฟังก์ชันเสร็จเรียบร้อยแล้วจะส่งข้อมูลคืนมาไว้ในตัวแปร data จากนั้นเก็บข้อมูลครอบครัวไว้ในตัวแปร myfalilys
+% \end{itemize}
+% \newpage
+% % html familys
 
-family.html เป็นไฟล์ที่ใช้แสดงหน้าแสดงครอบครัว ดังรูปที่ \ref{Fig:4-showfamily}
-\begin{figure}[H]
-{\setstretch{1.0}\lstset{language=Pascal}
-\begin{lstlisting}
-<ion-content padding>
-<button ion-button block round color="headertop" (click)="familybuddys()">เพิ่มสมาชิกครอบครัว</button>
-<br>
-<ion-list no-lines>
-<ion-card style="border-radius: 10px">
-<ion-item *ngFor="let key of myfamilys" >
+% family.html เป็นไฟล์ที่ใช้แสดงหน้าแสดงครอบครัว ดังรูปที่ \ref{Fig:4-showfamily}
+% \begin{figure}[H]
+% {\setstretch{1.0}\lstset{language=Pascal}
+% \begin{lstlisting}
+% <ion-content padding>
+% <button ion-button block round color="headertop" (click)="familybuddys()">เพิ่มสมาชิกครอบครัว</button>
+% <br>
+% <ion-list no-lines>
+% <ion-card style="border-radius: 10px">
+% <ion-item *ngFor="let key of myfamilys" >
 
-<ion-thumbnail item-start *ngIf="key.data().photoURL">
-	<img src="{{key.data().photoURL}}">
-</ion-thumbnail>
-<ion-thumbnail item-start *ngIf="!key.data().photoURL">
-	<img src="assets/imgs/user.png">
-</ion-thumbnail>
-<ion-label item-start>{{key.data().owner_name}}</ion-label>
+% <ion-thumbnail item-start *ngIf="key.data().photoURL">
+% 	<img src="{{key.data().photoURL}}">
+% </ion-thumbnail>
+% <ion-thumbnail item-start *ngIf="!key.data().photoURL">
+% 	<img src="assets/imgs/user.png">
+% </ion-thumbnail>
+% <ion-label item-start>{{key.data().owner_name}}</ion-label>
 
-	<ion-label item-center>{{key.data().type}}</ion-label>
+% 	<ion-label item-center>{{key.data().type}}</ion-label>
 
-<ion-icon name="settings" item-right (click)="settings(key)"></ion-icon>
-</ion-item>
-</ion-card>
-</ion-list>
-</ion-content>
-\end{lstlisting}}
-\caption{โค้ดส่วนการแสดงหน้าแสดงครอบครัว}
-\label{Fig:4-showfamily}
-\end{figure}
-\newpage
+% <ion-icon name="settings" item-right (click)="settings(key)"></ion-icon>
+% </ion-item>
+% </ion-card>
+% </ion-list>
+% </ion-content>
+% \end{lstlisting}}
+% \caption{โค้ดส่วนการแสดงหน้าแสดงครอบครัว}
+% \label{Fig:4-showfamily}
+% \end{figure}
+% \newpage
 
-% end ส่วนของการแสดงผลครอบครัว
+% % end ส่วนของการแสดงผลครอบครัว
 
-% start พัฒนาในส่วนของการโทรหาสมาชิกในครอบครัว
+% % start พัฒนาในส่วนของการโทรหาสมาชิกในครอบครัว
 
-\subsection{การโทรหาสมาชิกในครอบครัว}
-เมื่อผู้ใช้เลือกปุ่มโทรหาสมาชิกในครอบครัว ระบบจะมีการทำงาน แสดงดังรูปที่ \ref{Fig:4-call}
+% \subsection{การโทรหาสมาชิกในครอบครัว}
+% เมื่อผู้ใช้เลือกปุ่มโทรหาสมาชิกในครอบครัว ระบบจะมีการทำงาน แสดงดังรูปที่ \ref{Fig:4-call}
 
-\begin{figure}[H]
-{\setstretch{1.0}\lstset{language=Pascal}
-\begin{lstlisting}
-call(key){
-if(key.data().phone != undefined){
-this.callNumber.callNumber(key.data().phone, true).then(() => {
-	console.log("Worked");
-}).catch((err) => {
-	alert(JSON.stringify(err));
-})
-}else {
-this.toast.create({
-	message: "ไม่สามารถโทรได้สมาชิกไม่ได้ระบุเบอร์ไว้",
-	duration: 2000
-}).present();
-}
-}
-\end{lstlisting}}
-\caption{Code การโทรหาสมาชิกในครอบครัว}
-\label{Fig:4-call}
-\end{figure}
+% \begin{figure}[H]
+% {\setstretch{1.0}\lstset{language=Pascal}
+% \begin{lstlisting}
+% call(key){
+% if(key.data().phone != undefined){
+% this.callNumber.callNumber(key.data().phone, true).then(() => {
+% 	console.log("Worked");
+% }).catch((err) => {
+% 	alert(JSON.stringify(err));
+% })
+% }else {
+% this.toast.create({
+% 	message: "ไม่สามารถโทรได้สมาชิกไม่ได้ระบุเบอร์ไว้",
+% 	duration: 2000
+% }).present();
+% }
+% }
+% \end{lstlisting}}
+% \caption{Code การโทรหาสมาชิกในครอบครัว}
+% \label{Fig:4-call}
+% \end{figure}
 
-จากรูปที่ \ref{Fig:4-call} โครงสร้างของไฟล์ HelpfamilyPage.ts สามารถอธิบายการทำงานได้ดังนี้
-\begin{itemize}[label={--}]
-\item บรรทัดที่ 2 เป็นการเช็คว่าข้อมูลที่รับเข้ามามีข้อมูลมือถือหรือไม่
-\item บรรทัดที่ 3 เรียกใช้ callNumber plugin กำหนดเบอร์มือถือและอนุญาติการใช้งานการโทร
-\item บรรทัดที่ 4 เมื่อการโทรสามารถใช้งานได้จะแจ้งข้อความว่า Worked
-\item บรรทัดที่ 6 ถ้าไม่สามารถใช้งานได้จะแสดง alert ข้อผิดพลาด
-\item บรรทัดที่ 9 - 12 ถ้าหากข้อมูลที่รับเข้ามาไม่มีเบอร์มือถือระบบจะแจ้งว่าไม่สามารถทดรได้สามาชิกไม่ได้ระบุเบอร์ไว้
-\end{itemize}
-\newpage
-% end พัฒนาในส่วนของการโทรหาสมาชิกในครอบครัว
+% จากรูปที่ \ref{Fig:4-call} โครงสร้างของไฟล์ HelpfamilyPage.ts สามารถอธิบายการทำงานได้ดังนี้
+% \begin{itemize}[label={--}]
+% \item บรรทัดที่ 2 เป็นการเช็คว่าข้อมูลที่รับเข้ามามีข้อมูลมือถือหรือไม่
+% \item บรรทัดที่ 3 เรียกใช้ callNumber plugin กำหนดเบอร์มือถือและอนุญาติการใช้งานการโทร
+% \item บรรทัดที่ 4 เมื่อการโทรสามารถใช้งานได้จะแจ้งข้อความว่า Worked
+% \item บรรทัดที่ 6 ถ้าไม่สามารถใช้งานได้จะแสดง alert ข้อผิดพลาด
+% \item บรรทัดที่ 9 - 12 ถ้าหากข้อมูลที่รับเข้ามาไม่มีเบอร์มือถือระบบจะแจ้งว่าไม่สามารถทดรได้สามาชิกไม่ได้ระบุเบอร์ไว้
+% \end{itemize}
+% \newpage
+% % end พัฒนาในส่วนของการโทรหาสมาชิกในครอบครัว
 
-% start พัฒนาในส่วนของการส่งข้อความหาสมาชิกในครอบครัว
+% % start พัฒนาในส่วนของการส่งข้อความหาสมาชิกในครอบครัว
 
-\subsection{การส่งข้อความหาสมาชิกในครอบครัว}
-เมื่อผู้ใช้เลือกปุ่มส่งข้อความหาสมาชิกในครอบครัว ระบบจะมีการทำงาน แสดงดังรูปที่ \ref{Fig:4-sms}
+% \subsection{การส่งข้อความหาสมาชิกในครอบครัว}
+% เมื่อผู้ใช้เลือกปุ่มส่งข้อความหาสมาชิกในครอบครัว ระบบจะมีการทำงาน แสดงดังรูปที่ \ref{Fig:4-sms}
 
-\begin{figure}[H]
-{\setstretch{1.0}\lstset{language=Pascal}
-\begin{lstlisting}
-sendSMS(key){
-firebase.firestore().collection("informationUser").doc(firebase.auth().currentUser.uid).get().then((res) => {
-	let message = "ช่วยด้วย !!! นี่ " + key.data().owner_name + " เอง ตอนนี้มีปัญหาช่วยติดต่อกลับมาที่ " + res.data().phone + " ด้วยนะ ด่วน ๆ"   
-this.socialSharing.shareViaSMS(message,key.data().phone).then(() => {
-	console.log("SMS Success");
-}).catch((err) => {
-	console.log(err);
-})
-}).catch((err) => {
-	console.log(err);
-})
-}
-\end{lstlisting}}
-\caption{Code การส่งข้อความหาสมาชิกในครอบครัว}
-\label{Fig:4-sms}
-\end{figure}
+% \begin{figure}[H]
+% {\setstretch{1.0}\lstset{language=Pascal}
+% \begin{lstlisting}
+% sendSMS(key){
+% firebase.firestore().collection("informationUser").doc(firebase.auth().currentUser.uid).get().then((res) => {
+% 	let message = "ช่วยด้วย !!! นี่ " + key.data().owner_name + " เอง ตอนนี้มีปัญหาช่วยติดต่อกลับมาที่ " + res.data().phone + " ด้วยนะ ด่วน ๆ"   
+% this.socialSharing.shareViaSMS(message,key.data().phone).then(() => {
+% 	console.log("SMS Success");
+% }).catch((err) => {
+% 	console.log(err);
+% })
+% }).catch((err) => {
+% 	console.log(err);
+% })
+% }
+% \end{lstlisting}}
+% \caption{Code การส่งข้อความหาสมาชิกในครอบครัว}
+% \label{Fig:4-sms}
+% \end{figure}
 
-จากรูปที่ \ref{Fig:4-sms} โครงสร้างของไฟล์ HelpfamilyPage.ts สามารถอธิบายการทำงานได้ดังนี้
-\begin{itemize}[label={--}]
-\item บรรทัดที่ 2 เป็นการเรียกใช้ข้อมูลผู้ใช้จากฐานข้อมูลเก็บไว้ในตัวแปร res
-\item บรรทัดที่ 3 กำหนดตัวแปร message เก็บข้อความที่จะส่ง
-\item บรรทัดที่ 4 - 5 เป็นการเรียกใช้ socialSharing plugin เพื่อส่งข้อความที่กำหนดไว้ใน message
-\item บรรทัดที่ 6 - 11 แจ้งข้อความถ้าหากเกิดข้อผิดพลาด
-\end{itemize}
-\newpage
+% จากรูปที่ \ref{Fig:4-sms} โครงสร้างของไฟล์ HelpfamilyPage.ts สามารถอธิบายการทำงานได้ดังนี้
+% \begin{itemize}[label={--}]
+% \item บรรทัดที่ 2 เป็นการเรียกใช้ข้อมูลผู้ใช้จากฐานข้อมูลเก็บไว้ในตัวแปร res
+% \item บรรทัดที่ 3 กำหนดตัวแปร message เก็บข้อความที่จะส่ง
+% \item บรรทัดที่ 4 - 5 เป็นการเรียกใช้ socialSharing plugin เพื่อส่งข้อความที่กำหนดไว้ใน message
+% \item บรรทัดที่ 6 - 11 แจ้งข้อความถ้าหากเกิดข้อผิดพลาด
+% \end{itemize}
+% \newpage
 
-% end พัฒนาในส่วนของการส่งข้อความหาสมาชิกในครอบครัว
+% % end พัฒนาในส่วนของการส่งข้อความหาสมาชิกในครอบครัว
 
-% start ส่วนของการแสดงตำแหน่งสมาชิกในครอบครัว
+% % start ส่วนของการแสดงตำแหน่งสมาชิกในครอบครัว
 
-\subsection{การแสดงตำแหน่งสมาชิกในครอบครัว}
-เมื่อผู้ใช้เข้าเมนูตำแหน่งครอบครัว ระบบจะมีการทำงาน แสดงดังรูปที่ \ref{Fig:4-googlemap}
+% \subsection{การแสดงตำแหน่งสมาชิกในครอบครัว}
+% เมื่อผู้ใช้เข้าเมนูตำแหน่งครอบครัว ระบบจะมีการทำงาน แสดงดังรูปที่ \ref{Fig:4-googlemap}
 
-\begin{figure}[H]
-{\setstretch{1.0}\lstset{language=Pascal}
-\begin{lstlisting}
-showMap() {
-firebase.firestore().collection("informationUser").doc(firebase.auth().currentUser.uid).get().then( (res) => {
-const locationme = new google.maps.LatLng(res.data().location.latitude, res.data().location.longitude);
-const options = {
-center: locationme,
-zoom: 14,
-streetViewControl: false,
-mapTypeId: google.maps.MapTypeId.ROADMAP
-};
-this.map = new google.maps.Map(this.mapRef.nativeElement, options);
+% \begin{figure}[H]
+% {\setstretch{1.0}\lstset{language=Pascal}
+% \begin{lstlisting}
+% showMap() {
+% firebase.firestore().collection("informationUser").doc(firebase.auth().currentUser.uid).get().then( (res) => {
+% const locationme = new google.maps.LatLng(res.data().location.latitude, res.data().location.longitude);
+% const options = {
+% center: locationme,
+% zoom: 14,
+% streetViewControl: false,
+% mapTypeId: google.maps.MapTypeId.ROADMAP
+% };
+% this.map = new google.maps.Map(this.mapRef.nativeElement, options);
 
-var marker = new google.maps.Marker({
-position: locationme,
-map: this.map,
-draggable: false,
-animation: google.maps.Animation.DROP,
-title: res.data().owner_name,
-icon: {
-	url: "http://maps.google.com/mapfiles/ms/icons/pink-dot.png",
-},
-})
-var infowindow = new google.maps.InfoWindow({
-content: res.data().owner_name,
-maxWidth: 200
-});
-infowindow.open(this.map,marker);
-\end{lstlisting}}
-\caption{Code การแสดงตำแหน่งสมาชิกในครอบครัว}
-\label{Fig:4-googlemap}
-\end{figure}
-\newpage
+% var marker = new google.maps.Marker({
+% position: locationme,
+% map: this.map,
+% draggable: false,
+% animation: google.maps.Animation.DROP,
+% title: res.data().owner_name,
+% icon: {
+% 	url: "http://maps.google.com/mapfiles/ms/icons/pink-dot.png",
+% },
+% })
+% var infowindow = new google.maps.InfoWindow({
+% content: res.data().owner_name,
+% maxWidth: 200
+% });
+% infowindow.open(this.map,marker);
+% \end{lstlisting}}
+% \caption{Code การแสดงตำแหน่งสมาชิกในครอบครัว}
+% \label{Fig:4-googlemap}
+% \end{figure}
+% \newpage
 
-จากรูปที่ \ref{Fig:4-googlemap} โครงสร้างของไฟล์ GoogleMap.ts สามารถอธิบายการทำงานได้ดังนี้
-\begin{itemize}[label={--}]
-\item บรรทัดที่ 2 เป็นการค้นหาข้อมูลผู้ใช้ที่อยู่ในฐานข้อมูลไว้ในตัวแปร res
-\item บรรทัดที่ 3 เป็นการกำหนด latitude และ longitude ของผู้ใช้งานในตัวแปร locationme
-\item บรรทัดที่ 5 กำหนดจุดศูนย์กลางของหน้าจอ Google Maps หลังจากผู้ใช้เรียกใช้งานหน้าจอแผนที่
-\item บรรทัดที่ 6 กำหนดขนาดหน้าจอที่จะแสดงในแผนที่
-\item บรรทัดที่ 8 เป็นการกำหนดประเภทของแผนที่
-\item บรรทัดที่ 10 กำหนดให้ตัวแปร map เก็บข้อมูลของแผนที่ที่จะแสดง
-\item บรรทัดที่ 12 - 19 เป็นการกำหนดตำแหน่ง marker ของผู้ใช้
-\item บรรทัดที่ 22 - 25 กำหนดตัวแปร infowindow เพื่อเรียกใช้รายละเอียดของ marker
-\item บรรทัดที่ 26 เป็นคำสั่งในการเปิดใช้งาน infowindow
-\end{itemize}
-\newpage
+% จากรูปที่ \ref{Fig:4-googlemap} โครงสร้างของไฟล์ GoogleMap.ts สามารถอธิบายการทำงานได้ดังนี้
+% \begin{itemize}[label={--}]
+% \item บรรทัดที่ 2 เป็นการค้นหาข้อมูลผู้ใช้ที่อยู่ในฐานข้อมูลไว้ในตัวแปร res
+% \item บรรทัดที่ 3 เป็นการกำหนด latitude และ longitude ของผู้ใช้งานในตัวแปร locationme
+% \item บรรทัดที่ 5 กำหนดจุดศูนย์กลางของหน้าจอ Google Maps หลังจากผู้ใช้เรียกใช้งานหน้าจอแผนที่
+% \item บรรทัดที่ 6 กำหนดขนาดหน้าจอที่จะแสดงในแผนที่
+% \item บรรทัดที่ 8 เป็นการกำหนดประเภทของแผนที่
+% \item บรรทัดที่ 10 กำหนดให้ตัวแปร map เก็บข้อมูลของแผนที่ที่จะแสดง
+% \item บรรทัดที่ 12 - 19 เป็นการกำหนดตำแหน่ง marker ของผู้ใช้
+% \item บรรทัดที่ 22 - 25 กำหนดตัวแปร infowindow เพื่อเรียกใช้รายละเอียดของ marker
+% \item บรรทัดที่ 26 เป็นคำสั่งในการเปิดใช้งาน infowindow
+% \end{itemize}
+% \newpage
 
-% end ส่วนของการแสดงตำแหน่งสมาชิกในครอบครัว
+% % end ส่วนของการแสดงตำแหน่งสมาชิกในครอบครัว
 
-% start ส่วนของการแสดงตแหน่งสมาชิกในครอบครัว (ต่อ)
+% % start ส่วนของการแสดงตแหน่งสมาชิกในครอบครัว (ต่อ)
 
-เมื่อผู้ใช้เข้าเมนูตำแหน่งครอบครัว (ต่อ) ระบบจะมีการทำงาน แสดงดังรูปที่ \ref{Fig:4-googlemapcon1}
+% เมื่อผู้ใช้เข้าเมนูตำแหน่งครอบครัว (ต่อ) ระบบจะมีการทำงาน แสดงดังรูปที่ \ref{Fig:4-googlemapcon1}
 
-\begin{figure}[H]
-{\setstretch{1.0}\lstset{language=Pascal}
-\begin{lstlisting}
-this.familyservice.getinfofamilys();
-this.events.subscribe('infofamilys', () => {
-this.allfamilys;
-this.zone.run(() => {
-this.allfamilys = this.familyservice.infofamilys;
-for(var key in this.allfamilys){
-if(this.allfamilys[key].location){
-	this.allresfamilys = this.allfamilys[key];
-	console.log(this.allresfamilys.location);
-	var marker = new google.maps.Marker({
-	position: new google.maps.LatLng(this.allresfamilys.location.latitude,this.allresfamilys.location.longitude),
-	map: this.map,
-	draggable: false,
-	animation: google.maps.Animation.DROP,
-	title: this.allresfamilys.owner_name,
-	icon: {
-		url: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png",
-	},
-	})
-	var infowindow = new google.maps.InfoWindow({
-	content: this.allresfamilys.owner_name,
-	maxWidth: 200
-	});
-	infowindow.open(this.map,marker);
-}
-}
-})
-})
-}) 
-}
-\end{lstlisting}}
-\caption{Code การแสดงตำแหน่งสมาชิกในครอบครัว (ต่อ)}
-\label{Fig:4-googlemapcon1}
-\end{figure}
-\newpage
+% \begin{figure}[H]
+% {\setstretch{1.0}\lstset{language=Pascal}
+% \begin{lstlisting}
+% this.familyservice.getinfofamilys();
+% this.events.subscribe('infofamilys', () => {
+% this.allfamilys;
+% this.zone.run(() => {
+% this.allfamilys = this.familyservice.infofamilys;
+% for(var key in this.allfamilys){
+% if(this.allfamilys[key].location){
+% 	this.allresfamilys = this.allfamilys[key];
+% 	console.log(this.allresfamilys.location);
+% 	var marker = new google.maps.Marker({
+% 	position: new google.maps.LatLng(this.allresfamilys.location.latitude,this.allresfamilys.location.longitude),
+% 	map: this.map,
+% 	draggable: false,
+% 	animation: google.maps.Animation.DROP,
+% 	title: this.allresfamilys.owner_name,
+% 	icon: {
+% 		url: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png",
+% 	},
+% 	})
+% 	var infowindow = new google.maps.InfoWindow({
+% 	content: this.allresfamilys.owner_name,
+% 	maxWidth: 200
+% 	});
+% 	infowindow.open(this.map,marker);
+% }
+% }
+% })
+% })
+% }) 
+% }
+% \end{lstlisting}}
+% \caption{Code การแสดงตำแหน่งสมาชิกในครอบครัว (ต่อ)}
+% \label{Fig:4-googlemapcon1}
+% \end{figure}
+% \newpage
 
-จากรูปที่ \ref{Fig:4-googlemapcon1} โครงสร้างของไฟล์ GoogleMap.ts สามารถอธิบายการทำงานได้ดังนี้
-\begin{itemize}[label={--}]
-\item บรรทัดที่ 1 เรียกใช้ฟังก์ชัน getinfofamilys() ในคลาส FamilyProvider
-\item บรรทัดที่ 2 - 5 เรียกใช้ตัวแปรที่อยู่ในฟังก์ชัน getinfofamilys() เก็บไว้ในตัวแปร allfamilys
-\item บรรทัดที่ 6 วนลูปตัวแปร allfamilys
-\item บรรทัดที่ 7 เช็คตัวแปร allfamilys ว่ามี location หรือไม่
-\item บรรทัดที่ 8 เก็บข้อมูลที่มีตำแหน่งไว้ในตัวแปร allresfamilys
-\item บรรทัดที่ 10 - 11 นำข้อมูลที่อยู่ในตัวแปร allresfamilys มาสร้าง marker
-\item บรรทัดที่ 20 - 24 เป็นการสร้างรายละเอียดของ marker แต่ละอัน
-\end{itemize}
-\newpage
+% จากรูปที่ \ref{Fig:4-googlemapcon1} โครงสร้างของไฟล์ GoogleMap.ts สามารถอธิบายการทำงานได้ดังนี้
+% \begin{itemize}[label={--}]
+% \item บรรทัดที่ 1 เรียกใช้ฟังก์ชัน getinfofamilys() ในคลาส FamilyProvider
+% \item บรรทัดที่ 2 - 5 เรียกใช้ตัวแปรที่อยู่ในฟังก์ชัน getinfofamilys() เก็บไว้ในตัวแปร allfamilys
+% \item บรรทัดที่ 6 วนลูปตัวแปร allfamilys
+% \item บรรทัดที่ 7 เช็คตัวแปร allfamilys ว่ามี location หรือไม่
+% \item บรรทัดที่ 8 เก็บข้อมูลที่มีตำแหน่งไว้ในตัวแปร allresfamilys
+% \item บรรทัดที่ 10 - 11 นำข้อมูลที่อยู่ในตัวแปร allresfamilys มาสร้าง marker
+% \item บรรทัดที่ 20 - 24 เป็นการสร้างรายละเอียดของ marker แต่ละอัน
+% \end{itemize}
+% \newpage
 
-% end ส่วนของการแสดงตำแหน่งสมาชิกในครอบครัว (ต่อ)
+% % end ส่วนของการแสดงตำแหน่งสมาชิกในครอบครัว (ต่อ)
 
